@@ -1,0 +1,54 @@
+    // mixin who resize a block for taking all the space inside the block where is situate
+@mixin all-box-space {
+    width: 100%;
+    height: 100%;
+}
+
+    // mixin who put an image on the center of the block
+    // and resizing it
+    // you cal also give them a color and a blend mode to style it
+@mixin bg-contain-center($url, $color: false, $mode: darken) {
+    background: center no-repeat url($url);
+    background-size: contain;
+    @if ($color) {
+        background-color: $color;
+        background-blend-mode: $mode;
+    }
+    
+}
+
+    // mixin to simplify use of flexbox
+    // djaw = Direction/Jow/Align/Wrap
+    // without use argment it use the same default value of display: flex
+    // if you want to jump an argment use "0"
+@mixin flex-djaw($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap){
+
+    @if ($direction == 0){$direction: row};
+    @if ($justify == 0){$justify: flex-start};
+    @if ($align == 0){$align: stretch};
+    @if ($wrap == 0){$wrap: nowrap};
+
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+    align-items: $align;
+}
+
+    // mixin who reset margin and padding to zero
+@mixin just-content {
+    margin: 0px;
+    padding: 0px;
+}
+
+@mixin media-max($max-width) {
+    @media (max-width: $max-width) {
+        &{ @content; }
+    }   
+}
+
+@mixin media-min($min-width) {
+    @media (min-width: $min-width) {
+        &{ @content; }
+    }   
+}
