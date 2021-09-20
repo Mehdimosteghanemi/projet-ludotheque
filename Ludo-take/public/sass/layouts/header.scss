@@ -1,8 +1,11 @@
 .header {
     @include flex-djaw(column, 0, flex-end);
     padding: 5px;
+    background-color: white;
     border-bottom: 2px solid black;
+    position: -webkit-sticky;
     position: sticky;
+    top: 0px;
     
 
     &__head {
