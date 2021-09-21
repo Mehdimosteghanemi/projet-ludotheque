@@ -19,7 +19,7 @@ button {
     }
 
     &--signin {
-        background-color: $clr-signin;
+        background-color: red;
         &:hover {
             background-color: darken($clr-signin, 15%);
          }
