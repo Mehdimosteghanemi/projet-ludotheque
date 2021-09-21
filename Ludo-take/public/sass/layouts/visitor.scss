@@ -1,5 +1,5 @@
 .visitor__section {
-
+    @include flex-djaw(column, center, center);
     &__title {
         text-align: center;
         margin-top: 150px;

@@ -1,6 +1,51 @@
 .faq__container {
-    border: 2px black solid;
-    align-self: center;
+    border-radius: 10px;
     width: 80%;
     color: red;
+    overflow: hidden;
+
+    &__box {
+        &__question {
+            border: 2px black solid;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        &__answer {
+            border: 2px rgba(0, 0, 0, 0) solid;
+            border-top: none;
+            width: 95%;
+            margin: auto;
+            border-radius: 0px 0px 10px 10px;
+            position: relative;
+            // top: -70px;
+            background-color: white;
+            
+            padding: 0px;
+            overflow: hidden;
+            max-height: 0px;
+            transition: transform 500ms , max-height 500ms , border 500ms ;
+            transform: translateY(-70px) ;
+            z-index: -1;
+            visibility: hidden;
+            
+        }
+
+        &__checkbox {
+            visibility: hidden;
+            display: none;
+        }
+
+        &__checkbox:checked ~ &__answer {
+            display: block;
+            border: 2px black solid;
+            padding: 10px;
+            transform: translateY(0px) ;
+            max-height: 200px;
+            visibility: visible;
+
+        }
+    }
 }
