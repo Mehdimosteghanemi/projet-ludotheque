@@ -26,6 +26,9 @@ body {
     @include flex-djaw(column, center);
     width: 75%;
     margin: auto;
+    @media (max-width: 600px) {
+        width: 100%;  
+    }
 }
 
 

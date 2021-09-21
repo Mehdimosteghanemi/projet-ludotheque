@@ -79,6 +79,11 @@ body {
   width: 75%;
   margin: auto;
 }
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+  }
+}
 
 .visitor__section {
   min-height: 100vh;
@@ -97,6 +102,12 @@ body {
   top: 0;
   left: 12.5%;
   right: 12.5%;
+}
+@media (max-width: 600px) {
+  .header {
+    left: 0;
+    right: 0;
+  }
 }
 .header__head {
   width: 100%;

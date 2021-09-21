@@ -7,6 +7,10 @@
     top: 0;
     left: 12.5%;
     right: 12.5%;
+    @media (max-width: 600px) {
+        left: 0;
+        right: 0;
+    }
     
 
     &__head {
