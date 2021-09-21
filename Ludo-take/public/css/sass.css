@@ -99,10 +99,10 @@ body {
   right: 12.5%;
 }
 .header__head {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
 }
@@ -134,6 +134,11 @@ body {
   flex-wrap: nowrap;
   align-items: stretch;
   padding: 10px;
+}
+@media (max-width: 900px) {
+  .header__navigation__list {
+    display: none;
+  }
 }
 
 .footer {
@@ -202,6 +207,57 @@ body {
   display: none;
 }
 
+.burger {
+  display: none;
+  height: 40px;
+  width: 40px;
+  border: 2px black solid;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+@media (max-width: 900px) {
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+.burger__line {
+  height: 2px;
+  width: 30px;
+  background-color: black;
+  transition: transform 200ms, background-color 200ms;
+}
+.burger__checkbox:checked ~ .burger > .burger__line1 {
+  transform-origin: center center;
+  transform: translateY(13px) rotate(45deg);
+}
+.burger__checkbox:checked ~ .burger > .burger__line2 {
+  background-color: rgba(0, 0, 0, 0);
+}
+.burger__checkbox:checked ~ .burger > .burger__line3 {
+  transform-origin: center center;
+  transform: translateY(-13px) rotate(-45deg);
+}
+@media (max-width: 900px) {
+  .burger__checkbox:checked ~ .header__navigation__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 200px;
+  }
+}
+.burger__checkbox {
+  visibility: hidden;
+  display: none;
+}
+
 button {
   border: none;
   background: none;
@@ -231,6 +287,13 @@ button {
 }
 .button--login {
   background-color: #dd2f46;
+}
+@media (min-width: 900px) {
+  .button--login {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }
 .button--login:hover {
   background-color: #a51b2d;

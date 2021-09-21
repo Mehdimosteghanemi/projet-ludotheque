@@ -34,6 +34,12 @@ button {
  
      &--login {
          background-color: $clr-login;
+         @media(min-width: 900px) {
+            position: absolute;
+            top: 20px;
+            right: 20px;  
+         }
+         
          &:hover {
              background-color: darken($clr-login, 15%);
           }

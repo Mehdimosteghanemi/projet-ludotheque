@@ -6,7 +6,6 @@
         overflow: hidden;
 
         &__question {
-            
             border: 2px black solid;
             border-radius: 10px;
             background-color: white;
@@ -22,6 +21,7 @@
             margin: auto;
             max-height: 0px;
 
+            // for the answer appear under the question
             position: relative;
             z-index: -1;
 
@@ -29,12 +29,14 @@
             transform: translateY(-200px) ;
         }
 
+        // show the answer when the box is checked (when you're click on)
         &__checkbox:checked ~ &__answer {
             padding: 10px;
             max-height: 200px;
             transform: translateY(0px) ;
         }
 
+        // for the checkbox is hidden and don't take place
         &__checkbox {
             visibility: hidden;
             display: none;
