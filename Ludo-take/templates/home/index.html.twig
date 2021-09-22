@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    {% if is_granted('ROLE_USER') %}
+    {# {% if is_granted('ROLE_USER') %} #}
         {{ include("home/user.html.twig") }}
-    {% else %}    
+    {# {% else %}    
         {{ include("home/visitor.html.twig") }}
-    {% endif %}
+    {% endif %} #}
 
 {% endblock %}

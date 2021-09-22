@@ -1,3 +1,4 @@
+@import "./utils/mixin/carousel.scss";
 @import "./utils/mixin/default.scss";
 @import "./utils/variables/clr-.scss";
 @import "./base/reset.scss";
@@ -9,3 +10,6 @@
 @import "./components/burgerMenu.scss";
 @import "./components/buttons/base.scss";
 @import "./layouts/gallery.scss";
+@import "./layouts/category-games.scss";
+@import "./layouts/crush.scss";
+@import "./components/image.scss";
