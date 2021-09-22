@@ -1,3 +1,22 @@
 
+#user_form_type_user_submit {
+  background-color: green;
+  border-radius: 20%;
+}
+
+.container_registration-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.divRegisterForm {
+  color: green;
+}
+
+
+
 
 /*# sourceMappingURL=sass.css.map */

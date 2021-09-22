@@ -1,1 +1,3 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"sass.css"}
+
+{"version":3,"sourceRoot":"","sources":["../sass/components/buttons/buttonsForm.scss","../sass/utils/variables/colors.scss","../sass/pages/registration.scss","../sass/layouts/form.scss"],"names":[],"mappings":"AAAA;EACI,kBCDU;EDEV;;;AEFJ;EACI;EACA;EACA;EACA;EACA;;;ACLJ;EACI,OFDU","file":"sass.css"}
+
