@@ -347,6 +347,8 @@ button {
 }
 .gallery:hover .gallery__image {
   filter: grayscale(1);
+  position: relative;
+  z-index: -1;
 }
 .gallery__column {
   display: flex;
@@ -359,12 +361,17 @@ button {
 }
 .gallery__link:hover .gallery__image {
   filter: grayscale(0);
+  position: relative;
+  z-index: -1;
 }
 .gallery__link:hover .gallery__caption {
   opacity: 1;
+  position: relative;
+  z-index: -1;
 }
 .gallery__thumb {
   position: relative;
+  z-index: -1;
 }
 .gallery__image {
   display: block;
@@ -373,6 +380,8 @@ button {
 }
 .gallery__image:hover {
   transform: scale(1.1);
+  position: relative;
+  z-index: -1;
 }
 .gallery__caption {
   position: absolute;
