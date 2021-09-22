@@ -5,6 +5,9 @@
     
 	&:hover &__image {
 		filter: grayscale(1);
+		position: relative;
+        z-index: -1;
+        
 	}
 	
 	&__column {
@@ -18,18 +21,26 @@
 		overflow: hidden;
 		
 		&:hover {
+
+
 			.gallery__image {
 				filter: grayscale(0);
+				position: relative;
+				z-index: -1;
+                
 			}
 			
 			.gallery__caption {
 				opacity: 1;
+				position: relative;
+				z-index: -1;
 			}
 		}
 	}
 	
 	&__thumb {
 		position: relative;
+		z-index: -1;
 	}
 	
 	&__image {
@@ -39,6 +50,8 @@
 		
 		&:hover {
 			transform: scale(1.1);
+            position: relative;
+            z-index: -1;
 		}
 	}
 	
