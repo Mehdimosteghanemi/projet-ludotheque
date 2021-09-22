@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %} 
+<div class="container">
+
+<h1 class="register--title">S'inscrire à Ludo'Take !</h1>
+
+{# <div class="div-Register--Form">
+    <form class="register--Form stepOne">
+        <p class="mail--Registration form--Step_One"><input type="mail" name="e-mail" placeholder="E-mail" /></p>
+        <p class="password--Registration form--Step_One"><input type="password" name="mot de passe" placeholder="Mot de passe" /></p>
+        <p class="password--Verification form--Step_One"><input type="password" name="mot de passe check" placeholder="Vérification mot de passe" /></p>
+        <button class="form--Validation" type="submit">Valider</button>
+    </form>
+</div>
+</div> #}
+<div class="all_form">
+    {{ form_start(userForm) }}
+
+        <div class="mail_form all_input--form ">
+        {{ form_row(userForm.email, {
+                label: 'Adresse mail'
+        }) }}
+        </div>
+
+        <div class="pass_form all_input--form">
+        {{ form_row(userForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+        </div>
+
+        <div class="road_form all_input--form">
+        {{ form_row(userForm.address_road, {
+                label: 'Rue'
+        }) }}
+        </div>
+
+        <div class="number_form all_input--form">
+        {{ form_row(userForm.address_number, {
+                label: 'Numéro de rue'
+        }) }}
+        </div>
+
+        <div class="zip_form all_input--form">
+        {{ form_row(userForm.address_zip_code, {
+                label: 'Code postal'
+        }) }}
+        </div>
+
+        <div class="city_form all_input--form">
+        {{ form_row(userForm.address_city, {
+                label: 'Ville'
+        }) }}
+        </div>
+
+        <div class="submit_form all_input--form">
+        {{ form_row(userForm.submit, {
+                label: 'Validé'
+        }) }}
+        </div>
+</div>
+
+{% endblock %}
