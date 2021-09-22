@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -11,15 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+
 class UserFormTypeUserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function formStepOne(FormBuilderInterface $builder, array $options)
     {
         $builder
-        /* Step 1 */
             ->add('email', EmailType::class, [
                 'constraints' => [
                     new NotBlank([
@@ -44,21 +44,24 @@ class UserFormTypeUserType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('submit', SubmitType::class)
+        ;
+    }
 
-        /* Step 2 */
-
-        ->add('address_road')
-        ->add('address_number')
-        ->add('address_zip_code')
-        ->add('address_city', IntegerType::class, [
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Renseignez le code postal s\'il vous plaît.'
-                ])
-            ]
-        ])
-
-        ->add('submit', SubmitType::class)
+    public function formStepTwo (FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('address_road')
+            ->add('address_number')
+            ->add('address_zip_code')
+            ->add('address_city', IntegerType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Renseignez le code postal s\'il vous plaît.'
+                    ])
+                ]
+            ])
+            ->add('submit', SubmitType::class)
         ;
     }
 

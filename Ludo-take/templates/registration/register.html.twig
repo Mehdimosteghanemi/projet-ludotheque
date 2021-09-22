@@ -18,17 +18,17 @@
 </div>
 </div> #}
 <div class="all_form">
-    {{ form_start(userForm) }}
+    {{ form_start(userForm1) }}
 
         <div class="mail_form all_input--form ">
-        {{ form_row(userForm.email, {
+        {{ form_row(userForm1.email, {
             attr:{placeholder:'Adresse Mail'},
             label: ' '
         }) }}
         </div>
 
         <div class="pass_form all_input--form">
-        {{ form_row(userForm.plainPassword, {
+        {{ form_row(userForm1.plainPassword, {
             attr:{placeholder:'Mot de passe'},
             label: ' '
             }) }}

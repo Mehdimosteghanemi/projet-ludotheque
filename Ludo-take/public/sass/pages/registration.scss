@@ -7,7 +7,20 @@
 }
 
 .all_form {
-    
+    border: black solid 1px;
+}
+.all_input--form {
+    margin-top: 1rem;
+}
+
+#user_form_type_user_email,
+#user_form_type_user_plainPassword,
+#user_form_type_user_address_road,
+#user_form_type_user_address_number,
+#user_form_type_user_address_zip_code,
+#user_form_type_user_address_city {
+    width: 20rem;
+    height: 3rem;
 }
 
 
