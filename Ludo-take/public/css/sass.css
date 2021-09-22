@@ -1,21 +1,14 @@
-.container {
-  margin-left: 300px;
-  margin-right: 300px;
+#user_form_type_user_submit {
+  background-color: green;
+  border-radius: 20%;
 }
 
-.div-Register--Form {
-  text-align: center;
-  border: 1px black solid;
-  display: flex;
-  height: 30rem;
-  margin-left: 250px;
-  margin-right: 250px;
-}
-
-.register--Form {
+.container_registration-user {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 .divRegisterForm {

@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %} 
-<div class="container">
+<div class="container_registration-user">
 
 <h1 class="register--title">S'inscrire à Ludo'Take !</h1>
 
@@ -22,37 +22,43 @@
 
         <div class="mail_form all_input--form ">
         {{ form_row(userForm.email, {
-                label: 'Adresse mail'
+            attr:{placeholder:'Adresse Mail'},
+            label: ' '
         }) }}
         </div>
 
         <div class="pass_form all_input--form">
         {{ form_row(userForm.plainPassword, {
-                label: 'Mot de passe'
+            attr:{placeholder:'Mot de passe'},
+            label: ' '
             }) }}
         </div>
 
         <div class="road_form all_input--form">
         {{ form_row(userForm.address_road, {
-                label: 'Rue'
+            attr:{placeholder:'Rue'},
+            label: ' '
         }) }}
         </div>
 
         <div class="number_form all_input--form">
         {{ form_row(userForm.address_number, {
-                label: 'Numéro de rue'
+            attr:{placeholder:'Numéro de rue'},
+            label: ' '
         }) }}
         </div>
 
         <div class="zip_form all_input--form">
         {{ form_row(userForm.address_zip_code, {
-                label: 'Code postal'
+            attr:{placeholder:'Code postal'},
+            label: ' '
         }) }}
         </div>
 
         <div class="city_form all_input--form">
         {{ form_row(userForm.address_city, {
-                label: 'Ville'
+            attr:{placeholder:'Ville'},
+            label: ' '
         }) }}
         </div>
 
