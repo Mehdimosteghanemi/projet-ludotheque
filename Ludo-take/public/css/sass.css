@@ -1,8 +1,6 @@
 section {
   background: #FFF;
   padding: 50px 0;
-  position: relative;
-  z-index: -1;
 }
 
 .container {
@@ -632,6 +630,44 @@ button {
 
 .image {
   width: 100%;
+}
+
+.slider {
+  height: 50vh;
+  position: relative;
+}
+
+.slider img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+.next, .previous {
+  color: #fff;
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.next {
+  right: 1rem;
+}
+
+.previous {
+  left: 1rem;
 }
 
 /*# sourceMappingURL=sass.css.map */
