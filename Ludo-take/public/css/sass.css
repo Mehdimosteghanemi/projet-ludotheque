@@ -282,6 +282,10 @@ em {
   font-style: italic;
 }
 
+.first_section {
+  padding-top: 117px;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -631,6 +635,10 @@ button {
 
 .image {
   width: 100%;
+}
+
+.container__slider {
+  padding-top: 50px;
 }
 
 .slider {
