@@ -632,123 +632,6 @@ button {
   }
 }
 
-@keyframes carousel {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: -200%;
-  }
-}
-@keyframes carousel1000 {
-  0% {
-    left: 0;
-  }
-  11% {
-    left: 0;
-  }
-  13% {
-    left: -50%;
-  }
-  24% {
-    left: -50%;
-  }
-  26% {
-    left: -100%;
-  }
-  37% {
-    left: -100%;
-  }
-  39% {
-    left: -150%;
-  }
-  50% {
-    left: -150%;
-  }
-  52% {
-    left: -200%;
-  }
-  63% {
-    left: -200%;
-  }
-  65% {
-    left: -250%;
-  }
-  76% {
-    left: -250%;
-  }
-  78% {
-    left: -300%;
-  }
-  89% {
-    left: -300%;
-  }
-  91% {
-    left: -350%;
-  }
-  100% {
-    left: -350%;
-  }
-}
-@keyframes carousel600 {
-  0% {
-    left: 0;
-  }
-  9% {
-    left: 0;
-  }
-  11% {
-    left: -100%;
-  }
-  20% {
-    left: -100%;
-  }
-  22% {
-    left: -200%;
-  }
-  31% {
-    left: -200%;
-  }
-  33% {
-    left: -300%;
-  }
-  42% {
-    left: -300%;
-  }
-  44% {
-    left: -400%;
-  }
-  53% {
-    left: -400%;
-  }
-  55% {
-    left: -500%;
-  }
-  64% {
-    left: -500%;
-  }
-  66% {
-    left: -600%;
-  }
-  75% {
-    left: -600%;
-  }
-  77% {
-    left: -700%;
-  }
-  86% {
-    left: -700%;
-  }
-  88% {
-    left: -800%;
-  }
-  97% {
-    left: -800%;
-  }
-  100% {
-    left: -800%;
-  }
-}
 .carousel {
   display: flex;
   flex-direction: row;
@@ -768,47 +651,43 @@ button {
   width: 80%;
   overflow: hidden;
 }
-.carousel__window__cards {
+.carousel__window__slider {
   display: flex;
   flex-direction: row;
   justify-content: start;
   flex-wrap: nowrap;
   align-items: center;
-  width: 300%;
-  position: relative;
-  top: 0;
-  left: 0;
-  animation: carousel 5600ms linear infinite alternate;
-  animation-play-state: paused;
+  width: 297%;
+  transition: all 0.5s;
 }
 @media (max-width: 1000px) {
-  .carousel__window__cards {
+  .carousel__window__slider {
     width: 450%;
-    animation: carousel1000 25s linear infinite alternate;
   }
 }
 @media (max-width: 600px) {
-  .carousel__window__cards {
+  .carousel__window__slider {
     width: 900%;
-    animation: carousel600 35s linear infinite alternate;
+  }
+}
+.carousel__window__slider__card {
+  width: 33.3%;
+}
+@media (max-width: 1000px) {
+  .carousel__window__slider__card {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .carousel__window__slider__card {
+    width: 100%;
   }
 }
 .carousel__window__card {
   border: 2px black solid;
   border-radius: 10px;
-  width: 30%;
-  margin: 2px;
+  margin: 8px;
   padding: 5px;
-}
-@media (max-width: 1000px) {
-  .carousel__window__card {
-    width: 49%;
-  }
-}
-@media (max-width: 600px) {
-  .carousel__window__card {
-    width: 99%;
-  }
 }
 
 .image {

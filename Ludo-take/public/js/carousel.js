@@ -1,175 +1,148 @@
 let carousel = {
-    numberCarouselActive : 1,
-    howMuchActiveCarrouselEllement : 0,
-    lastElementBeforeReverse : 0,
+// This JS files allow the carousel run automaticaly or by clicking on the arrow previous or next, is responsive and adapted automaticaly
+// by counting the card on the carousel and looking the screen width. It almost stop when the mouse is under him.
+
+    // stock the interval of autoscroll, we're using it to stop autoscroll after clicking arrow
+    autoScroll : '',
     howMuchCarouselElement : document.getElementsByClassName('carousel__window__card').length,
-    arrayClassCarousel : document.getElementsByClassName('carousel__window__card'),
-    card : document.querySelector('.carousel__window__cards'),
-    mouseIsOver : false,
+    // stock 'previous' or 'next' according to the last clicking action, we're using it to know if we run the handleTransition
+    lastDirection : '',
     mouseClickArrow : false,
-    animation : '',
-    // roundTrip switch into animation normal or reverse
-    roundTrip: 'normal',
-    // transition past to true  when the animation switch into normal to reverse.
-    // for the number carousel not change during the switch
-    transition: false,
+    mouseIsOver : false,
+    next : document.querySelector('.carousel__arrow--next'),
+    previous : document.querySelector('.carousel__arrow--previous'),
+    slider : document.querySelector('.carousel__window__slider'),
+    translatePerCent : 11,
+
     init: function() {
-        carousel.selectNumberElement();
+        carousel.selectSlidePerCent();
+        carousel.selectTranslatePerCent();
         carousel.lastElementBeforeReverse = carousel.howMuchCarouselElement-carousel.howMuchActiveCarrouselEllement+1;
-        document.querySelector('.carousel__arrow--left').addEventListener('click', carousel.handleCarouselleLeft);
-        document.querySelector('.carousel__arrow--right').addEventListener('click', carousel.handleCarouselleRight);
-        document.querySelector('.carousel__window__cards').addEventListener('mouseover', carousel.handleMouseOver);
-        document.querySelector('.carousel__window__cards').addEventListener('mouseleave', carousel.handleMouseLeave);
-        // document.querySelector('.carousel__window__cards').style.webkitAnimationPlayState = "paused";
-        carousel.animation = setInterval(carousel.animationAuto, 5600);
+        carousel.previous.addEventListener('click', carousel.handleCarouselPrevious);
+        carousel.next.addEventListener('click', carousel.handleCarouselNext);
+        carousel.slider.addEventListener('transitionend', carousel.handleTransition);
+        carousel.slider.addEventListener('mouseover', carousel.handleMouseOver);
+        carousel.slider.addEventListener('mouseleave', carousel.handleMouseLeave);
+        carousel.autoScroll= setInterval(carousel.autoScroll, 2000);
+        // this interval for cheking every 5 secound if the screen have always the same width and update the carousel if needing.
+        setInterval(carousel.selectSlidePerCent, 5000);
     },
 
-    selectNumberElement : function(){
-        if (window.screen.availWidth <= 1000) {
-            carousel.howMuchActiveCarrouselEllement = 2;
-        } if (window.screen.availWidth <= 600) {
-            carousel.howMuchActiveCarrouselEllement = 1;
+    /**
+     * Method who adapt the width of the slider depending of the screen and the number of card inside.
+     */
+    selectSlidePerCent: function(){
+        if (window.screen.availWidth <= 600) {
+            carousel.slider.style["width"] = carousel.howMuchCarouselElement*100 + '%';
+        }else if (window.screen.availWidth <= 1000) {
+            carousel.slider.style["width"] = carousel.howMuchCarouselElement*50 + '%';
         }else {
-            carousel.howMuchActiveCarrouselEllement = 3;
+            carousel.slider.style["width"] = carousel.howMuchCarouselElement*33 + '%';
         }
     },
 
+    /**
+     * Method who adapt the transition movement dependin on the number of card
+     */
+    selectTranslatePerCent: function(){
+        carousel.translatePerCent = Math.round(100/carousel.howMuchCarouselElement);
+    },
+
+    /**
+     * Method who scroll to the next card while mouse doesnt click arrow or isn't under it
+     */
+    autoScroll: function() {
+        console.log(carousel.mouseClickArrow);
+        // condition for stopping durring the time mouse is under the carousel
+        if (carousel.mouseIsOver === false) {
+            // condition to prevent the last loop of setInterval
+            if (carousel.mouseClickArrow === false) {
+                carousel.carouselNext();
+                console.log('mouse click is enter');
+            }  
+        }
+
+        if (carousel.mouseClickArrow === true){
+            clearInterval(carousel.autoScroll);
+        }
+    },
+
+    /**
+     * Method who save the state of mouse 
+     * when it's under the carousel
+     */
     handleMouseOver : function(){
         carousel.mouseIsOver = true;
     },
 
+    /**
+     * Method who save the state of mouse 
+     * when it leave the carousel
+     */
     handleMouseLeave : function(){
         carousel.mouseIsOver = false;
     },
 
     /**
-     * method to run automaticaly the carousel while the user doesn't click on the arrow
+     * Method who detect the carousel turn because of the user click 
+     * it disable the autoScroll
      */
-    animationAuto: function() {
-        // The animation stop to run when the user mouse is on the card or after using arrox
-        if (carousel.mouseIsOver === false || carousel.mouseClickArrow === false) {
-
-            // While the roundTrip is normal and the last card is not show, it can continu runing and increment to know where it is.
-            if(carousel.roundTrip === 'normal' && carousel.numberCarouselActive < carousel.lastElementBeforeReverse) {
-                if (carousel.mouseClickArrow === false){
-                    carousel.card.style.webkitAnimationPlayState = "running";
-                    carousel.numberCarouselActive++;
-
-                }else{
-
-                    clearInterval(carousel.animation);
-                    console.log('corousel animation is clear');
-                }
-                
-                var intervalCarousel = setInterval(function() {
-                    
-                    carousel.card.style.webkitAnimationPlayState = "paused";
-                    console.log(carousel.numberCarouselActive);
-                    clearInterval(intervalCarousel);
-                }, 925)
-
-            } else if (carousel.roundTrip === 'normal' && carousel.numberCarouselActive === carousel.lastElementBeforeReverse) {
-                if (carousel.mouseClickArrow === false){
-                    carousel.card.style.webkitAnimationPlayState = "running";
-                    carousel.numberCarouselActive--;
-                    carousel.roundTrip = 'reverse';
-                    carousel.transition = true;
-
-                }else{
-                    clearInterval(carousel.animation);
-                    console.log('corousel animation is clear');
-                }
-                
-                var intervalCarousel = setInterval(function() {
-                    
-                    carousel.card.style.webkitAnimationPlayState = "paused";
-                    console.log(carousel.numberCarouselActive);
-                    clearInterval(intervalCarousel);
-                }, 925)
-            }
-
-            if(carousel.roundTrip === 'reverse' && carousel.numberCarouselActive > 1 && carousel.transition === false) {
-                if (carousel.mouseClickArrow === false){
-                    carousel.card.style.webkitAnimationPlayState = "running";
-                    carousel.numberCarouselActive--;
-
-                }else{
-                    clearInterval(carousel.animation);
-                    console.log('corousel animation is clear');
-                }
-                
-                var intervalCarousel = setInterval(function() {
-                    
-                    carousel.card.style.webkitAnimationPlayState = "paused";
-                    console.log(carousel.numberCarouselActive);
-                    clearInterval(intervalCarousel);
-                }, 925)
-                
-            } else if (carousel.roundTrip === 'reverse' && carousel.numberCarouselActive === 1) {
-                if (carousel.mouseClickArrow === false){
-                    carousel.card.style.webkitAnimationPlayState = "running";
-                    carousel.numberCarouselActive++;
-                    carousel.roundTrip = 'normal';
-
-                }else{
-                    clearInterval(carousel.animation);
-                    console.log('corousel animation is clear');
-                }
-                
-                var intervalCarousel = setInterval(function() {
-                    
-                    carousel.card.style.webkitAnimationPlayState = "paused";
-                    console.log(carousel.numberCarouselActive);
-                    clearInterval(intervalCarousel);
-                }, 925)  
-            }
-            carousel.transition = false;
-        }
+    handleCarouselNext: function(evt) {
+        carousel.mouseClickArrow = true;
+        carousel.carouselNext();
     },
 
     /**
      * method to run the animation of carousel to the next state
      */
-    handleCarouselleRight: function(evt) {
-        console.log('clique on right arrow detected');
-        carousel.mouseClickArrow = true;
-        if (carousel.numberCarouselActive < carousel.howMuchCarouselElement) {
-            carousel.card.style.webkitAnimationPlayState = "running";
-            var intervalCarousel = setInterval(function() {
-                if (carousel.numberCarouselActive < carousel.howMuchCarouselElement) {
-                    carousel.numberCarouselActive++;
-                }
-                carousel.card.style.webkitAnimationPlayState = "paused";
-                console.log(carousel.numberCarouselActive);
-                clearInterval(intervalCarousel);
-            }, 925) 
-        } else { 
-            console.log('carousel is already number 9');
-        }
+    carouselNext: function() {
+        // using to animate the slide
+        carousel.slider.style.transform = 'translate(-' + carousel.translatePerCent +'%)';
+        carousel.lastDirection = 'next';
     },
     /**
      * method to run the animation of carousel to the previous state
      */
-    handleCarouselleLeft: function(evt) {
-        console.log('clique on left arrow detected');
+    handleCarouselPrevious: function(evt) {
         carousel.mouseClickArrow = true;
-
-        // if (carousel.numberCarouselActive > 1) {
-            carousel.card.style = "animation-direction: reverse;";
-            carousel.card.style.webkitAnimationPlayState = "running";
-            var intervalCarousel = setInterval(function() {
-                if (carousel.numberCarouselActive > 1) {
-                    carousel.numberCarouselActive--;
-                }
-                carousel.card.style.webkitAnimationPlayState = "paused";
-                carousel.card.style = "";
-                console.log(carousel.numberCarouselActive);
-                clearInterval(intervalCarousel);
-            }, 925) 
-        // } else { 
-        //     console.log('carousel is already number 1');
-        // }
+        // delete the transition time 
+        carousel.slider.style.transition = 'none';
+        // the transition and the adding element start at the same time we cant see a movement because of the transition time 
+        carousel.slider.style.transform = 'translate(-' + carousel.translatePerCent + '%)';
+        // We're taking the last child and move it before the actual first child (this action create a infinite loop because everytimes the last become the first)
+        carousel.slider.prepend(carousel.slider.lastElementChild);
+        // setTimeout allow the both action on it run after the previous action. It can almost take a delay in milisecound but we don't need it.
+        setTimeout(function() {
+            carousel.slider.style.transition = 'all 0.5s';
+            carousel.slider.style.transform = 'translate(0%)';    
+            },0
+        );
+        carousel.lastDirection = 'previous';
     },
-   
+
+    /**
+     * Method who place the first card into the last position
+     * It's calling automaticaly after a transition.
+     */
+    handleTransition: function(evt) {
+        // Checking after what transition it's running
+        if (carousel.lastDirection === 'next') {
+            // We're taking the first child and move it after the actual last child (this action create a infinite loop because everytimes the first become the last)
+            carousel.slider.appendChild(carousel.slider.firstElementChild);
+            // the transition and the movement start at the same time we cant see a movement because the transition none make it instant
+            carousel.slider.style.transition = 'none';
+            carousel.slider.style.transform = 'translate(0)';
+            // setTimeout allow the action run after the previous action. It can almost take a delay in milisecound but we don't need it.
+            setTimeout(function() {
+                    carousel.slider.style.transition = 'all 0.5s';
+                }
+            );
+        } else if (carousel.lastDirection === 'previous') {
+            // The element movement is before the transition so we don't need to do something after
+        }
+        
+    },
+    
+
 };
 document.addEventListener('DOMContentLoaded', carousel.init);
