@@ -1,17 +1,17 @@
 @keyframes carousel {
     0% {left: 0;}
-    13% {left: 0;}
-    15% {left: -33.4%;}
-    29% {left: -33.4%;}
-    31% {left: -66.7%;}
-    43% {left: -66.7%;}
-    45% {left: -100.1%;}
-    60% {left: -100.1%;}
-    62% {left: -133.4%;}
-    76% {left: -133.4%;}
-    78% {left: -166.8%;}
-    92% {left: -166.8%;}
-    95% {left: -200%;}
+    // 5% {left: 0;}
+    // 15% {left: -33.4%;}
+    // 29% {left: -33.4%;}
+    // 31% {left: -66.7%;}
+    // 43% {left: -66.7%;}
+    // 45% {left: -100.1%;}
+    // 60% {left: -100.1%;}
+    // 62% {left: -133.4%;}
+    // 76% {left: -133.4%;}
+    // 78% {left: -166.8%;}
+    // 92% {left: -166.8%;}
+    // 95% {left: -200%;}
     100% {left: -200%;}  
 }
 
@@ -82,6 +82,7 @@
             left: 0;
             
             animation: carousel 5600ms linear infinite alternate;
+            animation-play-state: paused; 
             @media (max-width: 1000px) {
                 width: 450%;  
                 animation: carousel1000 25s linear infinite alternate;
@@ -90,10 +91,10 @@
                 width: 900%;
                 animation: carousel600 35s linear infinite alternate;
             }
-            animation-play-state: running; 
-            &:hover {
-                animation-play-state: paused;
-            }
+            
+            // &:hover {
+            //     animation-play-state: paused;
+            // }
         }
         &__card {
             border: 2px black solid;

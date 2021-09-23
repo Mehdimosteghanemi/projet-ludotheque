@@ -13,11 +13,7 @@
             <link rel="stylesheet" href="{{ asset('css/sass.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {# {{ encore_entry_script_tags('app') }} #}
-            <script src="{{ asset('js/carousel.js') }}"></script>
-
-        {% endblock %}
+        
     </head>
     <body>
         {% include "partials/_nav.html.twig" %}
@@ -26,4 +22,9 @@
 
         {% include "partials/_footer.html.twig" %}
     </body>
+    {% block javascripts %}
+        {# {{ encore_entry_script_tags('app') }} #}
+        <script src="{{ asset('js/carousel.js') }}"></script>
+
+    {% endblock %}
 </html>

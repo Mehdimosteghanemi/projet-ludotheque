@@ -636,42 +636,6 @@ button {
   0% {
     left: 0;
   }
-  13% {
-    left: 0;
-  }
-  15% {
-    left: -33.4%;
-  }
-  29% {
-    left: -33.4%;
-  }
-  31% {
-    left: -66.7%;
-  }
-  43% {
-    left: -66.7%;
-  }
-  45% {
-    left: -100.1%;
-  }
-  60% {
-    left: -100.1%;
-  }
-  62% {
-    left: -133.4%;
-  }
-  76% {
-    left: -133.4%;
-  }
-  78% {
-    left: -166.8%;
-  }
-  92% {
-    left: -166.8%;
-  }
-  95% {
-    left: -200%;
-  }
   100% {
     left: -200%;
   }
@@ -815,7 +779,7 @@ button {
   top: 0;
   left: 0;
   animation: carousel 5600ms linear infinite alternate;
-  animation-play-state: running;
+  animation-play-state: paused;
 }
 @media (max-width: 1000px) {
   .carousel__window__cards {
@@ -828,9 +792,6 @@ button {
     width: 900%;
     animation: carousel600 35s linear infinite alternate;
   }
-}
-.carousel__window__cards:hover {
-  animation-play-state: paused;
 }
 .carousel__window__card {
   border: 2px black solid;
