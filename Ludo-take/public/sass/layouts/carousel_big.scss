@@ -36,6 +36,36 @@
     left: 20rem;
 }
 
+@media (max-width: 2000px) {
+    .next {
+        right: 1rem;
+    }
+
+    .previous {
+        left: 1rem;
+    }
+
+    .slider a img {
+        height: 80%;
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .next {
+        right: 1rem;
+    }
+
+    .previous {
+        left: 1rem;
+    }
+
+    .slider a img {
+        height: 80%;
+        width: 50%;
+    }
+}
+
 @media (max-width: 900px) {
     .next {
         right: 1rem;
@@ -45,8 +75,9 @@
         left: 1rem;
     }
 
-    .slider img {
-        height: 85%;
+    .slider a img {
+        height: 80%;
         width: 50%;
     }
 }
+
