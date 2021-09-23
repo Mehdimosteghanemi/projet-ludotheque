@@ -600,9 +600,6 @@ button {
   align-items: stretch;
   width: 100%;
 }
-.category-games__card {
-  border: 2px black solid;
-}
 
 .crush {
   display: flex;
