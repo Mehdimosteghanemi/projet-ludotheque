@@ -59,9 +59,16 @@
 .carousel {
     @include flex-djaw(row, space-around, center);
     width: 95%;
+
+    &__arrow {
+        border: 2px black solid;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
     &__window {
 
-        
+    
         
         border: 2px black solid;
         border-radius: 10px;
@@ -74,7 +81,7 @@
             top: 0;
             left: 0;
             
-            animation: carousel 15s linear infinite alternate;
+            animation: carousel 5600ms linear infinite alternate;
             @media (max-width: 1000px) {
                 width: 450%;  
                 animation: carousel1000 25s linear infinite alternate;

@@ -793,6 +793,11 @@ button {
   align-items: center;
   width: 95%;
 }
+.carousel__arrow {
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 5px;
+}
 .carousel__window {
   border: 2px black solid;
   border-radius: 10px;
@@ -809,7 +814,7 @@ button {
   position: relative;
   top: 0;
   left: 0;
-  animation: carousel 15s linear infinite alternate;
+  animation: carousel 5600ms linear infinite alternate;
   animation-play-state: running;
 }
 @media (max-width: 1000px) {
