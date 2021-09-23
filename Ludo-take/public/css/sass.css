@@ -638,9 +638,8 @@ button {
 }
 
 .slider img {
-  object-fit: cover;
   height: 100%;
-  width: 100%;
+  width: 40%;
   position: absolute;
   top: 0;
   left: 50%;
@@ -663,11 +662,26 @@ button {
 }
 
 .next {
-  right: 1rem;
+  right: 20rem;
 }
 
 .previous {
-  left: 1rem;
+  left: 20rem;
+}
+
+@media (max-width: 900px) {
+  .next {
+    right: 1rem;
+  }
+
+  .previous {
+    left: 1rem;
+  }
+
+  .slider img {
+    height: 85%;
+    width: 50%;
+  }
 }
 
 /*# sourceMappingURL=sass.css.map */

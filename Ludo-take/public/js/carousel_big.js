@@ -43,4 +43,4 @@ setInterval(function() {
     }
     removeActiveImages();
     img__slider[etape].classList.add('active');
-}, 3000)
+}, 4000)
