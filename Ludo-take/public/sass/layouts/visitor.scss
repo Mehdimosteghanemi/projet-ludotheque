@@ -10,4 +10,11 @@
         padding: 10px 12.5%;
         line-height: 25px;
     }
+
+    &--concept {
+        .visitor__section__paragraph {
+            text-indent: 5px;
+            text-justify: auto;
+        }
+    }
 }

@@ -69,7 +69,12 @@ p {
   font-size: 1.2em;
 }
 
+html {
+  background-image: url("https://cdn.pixabay.com/photo/2020/09/10/05/46/parchment-5559354_960_720.jpg");
+}
+
 body {
+  background-color: white;
   border: 2px black solid;
   display: flex;
   flex-direction: column;
@@ -85,8 +90,8 @@ body {
   }
 }
 
-.visitor__section {
-  min-height: 100vh;
+.visitor__section--join {
+  min-height: 30vh;
 }
 
 .header {
@@ -96,7 +101,7 @@ body {
   flex-wrap: nowrap;
   align-items: flex-end;
   padding: 5px;
-  background-color: white;
+  background-color: #f2f5ff;
   border-bottom: 2px solid black;
   position: fixed;
   top: 0;
@@ -180,6 +185,10 @@ body {
   text-align: justify;
   padding: 10px 12.5%;
   line-height: 25px;
+}
+.visitor__section--concept .visitor__section__paragraph {
+  text-indent: 5px;
+  text-justify: auto;
 }
 
 .faq__container {
@@ -275,7 +284,7 @@ button {
 }
 
 .button {
-  border: black solid 2px;
+  border: black hidden 2px;
   margin: 5px;
   padding: 7px;
   border-radius: 10px;
@@ -285,19 +294,19 @@ button {
   color: white;
 }
 .button--signin {
-  background-color: #49da49;
+  background-color: #ffb120;
 }
 .button--signin:hover {
-  background-color: #24b224;
+  background-color: #d38900;
 }
 .button--faq {
-  background-color: #2f6cdd;
+  background-color: #ce6ba6;
 }
 .button--faq:hover {
-  background-color: #1b4ba5;
+  background-color: #b23b82;
 }
 .button--login {
-  background-color: #dd2f46;
+  background-color: #eb5356;
 }
 @media (min-width: 900px) {
   .button--login {
@@ -307,13 +316,13 @@ button {
   }
 }
 .button--login:hover {
-  background-color: #a51b2d;
+  background-color: #d8191d;
 }
 .button--1 {
-  background-color: yellow;
+  background-color: #20cbce;
 }
 .button--1:hover {
-  background-color: #b3b300;
+  background-color: #168a8c;
 }
 .button--2 {
   background-color: #eb9729;
@@ -334,10 +343,10 @@ button {
   background-color: #00a7b3;
 }
 .button--5 {
-  background-color: yellow;
+  background-color: #1e8de6;
 }
 .button--5:hover {
-  background-color: #b3b300;
+  background-color: #1264a5;
 }
 
 .gallery {
