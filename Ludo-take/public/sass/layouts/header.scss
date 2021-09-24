@@ -1,0 +1,50 @@
+.header {
+    @include flex-djaw(column, center, flex-end);
+    padding: 5px;
+    background-color: white;
+    border-bottom: 2px solid black;
+    position: fixed;
+    top: 0;
+    left: 12.5%;
+    right: 12.5%;
+    z-index: 1000;
+    @media (max-width: 600px) {
+        left: 0;
+        right: 0;
+    }
+    
+
+    &__head {
+        width: 100%;
+        @include flex-djaw(0, center, center);
+    }
+
+    &__separate {
+        width: 100%;
+        @include flex-djaw(0, center);
+        &__line {
+            width: 50%;
+            // border: 1px solid black;
+            // background-color: black;
+            
+        }
+       
+    }
+
+    &__navigation {
+        width: 100%;
+        @include flex-djaw(0, center);
+        margin-top: 10px;
+        &__list{
+            width: 90%;
+            @include flex-djaw(0, space-between);
+            padding: 10px;
+            @media(max-width: 900px) {
+                display: none;
+
+            }
+        }
+
+    }
+
+}

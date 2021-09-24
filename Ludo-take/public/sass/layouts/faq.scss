@@ -1,0 +1,45 @@
+.faq__container {
+    border-radius: 10px;
+    width: 80%;
+
+    &__box {
+        overflow: hidden;
+
+        &__question {
+            border: 2px black solid;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px 20px;
+        }
+
+        &__answer {
+            border: 2px black solid;
+            border-top: none;
+            border-radius: 0px 0px 10px 10px;
+            background-color: white;
+            width: 95%;
+            margin: auto;
+            max-height: 0px;
+
+            // for the answer appear under the question
+            position: relative;
+            z-index: -1;
+
+            transition: transform 500ms , max-height 500ms;
+            transform: translateY(-200px) ;
+        }
+
+        // show the answer when the box is checked (when you're click on)
+        &__checkbox:checked ~ &__answer {
+            padding: 10px;
+            max-height: 200px;
+            transform: translateY(0px) ;
+        }
+
+        // for the checkbox is hidden and don't take place
+        &__checkbox {
+            visibility: hidden;
+            display: none;
+        }
+    }
+}

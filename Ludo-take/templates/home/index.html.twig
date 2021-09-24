@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} - Accueil{% endblock %}
+
+{% block body %}
+
+    {# {% if is_granted('ROLE_USER') %} #}
+        {{ include("home/user.html.twig") }}
+    {# {% else %}    
+        {{ include("home/visitor.html.twig") }}
+    {% endif %} #}
+
+{% endblock %}
