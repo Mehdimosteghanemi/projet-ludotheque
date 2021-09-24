@@ -1,8 +1,7 @@
+@charset "UTF-8";
 section {
-  background: #FFF;
   padding: 50px 0;
 }
-
 
 .container {
   max-width: 1044px;
@@ -258,10 +257,15 @@ p {
 }
 
 html {
-  background-image: url("https://cdn.pixabay.com/photo/2020/09/10/05/46/parchment-5559354_960_720.jpg");
+  background-image: url("https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
+  background-color: rgba(216, 172, 76, 0.562);
+  background-blend-mode: darken;
 }
 
 body {
+  box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 0px 0px 30px 3px rgba(0, 0, 0, 0.63);
   background-color: white;
   border: 2px black solid;
   display: flex;
@@ -281,6 +285,10 @@ body {
 
 .visitor__section--join {
   min-height: 30vh;
+}
+
+.visitor__section {
+  min-height: 100vh;
 }
 
 em {
@@ -552,11 +560,11 @@ button {
   display: flex;
   padding: 2px;
   transition: 0.3s;
+  z-index: 0;
 }
 .gallery:hover .gallery__image {
   filter: grayscale(1);
   position: relative;
-  z-index: -1;
 }
 .gallery__column {
   display: flex;
@@ -564,22 +572,23 @@ button {
   width: 25%;
 }
 .gallery__link {
-  margin: 2px;
+  margin: 10px;
   overflow: hidden;
+}
+.gallery__link:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
 }
 .gallery__link:hover .gallery__image {
   filter: grayscale(0);
   position: relative;
-  z-index: -1;
 }
 .gallery__link:hover .gallery__caption {
   opacity: 1;
   position: relative;
-  z-index: -1;
 }
 .gallery__thumb {
   position: relative;
-  z-index: -1;
 }
 .gallery__image {
   display: block;
@@ -587,22 +596,21 @@ button {
   transition: 0.3s;
 }
 .gallery__image:hover {
-  transform: scale(1.1);
   position: relative;
-  z-index: -1;
 }
 .gallery__caption {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 25px 15px 15px;
+  padding: 10px 10px 10px;
   width: 100%;
   font-family: "Raleway", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   color: white;
   opacity: 0;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
   transition: 0.3s;
+  overflow-wrap: break-word;
 }
 
 .category-games {
@@ -788,6 +796,21 @@ button {
     width: 50%;
   }
 }
+#user_form_type_user_submit {
+  background-color: green;
+  border-radius: 20%;
+}
 
+.container_registration-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.divRegisterForm {
+  color: green;
+}
 
 /*# sourceMappingURL=sass.css.map */
