@@ -6,21 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
-     * @Route("/connexion", name="log_")
-     */
-
-class ConnexionController extends AbstractController
+class VerificationController extends AbstractController
 {
     /**
-     * @Route("/", name="in")
+     * @Route("/verification", name="verification")
      */
     public function index(): Response
     {
-        return $this->render('connexion/index.html.twig',[
-            'controller_name' => 'ConnexionController',
+        return $this->render('connexion/verification.html.twig', [
+            'controller_name' => 'VerificationController',
         ]);
     }
 }
-
-
