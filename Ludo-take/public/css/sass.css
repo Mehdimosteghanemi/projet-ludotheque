@@ -282,6 +282,10 @@ em {
   font-style: italic;
 }
 
+.first_section {
+  padding-top: 117px;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -295,7 +299,7 @@ em {
   top: 0;
   left: 12.5%;
   right: 12.5%;
-  z-index: 2;
+  z-index: 1000;
 }
 @media (max-width: 600px) {
   .header {
@@ -599,9 +603,6 @@ button {
   align-items: stretch;
   width: 100%;
 }
-.category-games__card {
-  border: 2px black solid;
-}
 
 .crush {
   display: flex;
@@ -692,6 +693,90 @@ button {
 
 .image {
   width: 100%;
+}
+
+.container__slider {
+  padding-top: 50px;
+}
+
+.slider {
+  height: 50vh;
+  position: relative;
+}
+
+.slider img {
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+.next, .previous {
+  color: #fff;
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.next {
+  right: 20rem;
+}
+
+.previous {
+  left: 20rem;
+}
+
+@media (max-width: 2000px) {
+  .next {
+    right: 1rem;
+  }
+
+  .previous {
+    left: 1rem;
+  }
+
+  .slider a img {
+    height: 80%;
+    width: 50%;
+  }
+}
+@media (max-width: 1024px) {
+  .next {
+    right: 1rem;
+  }
+
+  .previous {
+    left: 1rem;
+  }
+
+  .slider a img {
+    height: 80%;
+    width: 50%;
+  }
+}
+@media (max-width: 900px) {
+  .next {
+    right: 1rem;
+  }
+
+  .previous {
+    left: 1rem;
+  }
+
+  .slider a img {
+    height: 80%;
+    width: 50%;
+  }
 }
 
 /*# sourceMappingURL=sass.css.map */
