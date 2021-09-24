@@ -633,6 +633,64 @@ button {
   }
 }
 
+.carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 95%;
+}
+.carousel__arrow {
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 5px;
+}
+.carousel__window {
+  border: 2px black solid;
+  border-radius: 10px;
+  width: 80%;
+  overflow: hidden;
+}
+.carousel__window__slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 297%;
+  transition: all 0.5s;
+}
+@media (max-width: 1000px) {
+  .carousel__window__slider {
+    width: 450%;
+  }
+}
+@media (max-width: 600px) {
+  .carousel__window__slider {
+    width: 900%;
+  }
+}
+.carousel__window__slider__card {
+  width: 33.3%;
+}
+@media (max-width: 1000px) {
+  .carousel__window__slider__card {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .carousel__window__slider__card {
+    width: 100%;
+  }
+}
+.carousel__window__card {
+  border: 2px black solid;
+  border-radius: 10px;
+  margin: 8px;
+  padding: 5px;
+}
+
 .image {
   width: 100%;
 }
