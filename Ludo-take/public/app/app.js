@@ -10,6 +10,8 @@ const checkMail = document.querySelector(".formMail");
 const checkPass = document.querySelector(".formPassword");
 let current = 1;
 
+submitBtn.textContent = "Valider";
+
 nextBtnFirst.addEventListener("click", function(event){
   event.preventDefault();
     // if(checkMail === '' && checkPass === '') {
