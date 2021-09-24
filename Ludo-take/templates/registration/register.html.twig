@@ -4,69 +4,123 @@
 {% endblock %}
 
 {% block body %} 
-<div class="container_registration-user">
+<div class="container">
 
-<h1 class="register--title">S'inscrire à Ludo'Take !</h1>
+    <header>S'inscrire à Ludo'Take !</header>
 
-{# <div class="div-Register--Form">
-    <form class="register--Form stepOne">
-        <p class="mail--Registration form--Step_One"><input type="mail" name="e-mail" placeholder="E-mail" /></p>
-        <p class="password--Registration form--Step_One"><input type="password" name="mot de passe" placeholder="Mot de passe" /></p>
-        <p class="password--Verification form--Step_One"><input type="password" name="mot de passe check" placeholder="Vérification mot de passe" /></p>
-        <button class="form--Validation" type="submit">Valider</button>
-    </form>
-</div>
-</div> #}
-<div class="all_form">
-    {{ form_start(userForm1) }}
-
-        <div class="mail_form all_input--form ">
-        {{ form_row(userForm1.email, {
-            attr:{placeholder:'Adresse Mail'},
-            label: ' '
-        }) }}
+        <div class="progress-bar">
+            <div class="step">
+               <p>
+                  Etape 1
+               </p>
+               <div class="bullet">
+                  <span>1</span>
+               </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+               <p>
+                  Etape 2
+               </p>
+               <div class="bullet">
+                  <span>2</span>
+               </div>
+               <div class="check fas fa-check"></div>
+            </div>
         </div>
 
-        <div class="pass_form all_input--form">
-        {{ form_row(userForm1.plainPassword, {
-            attr:{placeholder:'Mot de passe'},
-            label: ' '
+    <div class="form-outer">
+    {{ form_start(userForm) }}
+
+        <div class="page slide-page">
+        
+            <div class="title">
+            Première étape, (la plus facile):
+            </div>
+
+            <div class="field">
+            {{ form_row(userForm.firstname, {
+                attr:{placeholder:'Prénom'},
+                label: ' '
             }) }}
+            </div>
+
+            <div class="field">
+            {{ form_row(userForm.lastname, {
+                attr:{placeholder:'Nom'},
+                label: ' '
+            }) }}
+            </div>
+
+            <div class="field">
+            {{ form_row(userForm.email, {
+                attr:{placeholder:'Adresse Mail'},
+                label: ' '
+            }) }}
+            </div>
+
+            <div class="field">
+            {{ form_row(userForm.plainPassword, {
+                attr:{placeholder:'Mot de passe'},
+                label: ' '
+                }) }}
+            </div>
+            <div class="field">
+                <button class="firstNext next">Next</button>
+            </div>
         </div>
 
-        <div class="road_form all_input--form">
+
+    <div class="page">
+        <div class="title">
+                     Information de livraison (c'est celle-ci la plus facile):
+        </div>
+
+        <div class="field">
         {{ form_row(userForm.address_road, {
             attr:{placeholder:'Rue'},
             label: ' '
         }) }}
         </div>
 
-        <div class="number_form all_input--form">
+        <div class="field">
         {{ form_row(userForm.address_number, {
             attr:{placeholder:'Numéro de rue'},
             label: ' '
         }) }}
         </div>
 
-        <div class="zip_form all_input--form">
+        <div class="field">
         {{ form_row(userForm.address_zip_code, {
             attr:{placeholder:'Code postal'},
             label: ' '
         }) }}
         </div>
 
-        <div class="city_form all_input--form">
+        <div class="field">
         {{ form_row(userForm.address_city, {
             attr:{placeholder:'Ville'},
             label: ' '
         }) }}
         </div>
 
-        <div class="submit_form all_input--form">
-        {{ form_row(userForm.submit, {
-                label: 'Validé'
-        }) }}
+        <div class="field btns">
+
+            <button class="prev-1 prev">Previous</button>
+
+            {# <button type ="submit" class="submit">valider</button> #}
+
+            {{ form_end(userForm) }}
+            
+            {# {{ form_row(userForm.submit, {
+                    attr:{class:'submit'},
+                    label: 'Validé'
+            }) }} #}
         </div>
+    </div>
+      {% block javascript %}
+        <script src="{{ asset('app/app.js') }}"></script>
+      {% endblock %}
 </div>
 
 {% endblock %}

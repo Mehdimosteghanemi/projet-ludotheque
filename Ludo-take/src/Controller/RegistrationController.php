@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserFormType;
 use App\Form\UserFormTypeUserType;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpParser\Node\Stmt\Goto_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,19 +14,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/inscription/etape-une", name="register-1")
+     * @Route("/inscription", name="register")
      */
-    public function newStep1(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+    public function index(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
 
         $user = new User;
 
-        $form = new UserFormTypeUserType();
+        $form = $this->createForm(UserFormTypeUserType::class, $user);
 
-        $form = $this->createForm(formStepOne::class, $user);
+        $form->handleRequest($request);
 
-        if($form->isValid() ) {
-            
+        if($form->isSubmitted() && $form->isValid() ) {
+
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
@@ -37,31 +36,11 @@ class RegistrationController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
-            $response = $this->forward(newStep2, $user);
-
-            return $response;
-           
+            $entityManager->flush();
         }
 
-        return $this->render('registration/register-1.html.twig', [
+        return $this->render('registration/register.html.twig', [
             'userForm' => $form->createView(),
-            $user
-        ]);
-    }
-
-    /**
-     * @Route("/inscription/etape-deux", name="register-2")
-     */
-    public function newStep2(User $user, EntityManagerInterface $entityManager): Response
-    {
-        
-        new formStep2($user);
-
-        if(formStep2()->isSubmitted() && $form->isValid()) {
-             }
-
-        return $this->render('registration/register-1.html.twig', [
-            'userForm1' => $form->createView(),
         ]);
     }
 }

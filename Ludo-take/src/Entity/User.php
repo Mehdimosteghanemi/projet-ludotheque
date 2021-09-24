@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -64,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $address_number;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $address_zip_code;
 
@@ -118,6 +119,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->listOfs = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->advice = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+        $this->status = 0;
+        $this->roles = [`ROLE_USER`];
     }
 
     public function getId(): ?int
