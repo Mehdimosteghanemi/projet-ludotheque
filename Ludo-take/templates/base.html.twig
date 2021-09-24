@@ -19,10 +19,9 @@
 
         {% include "partials/_footer.html.twig" %}
 
-        {% block javascripts %} <script src="{{ asset('js/carousel_big.js') }}"></script> {% endblock %}
+        {% block javascripts %} 
+            <script src="{{ asset('js/carousel_big.js') }}"></script> 
+            <script src="{{ asset('js/carousel.js') }}"></script>
+        {% endblock %}
     </body>
-    {% block javascripts %}
-        {# {{ encore_entry_script_tags('app') }} #}
-        <script src="{{ asset('js/carousel.js') }}"></script>
-    {% endblock %}
 </html>
