@@ -2,7 +2,7 @@ let carousel = {
 // This JS files allow the carousel run automaticaly or by clicking on the arrow previous or next, is responsive and adapted automaticaly
 // by counting the card on the carousel and looking the screen width. It almost stop when the mouse is under him.
 
-    // stock the interval of autoscroll, we're using it to stop autoscroll after clicki ng arrow
+    // stock the interval of autoscroll, we're using it to stop autoscroll after clicking arrow
     autoScroll : '',
     howMuchCarouselElement : document.getElementsByClassName('carousel__window__card').length,
     // stock 'previous' or 'next' according to the last clicking action, we're using it to know if we run the handleTransition
