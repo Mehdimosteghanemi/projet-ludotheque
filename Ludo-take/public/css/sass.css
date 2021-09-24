@@ -3,6 +3,7 @@ section {
   padding: 50px 0;
 }
 
+
 .container {
   max-width: 1044px;
   margin: 0 auto;
@@ -778,5 +779,6 @@ button {
     width: 50%;
   }
 }
+
 
 /*# sourceMappingURL=sass.css.map */
