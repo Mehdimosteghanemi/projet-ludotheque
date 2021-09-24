@@ -24,7 +24,16 @@ p {
     font-size: 1.2em;  
 }
 
+html {
+    background-image: url('https://cdn.pixabay.com/photo/2020/09/10/05/46/parchment-5559354_960_720.jpg');
+    // background-size: auto;
+    // background-repeat: no-repeat;
+    // background-color: red;
+    // @include bg-contain-center('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80', rgba(196, 161, 45, 0.527), )
+}
+
 body {
+    background-color: white;
     border: 2px black solid; 
     @include flex-djaw(column, center);
     width: 75%;
@@ -35,6 +44,9 @@ body {
     }
 }
 
+.visitor__section--join {
+    min-height: 30vh;
+}
 
 .visitor__section {
     min-height: 100vh;
@@ -47,4 +59,3 @@ em {
 
 .first_section {
     padding-top: 117px;
-}

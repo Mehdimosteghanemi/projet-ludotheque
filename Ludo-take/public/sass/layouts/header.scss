@@ -1,7 +1,7 @@
 .header {
     @include flex-djaw(column, center, flex-end);
     padding: 5px;
-    background-color: white;
+    background-color: #f2f5ff;
     border-bottom: 2px solid black;
     position: fixed;
     top: 0;
@@ -26,7 +26,6 @@
             width: 50%;
             // border: 1px solid black;
             // background-color: black;
-            
         }
        
     }
