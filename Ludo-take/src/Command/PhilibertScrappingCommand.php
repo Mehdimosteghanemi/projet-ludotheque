@@ -16,7 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PhilibertScrappingCommand extends Command
 {
-    protected static $defaultName = 'philibert:scrapping';
+    protected static $defaultName = 'game:scrapping';
     protected static $defaultDescription = 'Add a short description for your command';
 
     private $gameRepository;
@@ -32,19 +32,37 @@ class PhilibertScrappingCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('argument', InputArgument::OPTIONAL, 'number of game you want to scrapp')
-            ->addArgument('argument2', InputArgument::OPTIONAL, 'number of the link you want the search clicking')
-            ->addOption('new', '-a', InputOption::VALUE_NONE, 'to doesn\'t include the game you already have on the adding count')
-            ->addOption('search', '-s', InputOption::VALUE_NONE, 'write a game name into the string to check if the website got this and add to BDD')
+            ->addArgument('argument', InputArgument::OPTIONAL, 'number or name of game you want to scrapp')
+            // ->addArgument('argument2', InputArgument::OPTIONAL, 'number of the link you want the search clicking')
+            ->addOption('new', '-w', InputOption::VALUE_NONE, 'to doesn\'t include the game you already have on the adding count')
+            ->addOption('search', '-s', InputOption::VALUE_NONE, 'write a game name into the string to check if the website got this and add the first result to BDD')
+            ->addOption('searchexact', '-S', InputOption::VALUE_NONE, 'same than search but if the title you give is not the same propose the 10 first and let you choose')
+            ->addOption('auto', '-a', InputOption::VALUE_NONE, 'skip automaticaly the choice')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $numberToScrapp = 1;
+        if ( !$input->getArgument('argument') ) {
+            $io->writeln('');
+            $io->writeln('<fg=green>This command need argument to work. You can write <fg=blue>php bin/console game:scrapping <int></> to scrap the number of argument games.</>') ;
+            $io->writeln('<fg=green>Adding the <fg=red>[-w|--new]</> option to ignore the game who is already on database like this :</>');
+            $io->writeln('<fg=blue>php bin/console game:scrapping <integer> -w</>');
+            $io->writeln('');
+            $io->writeln('<fg=yellow>More info with <fg=red>[-h|--help]</> option</>');
+            $io->writeln('');
+            return Command::FAILURE;
+        }
         if (is_numeric($input->getArgument('argument'))) {
-           $numberToScrapp = $input->getArgument('argument'); 
+           $numberToScrapp = $input->getArgument('argument');
+           $gameYouSearch = false;
+           if ( $numberToScrapp > 50 ) {
+               $numberToScrapp = 50;
+               $numberIsChangeTo50 = true;
+           } else {
+                $numberIsChangeTo50 = false;
+           }
         } else {
             $gameYouSearch = $input->getArgument('argument'); 
         };
@@ -61,20 +79,27 @@ class PhilibertScrappingCommand extends Command
             'number of ignored game' => 0,
             'game was in the database' => false,
             'link principal' => $linkPrincipal,
+            'game you search' => $gameYouSearch,
+            'exact search' => false,
         ];
 
-        if (!isset($gameYouSearch)) {
-            
+        if ($input->getOption('auto')) {
+            $informationArray['skip auto'] = true;
+        } else {
+            $informationArray['skip auto'] = false;
+        }
+
+        if (!$gameYouSearch) {
                 while ($numberToScrapp > $informationArray['number of game running']) {
-
                     $informationArray = $this->clickAndDrag($client, $io, $informationArray, $input->getOption('new'));
-
                 }
         };
 
-        if ($input->getOption('search')) {
-
-            if ( $this->searchingGame($client, $io, $informationArray, $crawler, $gameYouSearch) ) {
+        if ($input->getOption('search') || $input->getOption('searchexact')) {
+            if ($input->getOption('searchexact')) {
+                $informationArray['exact search'] = true;
+            }
+            if ( $this->searchingGame($client, $io, $informationArray, $crawler) ) {
                 return Command::SUCCESS;
             };
         }
@@ -85,10 +110,14 @@ class PhilibertScrappingCommand extends Command
             $io->success('you got ' . $informationArray['number of game you got'] . ' game of ' . $informationArray['number of game running']++ . ' asking');
         };
 
+        if ( $numberIsChangeTo50 == true ) {
+            $io->warning('We change the number of game to 50 to preserve resource');
+        }
+        
         if ($informationArray['number of game you got'] !== $informationArray['number of game running']++) {
-            $io->info('use [--new]||[-a] to ignore the game already in the database');
+            $io->info('use [-w|--new] to ignore the game already in the database');
         };
-
+        
         return Command::SUCCESS;
     }
 
@@ -115,18 +144,29 @@ class PhilibertScrappingCommand extends Command
         if (count($gameToClick) === 1) {
             // take the text of link, with this text select the link and click on it
             $gameName = $gameToClick->children()->text();
-
+            if ($informationArray['exact search'] === true && $gameName !== $informationArray['game you search']) {
+                $informationArray['proposition of game'][] = $gameName;
+                $informationArray['last proposition of game'] = $gameName;
+                $informationArray['number of game in the page']++;
+                return $informationArray;
+            } else {
+                $informationArray['last proposition of game'] = $gameName;
+            }
             // We are looking if the game is on the database before cliking on it
             if ( $this->gameNotOnData($gameName) )
             {
+                
                 // Make the information to false for back to the list page at the next loop
                 $informationArray['game was in the database'] = false;
 
-                $boardGame = $this->addNewGame($gameName, $crawler, $client, $io);
+                $boardGame = $this->addNewGame($gameName, $crawler, $client, $io, $informationArray);
 
                 // We put it on the database and show a message
                 if ( $this->putIntoData($boardGame) ) {
                     $io->success('The game ' . $gameName . ' is collected');
+                } else {
+                    // is when the title was ambigous and the user want to skip so nothing hapend
+                    $io->warning('The game ' . $gameName . ' is uncollected');
                 };
             } else {
                 $io->error('The game ' . $gameName . ' is already on the database');
@@ -163,19 +203,41 @@ class PhilibertScrappingCommand extends Command
      * @param SymfonyStyle $io
      * @param array $informationArray
      * @param request $crawler
-     * @param string $gameYouSearch
      */
-    private function searchingGame($client, $io, $informationArray, $crawler, $gameYouSearch) : bool
+    private function searchingGame($client, $io, $informationArray, $crawler) : bool
     {
         // we found the search button
         $form = $crawler->selectButton('Rechercher')->form();
         // we click & submit the game than we are searching
-        $crawler = $client->submit($form, ['search_query' => $gameYouSearch]);
+        $crawler = $client->submit($form, ['search_query' => $informationArray['game you search']]);
         // we are setting the default in true for dont change the crawler in clickAndDragg() method
         $informationArray['game was in the database'] = true;
+        $informationArray['last proposition of game'] = null;
         // we used the method to take the information
-        $this->clickAndDrag($client, $io, $informationArray, false, $crawler);
-        
+        while ( $informationArray['game you search'] !== $informationArray['last proposition of game'] ) {
+            $informationArray = $this->clickAndDrag($client, $io, $informationArray, false, $crawler);
+            if ($informationArray['exact search'] === false || $informationArray['game you search'] === $informationArray['last proposition of game']) {
+                return true;
+            }
+            if (count($informationArray['proposition of game']) === 5 && $informationArray['exact search'] === true) {
+                $informationArray['proposition of game'][] = 'No one, I want to exit';
+                $informationArray['game you search'] = $io->choice('we don\'t found the title you were asking, please select the one you want', $informationArray['proposition of game'], $informationArray['proposition of game'][0]);
+                if ( $informationArray['game you search'] === 'No one, I want to exit' ) {
+                    return Command::FAILURE;
+                }
+                $informationArray['last proposition of game'] = $informationArray['game you search'];
+
+                
+
+                foreach ($informationArray['proposition of game'] as $key => $value) {
+                    if ($value === $informationArray['game you search']) {
+                        $informationArray['number of game in the page'] = $key;
+                        $informationArray = $this->clickAndDrag($client, $io, $informationArray, false, $crawler);
+                    }
+                }
+                
+            }
+        }
         return true;
     }
 
@@ -222,14 +284,33 @@ class PhilibertScrappingCommand extends Command
      * Method to make slug whith the title like this :
      * Title of the Game = title_of_the_game
      */
-    private function sluggingName(string $gameName) : string 
+    private function sluggingName(string $gameName, SymfonyStyle $io) : string 
     { 
-        // delete all character after the '-' 
-        // The website we scrapping split the name before and other infomation like promotion after
-        $slug = strtok($gameName, '-');
-        // Past every character into lower case
-        $slug = strtolower($slug);
+        // Pass every character into lower case
+        $slug = strtolower($gameName);
         return $this->sluggerInterface->slug($slug);
+    }
+
+    private function titleIsItClear(string $gameName, SymfonyStyle $io, array $informationArray) : string
+    {
+        if (strpos($gameName, '-')){
+
+            if ( $informationArray['skip auto'] ){
+                $newGameName = '<fg=yellow>No one, I want to skip this one</>';
+            } else {
+               $newGameName = $io->choice('The title is not clear what do you prefer ?', [substr(strtok($gameName, '-'), 0, -1), $gameName, '<fg=blue>I want to write it by myself</>', '<fg=yellow>No one, I want to skip this one</>', '<fg=red>No one, I want to exit</>'], $gameName); 
+            }
+            
+            if ( $newGameName === '<fg=blue>I want to write it by myself</>' ) {
+                $newGameName = $io->ask("The origin game name was : <fg=red>$gameName</>, please write the game name you want");
+            }
+            if ( $newGameName === '<fg=red>No one, I want to exit</>' ) {
+                die;
+            }
+        } else {
+            $newGameName = $gameName;
+        }
+        return $newGameName;
     }
 
     /**
@@ -239,6 +320,9 @@ class PhilibertScrappingCommand extends Command
      */
     private function putIntoData(array $boardGame) : bool
     {
+        if ( $boardGame['name'] === '<fg=yellow>No one, I want to skip this one</>' ) {
+            return false;
+        }
         $game = new Game();
         $game->setName($boardGame['name']);
         $game->setDescription($boardGame['description']);
@@ -263,7 +347,7 @@ class PhilibertScrappingCommand extends Command
      * @param symfonyStyle $io
      * @return array
      */
-    private function addNewGame($gameName, $crawler, $client, $io) : array
+    private function addNewGame($gameName, $crawler, $client, $io, array $informationArray) : array
     {
         $gameLink = $crawler->selectLink($gameName)->link();
         $crawler = $client->click($gameLink);
@@ -272,6 +356,8 @@ class PhilibertScrappingCommand extends Command
         // Uncomment io info to know what is the next step (useful if you are a bug)
         // $io->info('take name');
         $gameName = $crawler->filter('#product_name')->text();
+        $gameName = $this->titleIsItClear($gameName, $io, $informationArray);
+        
         // $io->info('take resume');
         $resumeJeux = $crawler->filter('#short_description_content')->text();
         // $io->info('take image');
@@ -289,10 +375,12 @@ class PhilibertScrappingCommand extends Command
             $timeOfRaw = $crawler->filter('.duree_partie')->text();
             // transform the timeOf information to integrer for stocking to the database
             $timeOf = $this->timeOfToInteger($timeOfRaw, $io);
-        }
+        } else {
+            $timeOf = null;
+        };
 
         // create slug whit the game name
-        $slug = $this->sluggingName($gameName);
+        $slug = $this->sluggingName($gameName, $io);
 
         // Stock information than we scrapp into an array
         $boardGame = [
