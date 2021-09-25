@@ -50,13 +50,9 @@ class PhilibertScrappingCommand extends Command
         };
 
         $client = new Client();
-
-        
-
-        $boardGame = [];
-
         $crawler = $client->request('GET', 'https://www.philibertnet.com/fr/');
         $linkPrincipal = $crawler->selectLink('Jeux de société')->link();
+        
         $informationArray = [
             'number of page' => 0,
             'number of game in the page' => 0,
@@ -127,45 +123,6 @@ class PhilibertScrappingCommand extends Command
                 $informationArray['game was in the database'] = false;
 
                 $boardGame = $this->addNewGame($gameName, $crawler, $client, $io);
-                // $gameLink = $crawler->selectLink($gameText)->link();
-                // $crawler = $client->click($gameLink);
-
-                // // After we are on the game page taking the infomation if they already exist
-                // // Uncomment io info to know what is the next step (useful if you are a bug)
-                // // $io->info('take name');
-                // $gameName = $crawler->filter('#product_name')->text();
-                // // $io->info('take resume');
-                // $resumeJeux = $crawler->filter('#short_description_content')->text();
-                // // $io->info('take image');
-                // $image = $crawler->filter('#bigpic')->attr('src');
-                // // $io->info('take description');
-                // $description = $crawler->filter('#tab-description')->text();
-                // if ($crawler->filter('.nb_joueurs')->count() != 0) {
-                //     // $io->info('take players');
-                //     $players = $crawler->filter('.nb_joueurs')->text();
-                // };
-                // if ($crawler->filter('.duree_partie')->count() != 0) {
-                //     // $io->info('take time of game');
-                //     $timeOfRaw = $crawler->filter('.duree_partie')->text();
-                //     // transform the timeOf information to integrer for stocking to the database
-                //     $timeOf = $this->timeOfToInteger($timeOfRaw, $io);
-                // }
-
-
-                // // create slug whit the game name
-                // $slug = $this->sluggingName($gameName);
-
-                // // Stock information than we scrapp into an array
-                // $boardGame = [
-                //     'name' => $gameName,
-                //     'resume' => $resumeJeux,
-                //     'description' => $description,
-                //     'images' => $image,
-                //     'players' => $players,
-                //     'time_of' => $timeOf,
-                //     'slug' => $slug,
-                //     // 'difficulty' => $difficulty,
-                // ];
 
                 // We put it on the database and show a message
                 if ( $this->putIntoData($boardGame) ) {
@@ -198,10 +155,6 @@ class PhilibertScrappingCommand extends Command
         // we return the updated informationArray.
         return $informationArray;
     }
-
-    // !!! NEW FUNCTION WIP
-    // !!! NEW FUNCTION WIP
-    // !!! NEW FUNCTION WIP
 
     /**
      * Method who search a game and take the first result on the bebsite
