@@ -52,7 +52,7 @@ class PhilibertScrappingCommand extends Command
         $client = new Client();
         $crawler = $client->request('GET', 'https://www.philibertnet.com/fr/');
         $linkPrincipal = $crawler->selectLink('Jeux de société')->link();
-        
+
         $informationArray = [
             'number of page' => 0,
             'number of game in the page' => 0,
@@ -281,6 +281,8 @@ class PhilibertScrappingCommand extends Command
         if ($crawler->filter('.nb_joueurs')->count() != 0) {
             // $io->info('take players');
             $players = $crawler->filter('.nb_joueurs')->text();
+        } else {
+            $players = null;
         };
         if ($crawler->filter('.duree_partie')->count() != 0) {
             // $io->info('take time of game');
