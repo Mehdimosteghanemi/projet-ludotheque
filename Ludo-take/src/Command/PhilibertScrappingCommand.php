@@ -83,14 +83,14 @@ class PhilibertScrappingCommand extends Command
                 if (!$input->getOption('searchexact')) {
                     $this->io->warning('You write : ' . $gameYouSearch . '.');
                     $this->io->writeln('');
-                    $useCommandWithSearchExact = $this->io->confirm('<fg=green>use command : </>' . '<fg=blue>php bin/console --searchexact ' . $gameYouSearch . "</>", true);
+                    $commandChoosen = $this->io->choice('<fg=green>use command : </>',["php bin/console --searchexact $gameYouSearch.", "php bin/console --search $gameYouSearch.", '<fg=red>No one, I want to exit</>'], "php bin/console --searchexact $gameYouSearch.");
 
-                    if (!$useCommandWithSearchExact) {
-                        $useCommandWithSearch = $this->io->confirm('<fg=green>use command : </>' . '<fg=blue>php bin/console --search ' . $gameYouSearch . "</>", true);
-                        if (!$useCommandWithSearch) {
-                            return Command::FAILURE;
-                        }
-                        
+                    if ($commandChoosen === "php bin/console --searchexact $gameYouSearch.") {
+                        $useCommandWithSearchExact = true;
+                    } else if ($commandChoosen === "php bin/console --search $gameYouSearch.") {
+                        $useCommandWithSearch = true;
+                    } else {
+                        return Command::FAILURE;
                     }
                     
             
