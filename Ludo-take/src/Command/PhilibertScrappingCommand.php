@@ -66,7 +66,8 @@ class PhilibertScrappingCommand extends Command
             $this->io->writeln('');
             return Command::FAILURE;
         }
-
+        $useCommandWithSearchExact = false;
+        $useCommandWithSearch = false;
         $numberIsChangeTo50 = false;
         // check if the argument is an integer or not
         if (is_numeric($input->getArgument('argument'))) {
@@ -83,7 +84,6 @@ class PhilibertScrappingCommand extends Command
                     $this->io->warning('You write : ' . $gameYouSearch . '.');
                     $this->io->writeln('');
                     $useCommandWithSearchExact = $this->io->confirm('<fg=green>use command : </>' . '<fg=blue>php bin/console --searchexact ' . $gameYouSearch . "</>", true);
-                    $useCommandWithSearch = false;
 
                     if (!$useCommandWithSearchExact) {
                         $useCommandWithSearch = $this->io->confirm('<fg=green>use command : </>' . '<fg=blue>php bin/console --search ' . $gameYouSearch . "</>", true);
@@ -226,6 +226,7 @@ class PhilibertScrappingCommand extends Command
         } else {
             // we select "suivant"
             $informationArray['link principal'] = $this->crawler->selectLink('Suivant')->link();
+            $this->crawler = $this->client->click($informationArray['link principal']);
             // refresh to 0 the numberOfArticle to restart browse all the page
             $informationArray['number of game in the page'] = 0;
         }
