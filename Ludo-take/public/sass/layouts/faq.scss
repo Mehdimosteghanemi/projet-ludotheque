@@ -10,6 +10,8 @@
             border-radius: 10px;
             background-color: white;
             padding: 10px 20px;
+            position: relative;
+            z-index: 2;
         }
 
         &__answer {
@@ -23,7 +25,7 @@
 
             // for the answer appear under the question
             position: relative;
-            z-index: -1;
+            z-index: 0;
 
             transition: transform 500ms , max-height 500ms;
             transform: translateY(-200px) ;
