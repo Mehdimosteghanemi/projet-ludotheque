@@ -25,10 +25,10 @@
             {% else %}
 
                 <li class="button__arround"><a class="button button--signin header__navigation__list__button header__navigation__list__button--signin" href="{{ path('register') }}">s'inscrire</a></li>
-                <li class="button__arround"><a class="button button--1 header__navigation__list__button header__navigation__list__button--1" href="#concept">Le concept</a></li>
-                <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="#games">Nos jeux</a></li>
-                <li class="button__arround"><a class="button button--5 header__navigation__list__button header__navigation__list__button--5" href="#offers">Nos offres</a></li>
-                <li class="button__arround"><a class="button button--faq header__navigation__list__button header__navigation__list__button--faq" href="#faq">FAQ</a></li>
+                <li class="button__arround"><a class="button button--1 header__navigation__list__button header__navigation__list__button--1" href="{{ path('home_index') }}#concept">Le concept</a></li>
+                <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="{{ path('home_index') }}#games">Nos jeux</a></li>
+                <li class="button__arround"><a class="button button--5 header__navigation__list__button header__navigation__list__button--5" href="{{ path('home_index') }}#offers">Nos offres</a></li>
+                <li class="button__arround"><a class="button button--faq header__navigation__list__button header__navigation__list__button--faq" href="{{ path('home_index') }}#faq">FAQ</a></li>
                 <li class="button__arround"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_login') }}"><button>Me connecter</button></a></li>
 
             {% endif %}
