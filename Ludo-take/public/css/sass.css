@@ -3,7 +3,6 @@ section {
   padding: 50px 0;
 }
 
-
 .container {
   max-width: 1044px;
   margin: 0 auto;
@@ -281,6 +280,10 @@ body {
 
 .visitor__section--join {
   min-height: 30vh;
+}
+
+.visitor__section {
+  min-height: 100vh;
 }
 
 em {
@@ -788,6 +791,73 @@ button {
     width: 50%;
   }
 }
+#user_form_type_user_submit {
+  background-color: green;
+  border-radius: 20%;
+}
 
+.container_registration-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.divRegisterForm {
+  color: green;
+}
+
+.chest {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.chest__section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+.chest__section__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 80%;
+  text-align: justify;
+}
+.chest__section__table_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.table {
+  border: 2px solid black;
+  width: 100%;
+}
+.table__title {
+  font-size: 3em;
+}
+.table__head__col {
+  text-align: center;
+  border: 2px solid black;
+  padding: 10px;
+}
+.table__row--odd {
+  background-color: gray;
+}
+.table__row__col {
+  text-align: center;
+  border: 2px solid black;
+  padding: 10px;
+}
 
 /*# sourceMappingURL=sass.css.map */
