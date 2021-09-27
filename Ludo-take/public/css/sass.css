@@ -562,9 +562,8 @@ button {
   display: flex;
   padding: 2px;
   transition: 0.3s;
-
   z-index: 1;
-
+}
 .gallery:hover .gallery__image {
   filter: grayscale(1);
   position: relative;
