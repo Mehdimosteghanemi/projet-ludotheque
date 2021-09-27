@@ -1,0 +1,52 @@
+.burger {
+    display: none;
+    height: 40px;
+    width: 40px;
+    border: 2px black solid;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    @media(max-width: 900px) {
+        @include flex-djaw(column, space-around, center);
+    }
+
+    &__line {
+        height: 2px;
+        width: 30px;
+        background-color: $clr-burgerLines;
+        
+        transition:  transform 200ms, background-color 200ms;
+
+        .burger__checkbox:checked ~ .burger>&1 {
+            transform-origin: center center;
+            transform: translateY(13px) rotate(45deg);
+        }
+
+        .burger__checkbox:checked ~ .burger>&2 {
+            background-color: $clr-burgerLines-invisible;
+        }
+
+        .burger__checkbox:checked ~ .burger>&3 {
+            transform-origin: center center;
+            transform: translateY(-13px) rotate(-45deg);
+        }
+    }
+
+    @media(max-width: 900px){
+        &__checkbox:checked ~ .header__navigation__list {
+        @include flex-djaw(column, space-between, center);
+        height: 200px;
+    }
+    }
+    // show the answer when the box is checked (when you're click on)
+    
+
+    // for the checkbox is hidden and don't take place
+    &__checkbox {
+        visibility: hidden;
+        display: none;
+    }
+}
+

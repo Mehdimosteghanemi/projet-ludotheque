@@ -1,0 +1,84 @@
+button {
+    border: none;
+    background: none;
+ }
+ 
+ // .button__arround{
+ //     padding: 5px;
+ //     border: red solid;
+ // }
+ .button {
+     border: black hidden 2px;
+     margin: 5px;
+     padding: 7px;
+     border-radius: 10px;
+     transition:all 200ms ease-in-out;
+ 
+     &:hover{
+         color: white;
+     }
+ 
+     &--signin {
+         background-color: $clr-signin;
+         &:hover {
+             background-color: darken($clr-signin, 15%);
+          }
+     }
+ 
+     &--faq {
+         background-color: $clr-faq;
+         &:hover {
+             background-color: darken($clr-faq, 15%);
+          }
+     }
+ 
+     &--login {
+         background-color: $clr-login;
+         @media(min-width: 900px) {
+            position: absolute;
+            top: 20px;
+            right: 20px;  
+         }
+         
+         &:hover {
+             background-color: darken($clr-login, 15%);
+          }
+     }
+ 
+     &--1 {
+         background-color: $clr-1;
+         &:hover {
+             background-color: darken($clr-1, 15%);
+          }
+     }
+ 
+     &--2 {
+         background-color: $clr-2;
+         &:hover {
+             background-color: darken($clr-2, 15%);
+          }
+     }
+ 
+     &--3 {
+         background-color: $clr-3;
+         &:hover {
+             background-color: darken($clr-3, 15%);
+          }
+     }
+ 
+     &--4 {
+         background-color: $clr-4;
+         &:hover {
+             background-color: darken($clr-4, 15%);
+          }
+     }
+ 
+     &--5 {
+         background-color: $clr-5;
+         &:hover {
+             background-color: darken($clr-5, 15%);
+          }
+     }
+ 
+ }
+ 
