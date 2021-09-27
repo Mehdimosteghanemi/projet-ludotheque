@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__head">
-        <h1 class="header__head__title">Ludo'Take</h1>
+        <a href="{{ path('home_index') }}"><h1 class="header__head__title">Ludo'Take</h1></a>
     </div>
     <div class="header__separate">
         <div class="header__separate__line"></div>
@@ -16,20 +16,20 @@
         <ul class="header__navigation__list">
             {% if is_granted('ROLE_USER') %}
 
-                <li class="button__arround"><a class="button button--favorites header__navigation__list__button header__navigation__list__button--favorites" href="#">Favoris</a></li>
+                <li class="button__arround"><a class="button button--1 button--favorites header__navigation__list__button header__navigation__list__button--favorites" href="#">Favoris</a></li>
+                <li class="button__arround"><a class="button button--2 button--games header__navigation__list__button header__navigation__list__button--games" href="#">Liste des jeux</a></li>
+                <li class="button__arround"><a class="button button--3 button--search header__navigation__list__button header__navigation__list__button--search" href="#">Searchbar</a></li>
+                <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="#">Coffre</a></li> 
+                <li class="button__arround"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_logout') }}"><button>Me déconnecter</button></a></li>
 
-                <li class="button__arround"><a class="button button--games header__navigation__list__button header__navigation__list__button--games" href="#">Liste des jeux</a></li>
-                <li class="button__arround"><a class="button button--search header__navigation__list__button header__navigation__list__button--search" href="#">Searchbar</a></li>
-                <li class="button__arround"><a class="button button--chest header__navigation__list__button header__navigation__list__button--chest" href="#">Coffre</a></li> 
-               {% else %}
+            {% else %}
+
                 <li class="button__arround"><a class="button button--signin header__navigation__list__button header__navigation__list__button--signin" href="{{ path('register') }}">s'inscrire</a></li>
-
-
-                <li class="button__arround"><a class="button button--1 header__navigation__list__button header__navigation__list__button--1" href="#concept">Le concept</a></li>
-                <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="#games">Nos jeux</a></li>
-                <li class="button__arround"><a class="button button--5 header__navigation__list__button header__navigation__list__button--5" href="#offers">Nos offres</a></li>
-                <li class="button__arround"><a class="button button--faq header__navigation__list__button header__navigation__list__button--faq" href="#faq">FAQ</a></li>
-                <li class="button__arround"><a class="button button--login header__head__button header__head__button--login" href="{{ path('app_login') }}"><button>Me connecter</button></a></li>
+                <li class="button__arround"><a class="button button--1 header__navigation__list__button header__navigation__list__button--1" href="{{ path('home_index') }}#concept">Le concept</a></li>
+                <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="{{ path('home_index') }}#games">Nos jeux</a></li>
+                <li class="button__arround"><a class="button button--5 header__navigation__list__button header__navigation__list__button--5" href="{{ path('home_index') }}#offers">Nos offres</a></li>
+                <li class="button__arround"><a class="button button--faq header__navigation__list__button header__navigation__list__button--faq" href="{{ path('home_index') }}#faq">FAQ</a></li>
+                <li class="button__arround"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_login') }}"><button>Me connecter</button></a></li>
 
             {% endif %}
         </ul>

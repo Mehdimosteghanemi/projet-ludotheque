@@ -7,9 +7,10 @@
 
 <link rel="stylesheet" href="style.css" />
 
-<div id="container" class="first_section">
+<section class="first__section">
     <!-- zone de connexion -->
-    
+    <h1>hello</h1>
+</section>    
     <form action="verification.php" method="POST">
         <h1>Connexion</h1>
         
@@ -21,15 +22,7 @@
 
         <input type="submit" id='submit' value='LOGIN' >
 
-        <?php
-
-        if(isset($_GET['erreur'])){
-            $err = $_GET['erreur'];
-            if($err==1 || $err==2)
-                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>"
-        }
-         ?>;
     </form>
-</div>
+
   
 {% endblock %}
