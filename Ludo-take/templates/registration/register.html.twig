@@ -52,17 +52,18 @@
             }) }}
             </div>
 
-            <div class="field">
+            <div class="field" id="signMail">
             {{ form_row(userForm.email, {
                 attr:{placeholder:'Adresse Mail'},
                 label: ' '
             }) }}
             </div>
 
-            <div class="field">
+            <div class="field" id="signPassword">
             {{ form_row(userForm.plainPassword, {
                 attr:{placeholder:'Mot de passe'},
-                label: ' '
+                label: ' ',
+                minlength:'4'
                 }) }}
             </div>
             <div class="field">
