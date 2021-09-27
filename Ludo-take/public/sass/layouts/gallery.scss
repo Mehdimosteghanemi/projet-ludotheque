@@ -2,7 +2,7 @@
 	display: flex;
 	padding: 2px;
 	transition: .3s;
-	z-index: 0;
+	z-index: 1;
     
 	&:hover &__image {
 		filter: grayscale(1);
