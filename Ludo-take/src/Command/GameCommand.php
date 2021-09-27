@@ -18,7 +18,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class PhilibertScrappingCommand extends Command
+class GameCommand extends Command
 {
     protected static $defaultName = 'game:scrapping';
     protected static $defaultDescription = 'Add a short description for your command';
