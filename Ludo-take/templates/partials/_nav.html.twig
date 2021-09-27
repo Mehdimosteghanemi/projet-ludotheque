@@ -20,10 +20,10 @@
 
                 <li class="button__arround"><a class="button button--games header__navigation__list__button header__navigation__list__button--games" href="#">Liste des jeux</a></li>
                 <li class="button__arround"><a class="button button--search header__navigation__list__button header__navigation__list__button--search" href="#">Searchbar</a></li>
-                <li class="button__arround"><a class="button button--user header__navigation__list__button header__navigation__list__button--user" href="#">Mon compte</a></li>
-            
-            {% else %}  
-                <li class="button__arround"><a class="button button--signin header__navigation__list__button header__navigation__list__button--signin" href="{{ path('app_login') }}">s'inscrire</a></li>
+                <li class="button__arround"><a class="button button--chest header__navigation__list__button header__navigation__list__button--chest" href="#">Coffre</a></li> 
+               {% else %}
+                <li class="button__arround"><a class="button button--signin header__navigation__list__button header__navigation__list__button--signin" href="{{ path('register') }}">s'inscrire</a></li>
+
 
                 <li class="button__arround"><a class="button button--1 header__navigation__list__button header__navigation__list__button--1" href="#concept">Le concept</a></li>
                 <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="#games">Nos jeux</a></li>
