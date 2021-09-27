@@ -405,6 +405,8 @@ em {
   border-radius: 10px;
   background-color: white;
   padding: 10px 20px;
+  position: relative;
+  z-index: 2;
 }
 .faq__container__box__answer {
   border: 2px black solid;
@@ -415,7 +417,7 @@ em {
   margin: auto;
   max-height: 0px;
   position: relative;
-  z-index: -1;
+  z-index: 0;
   transition: transform 500ms, max-height 500ms;
   transform: translateY(-200px);
 }
