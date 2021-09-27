@@ -1,0 +1,20 @@
+.visitor__section {
+    @include flex-djaw(column, center, center);
+    &__title {
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    &__paragraph {
+        text-align: justify;
+        padding: 10px 12.5%;
+        line-height: 25px;
+    }
+
+    &--concept {
+        .visitor__section__paragraph {
+            text-indent: 5px;
+            text-justify: auto;
+        }
+    }
+}
