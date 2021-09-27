@@ -300,14 +300,6 @@ em {
   padding-top: 117px;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
 ::selection {
   color: #fff;
   background: #d43f8d;
