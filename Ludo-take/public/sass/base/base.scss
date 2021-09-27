@@ -25,7 +25,6 @@ p {
 }
 
 html {
-    min-height: 100vh;
     // https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80
     background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
     background-color: rgba(216, 172, 76, 0.562);
@@ -67,5 +66,10 @@ em {
 
 .first__section {
     padding-top: 117px;
-    height: 100vh;
+}
+.last__section {
+    padding-bottom: 28px;
+}
+.one__page {
+    min-height: 100vh;
 }
