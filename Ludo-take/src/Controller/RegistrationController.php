@@ -43,6 +43,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'userForm' => $form->createView(),
+            'one_page' => true,
         ]);
     }
 }

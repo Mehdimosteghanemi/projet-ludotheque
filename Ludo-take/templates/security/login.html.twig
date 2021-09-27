@@ -3,9 +3,8 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<section class="one__page">
-    <div class="first__section last__section"></div>
-        <form method="post" class="connection__form">
+<section class="connection__form">
+        <form method="post">
 
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

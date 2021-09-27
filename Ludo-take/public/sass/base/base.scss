@@ -51,6 +51,10 @@ body {
     }
 }
 
+body:has(>.one__page) {
+    height: 100vh;
+}
+
 .visitor__section--join {
     min-height: 30vh;
 }
@@ -67,9 +71,9 @@ em {
 .first__section {
     padding-top: 117px;
 }
-.last__section {
-    padding-bottom: 28px;
-}
 .one__page {
-    min-height: 100vh;
+    height: 100vh;
+    padding: 0px;
+    border-top: none;
+    border-bottom: none;
 }
