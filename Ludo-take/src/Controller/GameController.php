@@ -20,7 +20,6 @@ class GameController extends AbstractController
     {
         return $this->render('game/slug.html.twig', [
             'game' => $gameRepository->findBy(['slug' => $slug])[0],
-            'one_page' => true,
         ]);
     }
 }

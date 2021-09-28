@@ -1,3 +1,20 @@
 .game__slug {
-    @include flex-djaw();
+    @include flex-djaw(0, 0, center);
+
+    &__info {
+
+        
+    }
+
+    &__tag__list {
+        @include flex-djaw();
+
+        &__button {
+            border-radius: 20px;
+            background-color: grey;
+            margin: 5px 20px;
+            margin-left: 0px;
+            padding: 5px 15px;
+        }
+    }
 }
