@@ -288,7 +288,7 @@ body {
 }
 
 .visitor__section {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 em {
