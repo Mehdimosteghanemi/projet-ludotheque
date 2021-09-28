@@ -5,114 +5,107 @@
 
 {% block body %} 
 
-<div class="container" id="register--container">
+<div class="registration">
 
-
-    <header>S'inscrire à Ludo'Take !</header>
+    <h2 class="registration__title">S'inscrire à Ludo'Take !</h2>
 
     <div>
-        <div class="progress-bar">
-            <div class="step">
-                <p>
-                    Etape 1
-                </p>
-                <div class="bullet">
+        <div class="registration__progress-bar">
+            <div class="registration__progress-bar__step registration__progress-bar__step--1">
+                <p>Etape 1</p>
+                <div class="registration__progress-bar__step__bullet registration__progress-bar__step__bullet--1">
                     <span>1</span>
                 </div>
-                <div class="check fas fa-check"></div>
             </div>
-            <div class="step">
-                <p>
-                    Etape 2
-                </p>
-                <div class="bullet">
+            <div class="registration__progress-bar__step registration__progress-bar__step--2">
+                <p>Etape 2 </p>
+                <div class="registration__progress-bar__step__bullet registration__progress-bar__step__bullet--2">
                     <span>2</span>
                 </div>
-                <div class="check fas fa-check"></div>
             </div>
         </div>
     </div>    
 
-    <div class="form-outer">
+    <div class="registration__view">
         {{ form_start(userForm) }}
 
-        <div class="page slide-page">
+        <div class="registration__view__step registration__view__step1">
         
             <div class="registration__view__header">
                 <h3 class="registration__view__header__title">Première étape</h3>
                 <p class="registration__view__header__subtitle">(la plus facile)</p>
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.firstname, {
                     attr:{placeholder:'Prénom'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.lastname, {
                     attr:{placeholder:'Nom'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field" id="signMail">
+            <div class="registration__view__field" id="signMail">
                 {{ form_row(userForm.email, {
                     attr:{placeholder:'Adresse Mail'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field" id="signPassword">
+            <div class="registration__view__field" id="signPassword">
                 {{ form_row(userForm.plainPassword, {
                     attr:{placeholder:'Mot de passe'},
                     label: ' ',
                     minlength:'4'
                 }) }}
             </div>
-            <div class="field">
-                    <button class="firstNext next">Next</button>
+            <div class="registration__view__field">
+                    <button class="registration__view__button registration__view__button--next">Next</button>
             </div>
         </div>
 
 
-        <div class="page">
+        <div class="registration__view__step registration__view__step1">
             <div class="registration__view__header">
                 <h3 class="registration__view__header__title">Information de livraison</h3>
                 <p class="registration__view__header__subtitle">(c'est celle-ci la plus facile)</p>
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.address_road, {
                     attr:{placeholder:'Rue'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.address_number, {
                     attr:{placeholder:'Numéro de rue'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.address_zip_code, {
                     attr:{placeholder:'Code postal'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field">
+            <div class="registration__view__field">
                 {{ form_row(userForm.address_city, {
                     attr:{placeholder:'Ville'},
                     label: ' '
                 }) }}
             </div>
 
-            <div class="field btns">
-                <button class="prev-1 prev">Précedent</button>
+            <div class="registration__view__field">
+                <button class="registration__view__button registration__view__button--previous">Précedent</button>
             </div>
         </div>
         {{ form_end(userForm) }}
