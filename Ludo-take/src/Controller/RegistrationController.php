@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserFormTypeUserType;
+use App\Form\UserFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
 
         $user = new User;
 
-        $form = $this->createForm(UserFormTypeUserType::class, $user);
+        $form = $this->createForm(UserFormType::class, $user);
 
         $form->handleRequest($request);
 
@@ -37,10 +37,13 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+            
+            return $this->redirectToRoute('home_index');
         }
 
         return $this->render('registration/register.html.twig', [
             'userForm' => $form->createView(),
+            'one_page' => true,
         ]);
     }
 }
