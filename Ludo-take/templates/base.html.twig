@@ -14,16 +14,17 @@
             <link rel="stylesheet" href="{{ asset('css/sass.css') }}">
         {% endblock %}
     </head>
-    <body>
+    <body class="{% if one_page is defined %}one__page{% endif %}">
+    
         {% include "partials/_nav.html.twig" %}
 
         {% block body %}{% endblock %}
-
+        
         {% include "partials/_footer.html.twig" %}
 
         {% block javascripts %} 
-            <script src="{{ asset('js/carousel_big.js') }}"></script> 
-            <script src="{{ asset('js/carousel.js') }}"></script>
+            {# <script src="{{ asset('js/carousel_big.js') }}"></script> 
+            <script src="{{ asset('js/carousel.js') }}"></script> #}
         {% endblock %}
     </body>
 </html>
