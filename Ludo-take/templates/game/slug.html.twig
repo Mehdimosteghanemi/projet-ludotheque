@@ -11,7 +11,7 @@
         
         <div class="game__slug__info">
             <h1 class="game__slug__info__name">{{ game.name }}</h1>
-            <p class="game__slug__info__description">{{ game.description}}</p>
+            <p class="game__slug__info__description">{{ game.description[0:1500]}}...</p>
             <div class="game__slug__tag">
                 <ul class="game__slug__tag__list">
                     <li class="button--tag game__slug__tag__list__button">{{ game.players}}</li>
@@ -22,7 +22,4 @@
 
     </section>
     
-
-    
-
 {% endblock %}
