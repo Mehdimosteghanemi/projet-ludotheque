@@ -3,9 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -14,19 +12,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class UserFormTypeUserType extends AbstractType
+class UserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
         /* Step 1 */
-            ->add('email', EmailType::class, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un e-mail.',
-                    ])
-                ]
-            ])
+            ->add('email')
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -46,11 +38,12 @@ class UserFormTypeUserType extends AbstractType
             ])
 
         /* Step 2 */
-
+        ->add('firstname')
+        ->add('lastname')
         ->add('address_road')
         ->add('address_number')
-        ->add('address_zip_code')
-        ->add('address_city', IntegerType::class, [
+        ->add('address_city')
+        ->add('address_zip_code', IntegerType::class, [
             'constraints' => [
                 new NotBlank([
                     'message' => 'Renseignez le code postal s\'il vous plaît.'
