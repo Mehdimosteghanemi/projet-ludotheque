@@ -99,11 +99,15 @@
                         <td class="table__head__col">plus tard</td>
                         <td class="table__head__col table__head__col--border-off">prochaine commande</td>
                     </tr>
-                    <tr class="table__row table__row--odd">
-                        <td class="table__row__col"><a class="button--1" href="#">Jeux</a></td>
-                        <td class="table__row__col"></td>
-                        <td class="table__head__col table__head__col--border-off">date</td>
-                    </tr>
+                    {% for order in user.orders %}
+                        <tr class="table__row table__row--odd">
+                            <td class="table__row__col"><a class="button--1" href="#">{{order.games.name}}</a></td>
+                            <td class="table__row__col"></td>
+                            <td class="table__head__col table__head__col--border-off">date</td>
+                        </tr>
+                    {% endfor %}
+                    {# {{ dump([0].games.name)}} #}
+                    
                     <tr class="table__row table__row--pair">
                         <td class="table__row__col">Jeux</td>
                         <td class="table__row__col"></td>
