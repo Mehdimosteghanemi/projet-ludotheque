@@ -1,0 +1,9 @@
+.button__chest{
+    margin : 20px, 5px;
+    background-color:$clt-button-chest;
+
+
+    &:hover{
+        background-color: $clt-button-chest-hover;
+    }
+}
