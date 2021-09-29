@@ -3,7 +3,13 @@
 }
 
 .chest__section {
-    @include flex-djaw(0, center); 
+    @include flex-djaw(column, space-between,center);
+    width: 95%;
+
+    @media (min-width: 1200px) {
+       @include flex-djaw(0, space-between); 
+       
+    }
 }
 
 .chest__section__title {
@@ -13,6 +19,7 @@
 }
 
 .chest__section___table_info {
-    @include flex-djaw(0, center);
+    @include flex-djaw(column, space-between,center);
 }
+
    
