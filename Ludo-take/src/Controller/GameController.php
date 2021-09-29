@@ -28,9 +28,13 @@ class GameController extends AbstractController
     {
 
         $gamesList = $gameRepository->findAll();
-
+        dd($gamesList);
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList
         ]);
+
+        
     }
+
+
 }
