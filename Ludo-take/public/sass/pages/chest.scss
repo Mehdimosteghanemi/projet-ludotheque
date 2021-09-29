@@ -1,0 +1,18 @@
+.chest {
+    @include flex-djaw(column, 0, center);
+
+    &__section {
+        @include flex-djaw(0, center); 
+
+        &__title {
+            @include flex-djaw(column, 0, center);  
+            width: 80%;
+            text-align: justify;
+            
+        }
+
+        &__table_info {
+            @include flex-djaw(0, center);
+        }
+    }
+}
