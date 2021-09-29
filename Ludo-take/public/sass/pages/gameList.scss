@@ -1,0 +1,123 @@
+.container--game {
+    padding-top: 8rem;
+}
+
+.left--content {
+    display: block;
+    width: 23%;
+    float: left;
+    margin-right: 2%;
+}
+
+.right--content {
+    display: block;
+    width: 75%;
+    float: right;
+    margin-right: 0%
+}
+
+.game--content {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.gallery__game--table {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    border-bottom: lightgray 1px solid;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gallery__game--list {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+}
+
+.gallery__image__game {
+    height: 8rem;
+}
+
+.gallery__image__game--list {
+    width: 20%;
+}
+
+.gallery__button--game{
+    width: 32%;
+    border-left: lightgray 1px solid;
+    padding-left: 1rem;
+}
+
+.gallery__name__game--list {
+    width: 48%;
+    padding-right: 1rem;
+}
+
+.span__title--game {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+.descr__game {
+    overflow-wrap: break-word;
+    margin-top: 2rem;
+    margin-bottom: 2.4rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    color: lightslategray;
+}
+
+.nbr--player__game,
+.time__game {
+    margin-bottom: 0.5em;
+    font-size: 1rem;
+}
+
+.nbr--player__game {
+    border-right: black 1px solid;
+    float: left;
+    padding-right: .5rem;
+}
+
+.time__game {
+    float: right;
+    margin-right: 16rem;
+}
+
+.button__game {
+    width: 100%;
+}
+
+// --------------------Button------------------
+
+.buttonCategory {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	margin-bottom: 5px;
+}
+.buttonCategory:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.buttonCategory:active {
+	position:relative;
+	top:1px;
+}

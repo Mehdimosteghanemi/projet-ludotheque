@@ -1,7 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GameController!{% endblock %}
+{% block title %}Voici notre liste complète de jeux !{% endblock %}
 
 {% block body %}
+<div class="container--game">
+    <div class="left--content">
+        <div class="categories">
+            <div class="block_content">
+                <ul >
+                    <li><a href="" class="buttonCategory" title="Jeux d'ambiance">Jeux d'ambiance</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux en famille">Jeux en famille</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux expert">Jeux expert</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux coopératifs">Jeux coopératifs</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux escape">Jeux escape</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux à deux">Jeux à deux</a></li>
+                </ul>
+            </div>
+        </div>
+        {# <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p> #}
+    </div>
 
+    <div class="right--content">
+        <ul class="gallery__game">
+
+            {% for currentGamesList in gamesList %}
+
+            <li class="gallery__game--table">
+                <div class="gallery__game--list">
+                    <div class="gallery__image__game--list game--content">
+                        <a href="#" target="_blank" class="gallery__link__game--list">
+                        <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
+                        </a>
+                    </div>
+                    <div class="gallery__name__game--list game--content">
+                        <a href="#" target ="_blank" class="gallery__link__game--list">
+                        <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
+                        </a>
+                        <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
+                            <p class="nbr--player__game">
+                                {{ currentGamesList.players}}
+                            </p>
+                            <p class="time__game">
+                                {{currentGamesList.timeOf}}
+                            </p>
+                    </div>
+                    <div class="gallery__button--game game--content">
+                        <div class="button__game">
+                            <button>En savoir plus</button>
+                            <button>Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+</div>
+{{ knp_pagination_render(gamesList) }}
 {% endblock %}
