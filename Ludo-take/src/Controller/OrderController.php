@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use App\Entity\Order;
+use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,20 +19,26 @@ class OrderController extends AbstractController
      * Methode to create a Order between a Game and an User
      * @Route("/{id<\d+>}", name="new")
      */
-    public function new(int $id, Game $game, Security $security): Response
+    public function new(int $id, Game $game, Security $security, OrderRepository $orderRepository): Response
     {
         // if ($game->getAvailable() > 0) {
-            $order = new Order;
-            $order->setGames($game);
-            $order->setUsers($security->getUser());
-            $order->setStatus(1);
+            // if a game is on the chest dont create a new order
+            if ($orderRepository->findBy(['games' => $game->getId(), 'users' => $security->getUser()->getId()])) {
+                return $this->redirectToRoute('chest_index');
+            } else {
+                // it's notfound we can create
+                $order = new Order;
+                $order->setGames($game);
+                $order->setUsers($security->getUser());
+                $order->setStatus(1);
 
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($order);
-            $manager->flush();
-            return $this->render('order/new.html.twig', [
-                'controller_name' => 'OrderController',
-            ]);
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($order);
+                $manager->flush();
+                return $this->redirectToRoute('chest_index');
+            }
+            // if (isset($security->getUser()->))
+            
         // }
         
     }
