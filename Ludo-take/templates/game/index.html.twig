@@ -1,20 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GameController!{% endblock %}
+{% block title %}Voici notre liste complète de jeux !{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container--game">
+    <div class="left--content">
+        <div class="categories">
+            <div class="block_content">
+                <ul >
+                    <li><a href="" class="buttonCategory" title="Jeux d'ambiance">Jeux d'ambiance</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux en famille">Jeux en famille</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux expert">Jeux expert</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux coopératifs">Jeux coopératifs</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux escape">Jeux escape</a></li>
+                    <li><a href="" class="buttonCategory" title="Jeux à deux">Jeux à deux</a></li>
+                </ul>
+            </div>
+        </div>
+        {# <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+        lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p> #}
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/projet-lud-o-theque/Ludo-take/src/Controller/GameController.php'|file_link(0) }}">src/Controller/GameController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/projet-lud-o-theque/Ludo-take/templates/game/index.html.twig'|file_link(0) }}">templates/game/index.html.twig</a></code></li>
-    </ul>
+    <div class="right--content">
+        <ul class="gallery__game">
+            <li class="gallery__game--table">
+                <div class="gallery__game--list">
+                    <div class="gallery__image__game--list game--content">
+                        <a href="#" target="_blank" class="gallery__link__game--list">
+                        <img src="{{ asset('img/gangsta.jpg') }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
+                        </a>
+                    </div>
+                    <div class="gallery__name__game--list game--content">
+                        <a href="#" target ="_blank" class="gallery__link__game--list">
+                        <p class="gallery__name--game"><span class="span__title--game">Verona Twist</span></p>
+                        </a>
+                        <p class="descr__game">Verona Twist, Roméo et Juliette parviendront-ils à se retrouver ?Verona Twist est un jeu de déduction</p>
+                            <p class="nbr--player__game">
+                                2 joueurs
+                            </p>
+                            <p class="time__game">
+                                20
+                            </p>
+                    </div>
+                    <div class="gallery__button--game game--content">
+                        <div class="button__game">
+                            <button>En savoir plus</button>
+                            <button>Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="gallery__game--table">
+                <div class="gallery__game--list">
+                    <div class="gallery__image__game--list game--content">
+                        <a href="#" target="_blank" class="gallery__link__game--list">
+                        <img src="{{ asset('img/gangsta.jpg') }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
+                        </a>
+                    </div>
+                    <div class="gallery__name__game--list game--content">
+                        <a href="#" target ="_blank" class="gallery__link__game--list">
+                        <p class="gallery__name--game"><span class="span__title--game">Verona Twist</span></p>
+                        </a>
+                        <p class="descr__game">Verona Twist, Roméo et Juliette parviendront-ils à se retrouver ?Verona Twist est un jeu de déduction</p>
+                        <p class="nbr--player__game">2 joueurs</p>
+                        <p class="time__game">20</p>
+                    </div>
+                    <div class="gallery__button--game game--content">
+                        <div class="button__game">
+                            <button>En savoir plus</button>
+                            <button>Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 {% endblock %}

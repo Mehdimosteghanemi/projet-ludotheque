@@ -10,10 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/jeux", name="game_")
  * 
- * @IsGranted("ROLE_USER")
  */
 class GameController extends AbstractController
-{
+{ 
 
     /**
      * Method used to display the whole list
