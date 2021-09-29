@@ -31,12 +31,12 @@
             <li class="gallery__game--table">
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
-                        <a href="#" target="_blank" class="gallery__link__game--list">
+                        <a href="#" class="gallery__link__game--list">
                         <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
                         </a>
                     </div>
                     <div class="gallery__name__game--list game--content">
-                        <a href="#" target ="_blank" class="gallery__link__game--list">
+                        <a href="#" class="gallery__link__game--list">
                         <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
                         </a>
                         <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
@@ -57,8 +57,6 @@
             </li>
             {% endfor %}
         </ul>
-
-
     </div>
 </div>
 {{ knp_pagination_render(gamesList) }}

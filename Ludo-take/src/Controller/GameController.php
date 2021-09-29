@@ -35,7 +35,7 @@ class GameController extends AbstractController
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
             $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
-            4 // Result number per page
+            7 // Result number per page
         );
 
         return $this->render('game/index.html.twig', [
