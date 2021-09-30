@@ -1,5 +1,8 @@
 .container--game {
     padding-top: 8rem;
+    @media(max-width: 425px) {
+        padding-top: 4rem;
+    }
 }
 
 .left--content {
@@ -20,6 +23,9 @@
     height: 100%;
     display: table-cell;
     vertical-align: middle;
+    @media (max-width: 425px) {
+        padding-left: 5rem;
+    }
 }
 
 .gallery__game--table {
@@ -37,14 +43,31 @@
     width: 100%;
     height: 100%;
     padding-top: 1rem;
+    @media (max-width: 425px) {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
 .gallery__image__game {
     height: 8rem;
+    @media (max-width: 425px) {
+        height: 5rem;
+    }
 }
 
 .gallery__image__game--list {
     width: 20%;
+    @media (max-width: 425px) {
+        margin-left: 3rem;
+        padding-bottom: 0.4rem;
+    }
+}
+
+.gallery__name__game--list {
+    width: 48%;
+    padding-right: 1rem;
 }
 
 .gallery__button--game{
@@ -53,10 +76,6 @@
     padding-left: 1rem;
 }
 
-.gallery__name__game--list {
-    width: 48%;
-    padding-right: 1rem;
-}
 
 .span__title--game {
     font-size: 1.5rem;
@@ -91,7 +110,18 @@
     width: 100%;
 }
 
+.clk--button {
+    background-color: indianred;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    margin: 0rem 1rem 0rem 1rem;
+}
+
 // --------------------Button------------------
+
+.block_content {
+    border-bottom: black 1px solid;
+}
 
 .buttonCategory {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -103,12 +133,14 @@
 	cursor:pointer;
 	color:#777777;
 	font-family:Arial;
-	font-size:15px;
+	font-size:1rem;
 	font-weight:bold;
-	padding:6px 24px;
+	padding:0.4rem;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-	margin-bottom: 5px;
+    text-align: center;
+	margin-bottom: 1rem;
+    width: 100%;
 }
 .buttonCategory:hover {
 	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
