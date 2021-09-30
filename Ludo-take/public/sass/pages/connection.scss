@@ -2,3 +2,19 @@
     @include flex-djaw(0, center, center,);
     height: 100%;
 }
+
+.mail{
+    font-weight: bold;
+}
+
+.password{
+font-weight: bold;
+}
+
+.boutton{
+
+    border:solid;
+    border-color: rgb(19, 170, 32);
+    background-color: aquamarine;
+    border-radius: 0rem;
+}
