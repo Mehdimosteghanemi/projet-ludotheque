@@ -21,6 +21,14 @@
                 text-align: center;
                 padding: 10px;
                 @include flex-djaw(column, space-between, center);
+
+                &--valid {
+                    color: chartreuse;
+                }
+
+                &--unvalid {
+                    color: crimson;
+                }
             }
         }
        
