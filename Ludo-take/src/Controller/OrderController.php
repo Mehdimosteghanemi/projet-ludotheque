@@ -38,8 +38,29 @@ class OrderController extends AbstractController
                 return $this->redirectToRoute('chest_index');
             }
             // if (isset($security->getUser()->))
-            
-        // }
-        
+        // }   
+    }
+
+    /**
+     * Methode to create a Order between a Game and an User
+     * @Route("/delete/{id<\d+>}", name="delete")
+     */
+    public function delete(int $id, Game $game, Security $security, OrderRepository $orderRepository): Response
+    {
+        // if ($game->getAvailable() > 0) {
+            $order = $orderRepository->findBy(['games' => $game->getId(), 'users' => $security->getUser()->getId()]);
+            // if a game is on the chest delete him
+            if ($order) {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->remove($order[0]);
+                $manager->flush();
+                return $this->redirectToRoute('chest_index');
+            } else {
+                // it's not just redirect
+                
+                return $this->redirectToRoute('chest_index');
+            }
+            // if (isset($security->getUser()->))
+        // }   
     }
 }

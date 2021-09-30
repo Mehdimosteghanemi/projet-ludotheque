@@ -1,6 +1,8 @@
-$clr-delete: red;
+$clr-delete: rgb(209, 34, 34);
+$clr-delete-hover: rgb(172, 17, 17);
 $clr-modify: blue;
-$clr-add: green;
+$clr-add: rgb(31, 231, 31);
+$clr-add-hover: rgb(28, 156, 28);
 $clr-comment: yellow;
 $clr-confirm: green;
 
@@ -25,3 +27,8 @@ $clr-button-form : rgb(255 177 32);
 $clr-button-form-hover: rgb(27, 141, 223);
 $clt-button-chest: rgb(27, 141, 223);
 $clt-button-chest-hover: rgb(21, 42, 224);
+
+$clr-button-flip : rgb(46, 238, 46);
+$clr-button-flip-hover : green;
+$clr-button-flip-back : rgb(255, 70, 70);
+$clr-button-flip-back-hover : rgb(167, 14, 14);

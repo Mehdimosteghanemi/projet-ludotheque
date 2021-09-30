@@ -25,7 +25,7 @@ class GameController extends AbstractController
 
     /**
      * Methode who show all the game in the order of most recent to older
-     * @Route("/liste", name="list")
+     * @Route("/liste/", name="list")
      */
     public function list(GameRepository $gameRepository): Response
     {

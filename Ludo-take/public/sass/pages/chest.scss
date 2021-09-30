@@ -1,10 +1,11 @@
 .chest {
     @include flex-djaw(column, 0, center);
+    padding: 2%;
 }
 
 .chest__section {
     @include flex-djaw(column, space-between,center);
-    width: 95%;
+    width: 100%;
 
     @media (min-width: 1200px) {
        @include flex-djaw(0, space-between); 
