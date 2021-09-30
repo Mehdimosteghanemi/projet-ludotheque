@@ -8,14 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="">
-    <h1>NOT FOUND {{ controller_name }}! ✅</h1>
-    <h1>lorem500</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/Apothéose/projet-lud-o-theque/Ludo-take/src/Controller/NotFoundController.php'|file_link(0) }}">src/Controller/NotFoundController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/Apothéose/projet-lud-o-theque/Ludo-take/templates/not_found/index.html.twig'|file_link(0) }}">templates/not_found/index.html.twig</a></code></li>
-    </ul>
+<div class="first__section">
+    <h1>NOT FOUND {{ search }}! </h1>
+    <p>Une erreur est survenue </p>
+    <div class="card">
+        <div class="card__flip--front">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCTOkB6u-E6EsjPE_2mK39Z-DcJV0RPYqNpLzjVDXQzp8rlkVKXni52PT-N3tknK8dMc&usqp=CAU" alt="">
+        </div>
+        <div class="card__flip--back">
+            <p>Not found</p>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -11,10 +11,10 @@ class NotFoundController extends AbstractController
     /**
      * @Route("/{string<.*>}", name="not_found", priority="-10")
      */
-    public function index(): Response
+    public function index(string $string): Response
     {
         return $this->render('not_found/index.html.twig', [
-            'controller_name' => 'NotFoundController',
+            'search' => $string,
         ]);
     }
 }
