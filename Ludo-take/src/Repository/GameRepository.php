@@ -19,6 +19,21 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
+    /**
+     * Searches for a game by name
+     *
+     * @param $name
+     * @return Game[]
+     */
+    public function searchGameByName($name)
+    {
+        return $this->createQueryBuilder('game')
+                    ->Where('game.name LIKE :name')
+                    ->setParameter(':name', "$name%")
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // /**
     //  * @return Game[] Returns an array of Game objects
     //  */
