@@ -21,6 +21,8 @@ let chest = {
         let gameName = evt.path[1].previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         // select the status text
         let gameStatus = evt.path[1].previousElementSibling;
+        // select the slug in dataset
+        let slug = evt.target.dataset.slug;
         // we checked the stat of button whith is text ("Retourner" or other)
         if (element.textContent === "Retourner") {
             // if it's "Dans le coffre" change for "En attente de retour"
@@ -28,7 +30,7 @@ let chest = {
             // change the status
             gameStatus.textContent = 'Dans le coffre (en attente de retour)';
             // create and insert the row in the return table
-            chest.createRow(gameName);
+            chest.createRow(gameName, slug);
             // use the actual chest.index to link the row whit the button and increment the index for the next link was different
             element.dataset.indexLink = chest.index;
             chest.index++;
@@ -66,8 +68,9 @@ let chest = {
     /**
      * Method to create the row for return list
      * @param {string} gameName
+     * @param {string} slug
      */
-    createRow : function(gameName) {
+    createRow : function(gameName, slug) {
         // create the <tr> whith class="table__head" the dataset number to link whith the back button
         let tr = document.createElement("tr");
         tr.classList.add("table__head");
@@ -85,17 +88,31 @@ let chest = {
         button.classList.add("button", "button__chest", "button__chest--on-table");
         button.textContent = "retour dans le coffre";
 
+        let checkbox = chest.createChecbox(slug);
+
         // create a listener for the new buton
         button.addEventListener('click', chest.handleClickReturn);
 
         // put the button on the tdButton and after put the bothe <td> in the <tr>
         tdButton.appendChild(button);
+        tr.appendChild(checkbox);
         tr.appendChild(tdName);
         tr.appendChild(tdButton);
 
         // put the <tr> ont the table return
         document.querySelector('.table__content').appendChild(tr);
     },
+
+    createChecbox : function(slug) {
+        // create <input type="checkbox" name="" id="" class="checkbox--hiden" checked>
+        let checkbox = document.createElement('input');
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("name", slug);
+        checkbox.id = slug;
+        checkbox.classList.add('checkbox--hiden');
+        checkbox.checked = true;
+        return checkbox;
+    }
 
 };
 document.addEventListener('DOMContentLoaded', chest.init);
