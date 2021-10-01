@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
+use Doctrine\DBAL\Types\SmallIntType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,7 @@ class GameController extends AbstractController
 
         $data = $gameRepository->findBy([], ['created_at' => 'DESC', ]);
 
-        // $dataCat = $categoryRepository->find($id)->getGames();
+        
         
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
@@ -39,18 +40,11 @@ class GameController extends AbstractController
             7 // Result number per page
         );
 
-        // $gamesListCat = $paginatorInterface->paginate(
-        //     $dataCat, // Query containing the data to paginate (here our articles)
-        //     $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
-        //     7 // Result number per page
-        // );
-        
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList,
-            // 'gamesListCat' => $gamesListCat
+            
         ]);
     }
-
 
     /**
      * Method used to display the list by category
@@ -62,7 +56,7 @@ class GameController extends AbstractController
     public function indexByCategory(int $id,CategoryRepository $categoryRepository, Request $request, PaginatorInterface $paginatorInterface)
     {
         $data = $categoryRepository->find($id)->getGames();
-
+        
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
             $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
@@ -74,5 +68,28 @@ class GameController extends AbstractController
         ]);
     }
     
+    /**
+     * Method used to display the whole list by number players
+     * 
+     * URL : /jeux/{string}  NOM : indexByPlayers
+     * 
+     *  @Route("/{string}", name="indexByPlayers")
+     * 
+     */
+    public function indexByPlayers(string $string, GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    {
 
+        $data = $gameRepository->findBy(['players' => $string]);
+       
+        $gamesList = $paginatorInterface->paginate(
+            $data, // Query containing the data to paginate (here our articles)
+            $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
+            7 // Result number per page
+        );
+        
+        return $this->render('game/index.html.twig', [
+            'gamesList' => $gamesList
+            
+        ]);
+    }
 }

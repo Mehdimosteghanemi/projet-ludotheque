@@ -8,13 +8,43 @@
         <div class="categories">
             <div class="block_content">
                 <ul >
-                    <li><a href=" {{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
+                    <li><a href="{{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:4} ) }}" class="buttonCategory">Jeux en famille</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:6} ) }}" class="buttonCategory">Jeux expert</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:1} ) }}" class="buttonCategory">Jeux coopératifs</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:5} ) }}" class="buttonCategory">Jeux escape</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:2} ) }}" class="buttonCategory">Jeux à deux</a></li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="block_content">
+                
+                    <h4 class="number__players">nombre de joueurs</h4>
+
+                    <ul>
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 joueur(s)'}) }}" class="buttonCategory">2 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'1 à 4 joueur(s)'}) }}" class="buttonCategory">1 à 4 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'1 à 5 joueur(s)'}) }}" class="buttonCategory">1 à 5 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à 4 joueur(s)'}) }}" class="buttonCategory">2 à 4 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à 5 joueur(s)'}) }}" class="buttonCategory">2 à 5 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à 6 joueur(s)'}) }}" class="buttonCategory">2 à 6 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à 8 joueur(s)'}) }}" class="buttonCategory">2 à 8 joueurs</a></li>
+
+                       <li><a href="{{ path('game_indexByPlayers', {string:'2 à Plus de 10 joueurs'}) }}" class="buttonCategory">2 à 10 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'3 à 6 joueur(s)'}) }}" class="buttonCategory">3 à 6 joueurs</a></li>
+
+                        <li><a href="{{ path('game_indexByPlayers', {string:'4 à 10 joueur(s)'}) }}" class="buttonCategory">4 à 10 joueurs</a></li>
+
+                    </ul>
             </div>
         </div>
         {# <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
