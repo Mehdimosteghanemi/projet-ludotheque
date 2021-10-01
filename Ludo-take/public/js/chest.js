@@ -19,18 +19,24 @@ let chest = {
         let element = evt.target;
         // select the text on the balise 3 element before (previousElementSibling) the parent parent's(path[1])
         let gameName = evt.path[1].previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        // we checked the stat of button whith is text ("Dans le coffre" or other)
-        if (element.textContent === "Dans le coffre") {
+        // select the status text
+        let gameStatus = evt.path[1].previousElementSibling;
+        // we checked the stat of button whith is text ("Retourner" or other)
+        if (element.textContent === "Retourner") {
             // if it's "Dans le coffre" change for "En attente de retour"
-            element.textContent = "En attente de retour";
+            element.textContent = "Garder";
+            // change the status
+            gameStatus.textContent = 'Dans le coffre (en attente de retour)';
             // create and insert the row in the return table
             chest.createRow(gameName);
             // use the actual chest.index to link the row whit the button and increment the index for the next link was different
             element.dataset.indexLink = chest.index;
             chest.index++;
         } else {
-            // change the text for "Dans le coffre"
-            element.textContent = "Dans le coffre";
+            // change the text for "Garder"
+            element.textContent = "Retourner";
+            // change the status
+            gameStatus.textContent = 'Dans le coffre';
             // stock the data-index-link of the button 
             let dataToDelete = element.dataset.indexLink;
             // prepare the string for selector
