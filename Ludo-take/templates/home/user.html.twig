@@ -74,7 +74,7 @@
                                 <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
                                     {% set gameOnChest = false %}
                                     {% for order in app.user.orders %}
-                                        {% if order.games == game %}
+                                        {% if order.games == game and order.status <= 1 %}
                                             {% set gameOnChest = true %}            
                                         {% endif %}
                                     {% endfor %}

@@ -23,7 +23,9 @@ class OrderController extends AbstractController
     {
         // if ($game->getAvailable() > 0) {
             // if a game is on the chest dont create a new order
-            if ($orderRepository->findBy(['games' => $game->getId(), 'users' => $security->getUser()->getId()])) {
+            $order1 = $orderRepository->findOneBy(['games' => $game->getId(), 'users' => $security->getUser()->getId(), 'status' => 1]);
+            // $order2 = $orderRepository->findOneBy(['games' => $game->getId(), 'users' => $security->getUser()->getId(), 'status' => 2]);
+            if ($order1) {
                 return $this->redirectToRoute('chest_index');
             } else {
                 // it's notfound we can create

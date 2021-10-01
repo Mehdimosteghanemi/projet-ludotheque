@@ -19,8 +19,8 @@ class ChestController extends AbstractController
      */
     public function index(Security $security, OrderRepository $orderRepository): Response
     {
-        $order = $orderRepository->searchStatusLess($security->getUser()->getId(), 2);
-        dd($order);
+        // $order = $orderRepository->searchStatusLess($security->getUser()->getId(), 2);
+        // dd($order);
         return $this->render('chest/index.html.twig', [
             'controller_name' => 'ChestController',
             'user' => $security->getUser(),
@@ -37,8 +37,19 @@ class ChestController extends AbstractController
         // variable who check if there are changement or not
         $oneWasChecked = false;
         $user = $security->getUser()->getId();
+
         // check whose form is sending
         if (isset($_POST["commandForm"])) {
+            // check how many games have status 2 and how much it's on command
+            $order2 = $orderRepository->findBy(['users' => $security->getUser()->getId(), 'status' => 2]);
+            $gamesWillOnChest = count($order2) + count($_POST) - 1;
+            if ( $gamesWillOnChest > 7) {
+                $this->addFlash('error', "Tu ne peux pas commander autant de jeux");
+                return $this->render('chest/index.html.twig', [
+                    'controller_name' => 'ChestController',
+                    'user' => $security->getUser(),
+                ]);
+            }
             // loop in every data on superglobal post (the form send the game id in key and if it was selected(checked) or not in value)
             foreach ($_POST as $gameId => $checked) {
                 if ($gameId === "commandForm") {

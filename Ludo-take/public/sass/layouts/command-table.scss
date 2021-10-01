@@ -8,6 +8,17 @@
        border: 2px solid black;
     }
 
+    &__info__chest {
+
+        &--valid {
+            color: chartreuse;
+        }
+
+        &--unvalid {
+            color: crimson;
+        }
+    }
+
     &__content {
         @include flex-djaw();
         border: 2px solid black;
@@ -20,15 +31,7 @@
              &__row{
                 text-align: center;
                 padding: 10px;
-                @include flex-djaw(column, space-between, center);
-
-                &--valid {
-                    color: chartreuse;
-                }
-
-                &--unvalid {
-                    color: crimson;
-                }
+                @include flex-djaw(0, center, center);
             }
         }
        
