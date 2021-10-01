@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
+use Doctrine\DBAL\Types\SmallIntType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -68,29 +69,27 @@ class GameController extends AbstractController
     }
     
     /**
-     * Method used to display the whole list
+     * Method used to display the whole list by number players
      * 
-     * URL : /jeux/  NOM : index
+     * URL : /jeux/{string}  NOM : indexByPlayers
      * 
-     *  @Route("/{string}", name="indexBySubCat")
+     *  @Route("/{string}", name="indexByPlayers")
      * 
      */
-    public function indexBySubCat(string $string,GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function indexByPlayers(string $string, GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
     {
 
         $data = $gameRepository->findBy(['players' => $string]);
-        // dd($data);
-
+       
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
             $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
             7 // Result number per page
         );
-
+        
         return $this->render('game/index.html.twig', [
-            'gamesList' => $gamesList,
+            'gamesList' => $gamesList
             
         ]);
     }
-
 }
