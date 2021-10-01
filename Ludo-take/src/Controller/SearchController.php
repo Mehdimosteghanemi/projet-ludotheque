@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\GameRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,17 +22,23 @@ class SearchController extends AbstractController
      * 
      * @Route("/", name="index")
      */
-    public function index(Request $request, GameRepository $gameRepository): Response
+    public function index(Request $request, GameRepository $gameRepository, PaginatorInterface $paginatorInterface): Response
     {
 
         $query = $request->query->get('search');
 
         $results = $gameRepository->searchGameByName($query);
 
-        // dd($results);
+        $searchResult = $paginatorInterface->paginate(
+            $results,
+            $request->query->getInt('page', 1),
+            5
+        );
+
+
 
         return $this->render('search/index.html.twig', [
-            'results' => $results,
+            'results' => $searchResult,
             'query' => $query
         ]);
     }
