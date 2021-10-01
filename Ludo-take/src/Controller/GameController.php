@@ -43,6 +43,8 @@ class GameController extends AbstractController
 
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList,
+        ]);
+    }
             
     /**
      * Methode who show a game by this slug
@@ -55,6 +57,7 @@ class GameController extends AbstractController
 
         ]);
     }
+    
      /**
      * Method used to display the list by category
      *
