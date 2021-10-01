@@ -29,7 +29,7 @@ class GameRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('game')
                     ->Where('game.name LIKE :name')
-                    ->setParameter(':name', "%$name%")
+                    ->setParameter(':name', "$name%")
                     ->getQuery()
                     ->getResult();
     }

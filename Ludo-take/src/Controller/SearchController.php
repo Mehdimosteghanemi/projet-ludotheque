@@ -26,7 +26,10 @@ class SearchController extends AbstractController
     {
 
         $query = $request->query->get('search');
-
+        
+        // $pregQuery = preg_replace("/^(.){3,128}$/" ,$query);
+        // dd($pregQuery);
+        //    "/^[.]{3,128}$/"
         $results = $gameRepository->searchGameByName($query);
 
         $searchResult = $paginatorInterface->paginate(
@@ -35,11 +38,9 @@ class SearchController extends AbstractController
             5
         );
 
-
-
         return $this->render('search/index.html.twig', [
             'results' => $searchResult,
             'query' => $query
         ]);
-    }
+    }  
 }
