@@ -38,7 +38,7 @@
 
                         <li><a href="{{ path('game_indexByPlayers', {string:'2 à 8 joueur(s)'}) }}" class="buttonCategory">2 à 8 joueurs</a></li>
 
-                       <li><a href="{{ path('game_indexByPlayers', {string:'2 à Plus de 10 joueurs'}) }}" class="buttonCategory">2 à 10 joueurs</a></li>
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à Plus de 10 joueurs'}) }}" class="buttonCategory">2 à 10 joueurs</a></li>
 
                         <li><a href="{{ path('game_indexByPlayers', {string:'3 à 6 joueur(s)'}) }}" class="buttonCategory">3 à 6 joueurs</a></li>
 
@@ -65,13 +65,13 @@
         {# Partie gauche de l'affichage du jeu, contenant l'image et un lien vers la page détaillé du jeu en question. #}
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
-                        <a href="#" class="gallery__link__game--list">
+                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
                         <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
                         </a>
                     </div>
         {# Partie centrale de l'affichage du jeu, contenant le nom linké vers le détail du jeu, sa déscription réduite, son temps de jeu et le nombre de joueurs.#}
                     <div class="gallery__name__game--list game--content">
-                        <a href="#" class="gallery__link__game--list">
+                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
                         <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
                         </a>
                         <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
@@ -87,8 +87,8 @@
         {# Partie droite de l'affichage du jeu, contenant un bouton menant aux infomartion complète et un autre pour l'ajout au panier. #}
                     <div class="gallery__button--game game--content">
                         <div class="button__game">
-                            <button class="clk--button">En savoir plus</button>
-                            <button class="clk--button">Ajouter au panier</button>
+                            <a href ="{{ currentGamesList.slug }}" class="clk--button">En savoir plus</a>
+                            <a class="clk--button">Ajouter au panier</a>
                         </div>
                     </div>
                 </div>
