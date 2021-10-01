@@ -19,6 +19,24 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+      /**
+     * Search the order with a status less than tou ask
+     *
+     * @param $staus
+     * @return Order[]
+     */
+    public function searchStatusLess($userId, $status)
+    {
+        // https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/query-builder.html
+        return $this->createQueryBuilder('o')
+                // Clause WHERE pour filtre en fonction de $status
+                ->where('o.users_id LIKE :userId')
+                ->where('o.status < :status')
+                ->setParameters([':userId'=> $userId,':status' => $status])
+                ->getQuery()
+                ->getResult();
+    }
+
     // /**
     //  * @return Order[] Returns an array of Order objects
     //  */

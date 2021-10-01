@@ -22,7 +22,7 @@ let chest = {
         // select the status text
         let gameStatus = evt.path[1].previousElementSibling;
         // select the slug in dataset
-        let slug = evt.target.dataset.slug;
+        let gameId = evt.target.dataset.gameId;
         // we checked the stat of button whith is text ("Retourner" or other)
         if (element.textContent === "Retourner") {
             // if it's "Dans le coffre" change for "En attente de retour"
@@ -30,7 +30,7 @@ let chest = {
             // change the status
             gameStatus.textContent = 'Dans le coffre (en attente de retour)';
             // create and insert the row in the return table
-            chest.createRow(gameName, slug);
+            chest.createRow(gameName, gameId);
             // use the actual chest.index to link the row whit the button and increment the index for the next link was different
             element.dataset.indexLink = chest.index;
             chest.index++;
@@ -59,8 +59,12 @@ let chest = {
         let dataToChange = evt.path[2].dataset.index;
         // select the element (it's a button) with the same number in data-index-link than data-index
         let indexString = '[data-index-link~="' + dataToChange + '"]';
-        // change the button text
-        document.querySelector(indexString).textContent = "Dans le coffre";
+        // select the button and the status
+        let button = document.querySelector(indexString);
+        let status = button.parentElement.previousElementSibling;
+        // change the button and status text
+        button.textContent = "Retourner";
+        status.textContent = "Dans le coffre";
         // remove the 3 time parent
         evt.path[2].remove();
     },
@@ -70,7 +74,7 @@ let chest = {
      * @param {string} gameName
      * @param {string} slug
      */
-    createRow : function(gameName, slug) {
+    createRow : function(gameName, gameId) {
         // create the <tr> whith class="table__head" the dataset number to link whith the back button
         let tr = document.createElement("tr");
         tr.classList.add("table__head");
@@ -88,7 +92,7 @@ let chest = {
         button.classList.add("button", "button__chest", "button__chest--on-table");
         button.textContent = "retour dans le coffre";
 
-        let checkbox = chest.createChecbox(slug);
+        let checkbox = chest.createChecbox(gameId);
 
         // create a listener for the new buton
         button.addEventListener('click', chest.handleClickReturn);
@@ -103,12 +107,12 @@ let chest = {
         document.querySelector('.table__content').appendChild(tr);
     },
 
-    createChecbox : function(slug) {
+    createChecbox : function(gameId) {
         // create <input type="checkbox" name="" id="" class="checkbox--hiden" checked>
         let checkbox = document.createElement('input');
         checkbox.setAttribute("type", "checkbox");
-        checkbox.setAttribute("name", slug);
-        checkbox.id = slug;
+        checkbox.setAttribute("name", gameId);
+        checkbox.id = gameId;
         checkbox.classList.add('checkbox--hiden');
         checkbox.checked = true;
         return checkbox;
