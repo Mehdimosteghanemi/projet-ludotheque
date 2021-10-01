@@ -6,4 +6,14 @@
     &:hover{
         background-color: $clt-button-chest-hover;
     }
+
+    &--on-table {
+        width: 100px;
+        height: 30px;
+        background-color:$clt-button-chest;  
+
+        &:hover{
+            background-color: $clt-button-chest-hover;
+        }
+    }
 }

@@ -1,0 +1,54 @@
+.command-table {
+    @include flex-djaw(column);
+    width: 100%;
+    margin: 15px 0px;
+    &__title {
+       font-size: 3em; 
+       @include flex-djaw(0, center);
+       border: 2px solid black;
+    }
+
+    &__info__chest {
+
+        &--valid {
+            color: chartreuse;
+        }
+
+        &--unvalid {
+            color: crimson;
+        }
+    }
+
+    &__content {
+        @include flex-djaw();
+        border: 2px solid black;
+        border-top: none;
+        
+        &__info {
+            width: 30%;
+            height: 100%;
+
+             &__row{
+                text-align: center;
+                padding: 10px;
+                @include flex-djaw(0, center, center);
+            }
+        }
+       
+        &__ship {
+            width: 70%;
+            border-right: 2px solid black;
+
+            &__head {
+                @include flex-djaw(0, space-around, center);
+                border-bottom: 2px solid black;
+                padding: 5px;
+            }
+
+            &__flip {
+                @include flex-djaw(0, space-between, center);
+                padding: 2px 5px;
+            }
+        }
+    }
+}

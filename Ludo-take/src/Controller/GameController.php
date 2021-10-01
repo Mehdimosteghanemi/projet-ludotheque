@@ -55,9 +55,7 @@ class GameController extends AbstractController
 
         ]);
     }
-
-    /**
-
+     /**
      * Method used to display the list by category
      *
      * URL : /jeux/{id} NOM : indexByCategory

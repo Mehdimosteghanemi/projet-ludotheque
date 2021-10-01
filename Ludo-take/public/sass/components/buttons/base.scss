@@ -18,6 +18,27 @@ button {
          color: white;
      }
  
+     &--add-chest {
+         background-color: $clr-add;
+         padding: 2px 5px;
+         font-size: 0.5em;
+         &:hover{
+            background-color: $clr-add-hover;
+        }
+     }
+
+     &--delete-chest {
+        background-color: $clr-delete;
+        padding: 2px 5px;
+        font-size: 1em;
+        font-weight: bold;
+        border: 2px solid black;
+        border-radius: 10px;
+        &:hover{
+           background-color: $clr-delete-hover;
+       }
+    }
+
      &--signin {
          background-color: $clr-signin;
          &:hover {
