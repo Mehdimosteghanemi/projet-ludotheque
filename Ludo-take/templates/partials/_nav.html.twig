@@ -17,6 +17,7 @@
             {% if is_granted('ROLE_USER') %}
 
                 <li class="button__arround"><a class="button button--1 button--favorites header__navigation__list__button header__navigation__list__button--favorites" href="#">Favoris</a></li>
+
                 <li class="button__arround"><a class="button button--2 button--games header__navigation__list__button header__navigation__list__button--games" href="{{ path('game_index') }}">Liste des jeux</a></li>
                 
                 <li class="button__arround">
@@ -38,6 +39,11 @@
                 </li>
 
                 <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="#">Coffre</a></li> 
+
+                <li class="button__arround"><a class="button button--2 button--games header__navigation__list__button header__navigation__list__button--games" href="#">Liste des jeux</a></li>
+                <li class="button__arround"><a class="button button--3 button--search header__navigation__list__button header__navigation__list__button--search" href="#">Searchbar</a></li>
+                <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('chest_index') }}">Coffre</a></li> 
+
                 <li class="button__arround"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_logout') }}"><button>Me déconnecter</button></a></li>
 
             {% else %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
 use Doctrine\DBAL\Types\SmallIntType;
@@ -43,10 +44,20 @@ class GameController extends AbstractController
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList,
             
+    /**
+     * Methode who show a game by this slug
+     * @Route("/{slug}", name="slug", priority=-1)
+     */
+    public function slug(string $slug, GameRepository $gameRepository): Response
+    {
+        return $this->render('game/slug.html.twig', [
+            'game' => $gameRepository->findBy(['slug' => $slug])[0],
+
         ]);
     }
 
     /**
+
      * Method used to display the list by category
      *
      * URL : /jeux/{id} NOM : indexByCategory
@@ -90,6 +101,7 @@ class GameController extends AbstractController
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList
             
+
         ]);
     }
 }
