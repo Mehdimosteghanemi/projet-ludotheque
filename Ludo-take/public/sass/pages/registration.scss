@@ -1,9 +1,22 @@
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
+// body {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   min-height: 100vh;
+//   overflow: hidden;
+// }
+
+.registration__view__header {
+  @include flex-djaw(column, flex-end, center);
+
+  &__title {
+    font-size: 2rem;
+
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+  }
 }
 
 ::selection {
@@ -16,7 +29,7 @@ body {
   background: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 2rem 3rem 2rem 4rem;
+  padding: 3.5rem 3rem 0rem 4rem;
   // margin-left: 7.3rem;
 }
 
@@ -47,7 +60,7 @@ body {
 }
 
 .form-outer form .page .field {
-  width: 21.2rem;
+  width: 20.2rem;
   height: 2.6rem;
   margin: 3rem 0;
   display: flex;
@@ -80,7 +93,7 @@ form .page .field button {
   width: 93%;
   height: calc(100% + 5px);
   border: none;
-  background: rgb(255 177 32);
+  background: $clr-button-form;
   margin-top: -1.6rem;
   border-radius: 5px;
   color: #fff;
@@ -93,7 +106,7 @@ form .page .field button {
 }
 
 form .page .field button:hover {
-  background: rgb(27, 141, 223);
+  background: $clr-button-form-hover;
   
   
 }
@@ -104,7 +117,7 @@ form .page .btns button {
 
 button#user_form_submit,
 form .page .btns button.prev {
-  margin-right: 3px;
+  margin-right: 3.4rem;
   font-size: 17px;
 }
 

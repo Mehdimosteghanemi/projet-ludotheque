@@ -1,0 +1,46 @@
+.carousel {
+    @include flex-djaw(row, space-around, center);
+    width: 95%;
+
+    &__arrow {
+        border: 2px black solid;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    &__window {
+        border: 2px black solid;
+        border-radius: 10px;
+        width: 80%;
+        overflow: hidden;
+        
+        &__slider {
+            @include flex-djaw(row, start, center);
+            width: 297%;
+            transition: all 0.5s;
+            @media (max-width: 1000px) {
+                width: 450%;  
+            }
+            @media (max-width: 600px) {
+                width: 900%;  
+            }
+            
+            &__card {
+                width: 33.3%;
+                @media (max-width: 1000px) {
+                    width: 50%;  
+                }
+                @media (max-width: 600px) {
+                    width: 100%;  
+                }
+            }
+        }
+
+        &__card {
+            border: 2px black solid;
+            border-radius: 10px;
+            margin: 8px;
+            padding: 5px;
+        }
+    }
+}

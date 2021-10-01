@@ -4,21 +4,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <title>
-        {% block title %}Ludo'Take{% endblock %}
-        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Ludo'Take{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <link rel="stylesheet" href="{{ asset('css/sass.css') }}">
         {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
-    <body>
-    {% set currentRoute = app.request.get('_route') %}
+    <body class="{% if one_page is defined %}one__page{% endif %}">
+    
+        {% include "partials/_nav.html.twig" %}
+
         {% block body %}{% endblock %}
+        
+        {% include "partials/_footer.html.twig" %}
+
+        {% block javascripts %} 
+            {# <script src="{{ asset('js/carousel_big.js') }}"></script> 
+            <script src="{{ asset('js/carousel.js') }}"></script> #}
+        {% endblock %}
     </body>
 </html>

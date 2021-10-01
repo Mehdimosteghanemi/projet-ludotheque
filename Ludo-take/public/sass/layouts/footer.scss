@@ -1,0 +1,12 @@
+.footer {
+    border-top: 2px black solid;
+    padding: 10px;
+    background-color: white;
+
+    
+
+
+    &__navigation__list {
+    @include flex-djaw(0, space-around);
+    }
+}

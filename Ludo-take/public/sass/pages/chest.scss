@@ -1,0 +1,25 @@
+.chest {
+    @include flex-djaw(column, 0, center);
+}
+
+.chest__section {
+    @include flex-djaw(column, space-between,center);
+    width: 95%;
+
+    @media (min-width: 1200px) {
+       @include flex-djaw(0, space-between); 
+       
+    }
+}
+
+.chest__section__title {
+    @include flex-djaw(column, 0, center);  
+    width: 80%;
+    text-align: justify;          
+}
+
+.chest__section___table_info {
+    @include flex-djaw(column, space-between,center);
+}
+
+   
