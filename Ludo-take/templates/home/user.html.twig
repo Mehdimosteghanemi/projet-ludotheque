@@ -79,9 +79,9 @@
                                         {% endif %}
                                     {% endfor %}
                                     {% if gameOnChest %}
-                                        <a class="button button--delete-chest" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
+                                        <a class="button button__home button__home--delete-chest" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
                                     {% else %}
-                                        <a class="button button--add-chest" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
+                                        <a class="button button__home button__home--add-chest" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
                                     {% endif %}
                                 
                             </div>

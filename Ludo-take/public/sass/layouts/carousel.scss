@@ -27,6 +27,7 @@
             
             &__card {
                 width: 33.3%;
+                height: 100%;
                 @media (max-width: 1000px) {
                     width: 50%;  
                 }
@@ -38,9 +39,21 @@
 
         &__card {
             border: 2px black solid;
+            @include flex-djaw(column, space-around, center);
+            height: 300px;
             border-radius: 10px;
             margin: 8px;
             padding: 5px;
+
+            &__title{
+                text-align: center;
+                font-size: 1.5em;
+            }
+
+            &__image {
+                object-fit: contain;
+                max-height: 50%;
+            }
         }
     }
 }
