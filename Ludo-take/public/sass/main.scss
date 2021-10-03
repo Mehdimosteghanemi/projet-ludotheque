@@ -12,6 +12,7 @@
 @import "./components/burgerMenu.scss";
 @import "./components/buttons/base.scss";
 @import "./components/buttons/flip.scss";
+@import "./components/input-text.scss";
 @import "./layouts/gallery.scss";
 @import "./layouts/category-games.scss";
 @import "./layouts/crush.scss";
@@ -22,10 +23,15 @@
 @import "./pages/registration.scss";
 @import "./layouts/form.scss";
 @import "./pages/chest.scss";
-@import "./layouts/table.scss";
-@import "./layouts/command-table.scss";
+@import "./layouts/table/table.scss";
+@import "./layouts/table/chest-table.scss";
+@import "./layouts/table/command-table.scss";
+@import "./layouts/table/return-table.scss";
 @import "./pages/connection.scss";
+@import "./pages/home/user.scss";
 @import "./layouts/nav.scss";
 @import "./layouts/game/slug.scss";
 @import "./components/buttons/chest.scss";
+@import "./components/buttons/home.scss";
+@import "./components/search-box.scss";
 @import "./components/checkbox.scss";

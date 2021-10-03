@@ -1,4 +1,5 @@
 .button__flip {
+    @include flex-djaw(column, 0, center);
     margin: 0px;
     padding: 5px;
     display: block;
@@ -12,18 +13,16 @@
     transform-style: preserve-3d;
     transform: rotateY(-180deg);
 
-    &__back { 
-        margin: 0px;
-        padding: 5px;
-        display: block;
-        width: 49%;
-        height: 100%;
-        border: 2px solid black;
+
+    &__image {
+        object-fit: contain;
+        max-height: 50px;
+    }
+
+    &--back { 
         background-color: $clr-button-flip-back;
         border-radius: 0px 10px 10px 0px;
-        transition: all 1500ms, background-color 300ms;
         transform-origin: left;
-        transform-style: preserve-3d;
         transform: rotateY(0deg);
         z-index: 0;
 

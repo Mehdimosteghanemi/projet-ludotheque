@@ -44,7 +44,7 @@
 
             <div class="field">
                 {{ form_row(userForm.firstname, {
-                    attr:{placeholder:'Prénom'},
+                    attr:{placeholder:'Prénom', value: app.request.query.get("email")},
                     label: ' '
                 }) }}
             </div>

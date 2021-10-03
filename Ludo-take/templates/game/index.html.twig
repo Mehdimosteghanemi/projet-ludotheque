@@ -85,8 +85,8 @@
                     </div>
                     <div class="gallery__button--game game--content">
                         <div class="button__game">
-                            <button class="clk--button">En savoir plus</button>
-                            <button class="clk--button">Ajouter au panier</button>
+                            <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>
+                            <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a>
                         </div>
                     </div>
                 </div>
