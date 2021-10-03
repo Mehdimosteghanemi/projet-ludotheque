@@ -8,8 +8,18 @@
     width: 100%;
 
     @media (min-width: 1200px) {
-       @include flex-djaw(0, space-between); 
-       
+       @include flex-djaw(0, space-between);   
+    }
+    
+    &__form {
+
+        &--return {
+            width: 40%;
+        }
+
+        &--command {
+            width: 60%;
+        }
     }
 }
 
