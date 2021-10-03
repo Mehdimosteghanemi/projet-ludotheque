@@ -1,0 +1,20 @@
+.visitor__section {
+    background: center no-repeat url("../img/background/home_page_visitor_bg.jpg");
+    height: 100%;
+
+    &--inactive {
+        display: none;
+    }
+
+    &__title {
+        color: white;
+    }
+
+    &__paragraph {
+        color: white;
+    }
+
+    &__form {
+        color: white;
+    }
+}

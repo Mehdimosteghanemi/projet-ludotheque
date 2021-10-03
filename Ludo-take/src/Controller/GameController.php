@@ -54,7 +54,6 @@ class GameController extends AbstractController
     {
         return $this->render('game/slug.html.twig', [
             'game' => $gameRepository->findBy(['slug' => $slug])[0],
-
         ]);
     }
     
@@ -83,9 +82,9 @@ class GameController extends AbstractController
     /**
      * Method used to display the whole list by number players
      * 
-     * URL : /jeux/{string}  NOM : indexByPlayers
+     * URL : /jeux/joueurs/{string}  NOM : indexByPlayers
      * 
-     *  @Route("/{string}", name="indexByPlayers")
+     *  @Route("/joueurs/{string}", name="indexByPlayers")
      * 
      */
     public function indexByPlayers(string $string, GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response

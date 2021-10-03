@@ -22,8 +22,10 @@
 @import "./pages/registration.scss";
 @import "./layouts/form.scss";
 @import "./pages/chest.scss";
-@import "./layouts/table.scss";
-@import "./layouts/command-table.scss";
+@import "./layouts/table/table.scss";
+@import "./layouts/table/command-table.scss";
+@import "./layouts/table/chest-table.scss";
+@import "./layouts/table/return-table.scss";
 @import "./pages/connection.scss";
 @import "./layouts/nav.scss";
 @import "./layouts/game/slug.scss";
@@ -31,3 +33,4 @@
 @import "./components/buttons/home.scss";
 @import "./components/search-box.scss";
 @import "./components/checkbox.scss";
+@import "./pages/home_visitor.scss";

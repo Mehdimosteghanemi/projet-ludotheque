@@ -13,63 +13,65 @@
     </section>
 
     <section class="chest__section">
-        <div class="chest-table">
-            <div class="chest-table__title">
-                <h2>Ton coffre</h2>
-            </div>
-            <div class="chest-table__content">
-                <div class="chest-table__row chest-table__row--head">
-                    <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">status</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">option</div>
-                </div>
+        <table class="table table--principal">
+            <thead class="table__title">
+                <tr>
+                    <th colspan="5">Ton coffre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table__head">
+                    <td class="table__head__col">jeux</td>
+                    <td class="table__head__col">date de location</td>
+                    <td class="table__head__col">status</td>
+                    <td class="table__head__col">option</td>
+                </tr>
                 {% for order in app.user.orders|reverse %}
                     {% if order.status == 2 %}
                         {% set inChest = inChest + 1 %}
-                        <div class="chest-table__row chest-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
-                            <div class="chest-table__row__col">
-                                <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
-                                <p class="chest-table__row__col__p">{{order.games.name}}</p>
-                            </div>
-                            <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
-                            <div class="chest-table__row__col">Dans le coffre</div>
-                            <div class="chest-table__row__col">
-                                <div class="button chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
-                            </div>
-                        </div>
+                        <tr class="table__row table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                            <td class="table__row__col">
+                                <img class="table__row__col__image" src="{{order.games.images}}" alt="">
+                                <p class="table__row__col__p">{{order.games.name}}</p>
+                            </td>
+                            <td class="table__row__col">{{order.dateCommand|date("d/m/Y")}}</td>
+                            <td class="table__row__col">Dans le coffre</td>
+                            <td class="table__row__col">
+                                <div class="button button__chest button__chest--on-table" data-game-id="{{order.games.id}}">Retourner</div>
+                            </td>
+                        </tr>
                     {% endif %}    
                 {% endfor %}
-            </div>
-        </div>
+            </tbody>
+        </table>
     </section>
     <section class="chest__section">
-        <form class="chest__section__form--return" action="" method="POST">
+        <form action="" method="POST">
             <div>
-                <div class="return-table">
-                    <div class="return-table__title">
-                        <div>
-                            <h3>En attente de retour</h3>
-                        </div>
-                    </div>
-                    <div class="return-table__content">
-                        <div class="return-table__row return-table__row--head">
-                            <div class="return-table__row__col return-table__row__col--row">jeux</div>
-                            <div class="return-table__row__col return-table__row__col--row">option</div>
-                        </div>
+                <table class="table">
+                    <thead class="table__title">
+                        <tr>
+                            <th colspan="2">En attente de retour</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__content">
+                        <tr class="table__head">
+                            <td class="table__head__col">nom</td>
+                            <td class="table__head__col">option</td>
+                        </tr>
                         <input type="checkbox" name="returnForm" id="returnForm" class="checkbox--hiden" checked>
                         {# create by public/chest.js (exemple) #}
-                        {# <div class="table__row table__row--odd">
+                        {# <tr class="table__row table__row--odd">
                             <input type="checkbox" name="" id="" class="checkbox--hiden" checked>
-                            <div class="table__row__col">Jeux</div>
-                            <div class="table__row__col">bouton</div>
-                        </div> #}
-                    </div>
-                </div>
+                            <td class="table__row__col">Jeux</td>
+                            <td class="table__row__col">bouton</td>
+                        </tr> #}
+                    </tbody>
+                </table>
                 <input type="submit" value="Imprimer le bon de retour" class="button button__chest">
             </div>
         </form>    
-        <form class="chest__section__form--command" action="" method="POST">
+        <form action="" method="POST">
             <div class="chest__section__table_info">
                 <div class="command-table">
                     <div class="command-table__title">
@@ -80,7 +82,7 @@
                     <div class="command-table__content">
                         <div class="command-table__content__ship">
                             <div class="command-table__content__ship__head">
-                                <p>prochain envoi</p>
+                                <p>prochain envoie</p>
                                 <p>plus tard</p>
                             </div>
                             <input type="checkbox" name="commandForm" id="commandForm" class="checkbox--hiden" checked>
@@ -90,13 +92,11 @@
                                     <div class="command-table__content__ship__flip">
                                         <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__flip__checkbox" checked>
                                         <label class="button__flip" for="{{order.games.slug}}">
-                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
-                                            <p>{{order.games.name}}</p>
+                                            {{order.games.name}}
                                             {# <a class="button__flip__back--delete" href="#">x</a> #}
                                         </label>
-                                        <label class="button__flip button__flip--back">
-                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
-                                            <p>{{order.games.name}}</p>
+                                        <label class="button__flip__back">
+                                            {{order.games.name}}
                                             {# <a class="button__flip__back--delete" href="#">x</a> #}
                                         </label>
                                         <a class="button--delete-chest" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>

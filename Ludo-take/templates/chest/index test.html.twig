@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% set inChest = 0 %}
+
+{% block title %}{{parent()}} - Coffre{% endblock %}
+
+{% block body %}
+
+<main class="chest">
+    <section class="chest__section__title">
+        <h1>Bienvenue dans ton coffre</h1>
+        <p>C'est ici que tu peux voir les jeux en ta possession tu peux choisir de nous les retourné</p>
+    </section>
+
+    <section class="chest__section">
+        <div class="chest-table">
+            <div class="chest-table__title">
+                <h2>Ton coffre</h2>
+            </div>
+            <div class="chest-table__content">
+                <div class="chest-table__row chest-table__row--head">
+                    <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">status</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                </div>
+                {% for order in app.user.orders|reverse %}
+                    {% if order.status == 2 %}
+                        {% set inChest = inChest + 1 %}
+                        <div class="chest-table__row chest-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                            <div class="chest-table__row__col">
+                                <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
+                                <p class="chest-table__row__col__p">{{order.games.name}}</p>
+                            </div>
+                            <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
+                            <div class="chest-table__row__col">Dans le coffre</div>
+                            <div class="chest-table__row__col">
+                                <div class="button button__chest button__chest--on-chest-table" data-game-id="{{order.games.id}}">Retourner</div>
+                            </div>
+                        </div>
+                    {% endif %}    
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+{% block javascripts %} 
+<script src="{{ asset('js/chest.js') }}"></script> 
+    <script src="{{ asset('js/flip.js') }}"></script> 
+{% endblock %}
