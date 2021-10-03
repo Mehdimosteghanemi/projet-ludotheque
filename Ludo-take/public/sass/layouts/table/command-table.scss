@@ -1,7 +1,9 @@
 .command-table {
     @include flex-djaw(column);
     width: 100%;
-    margin: 15px 0px;
+    margin: 10px 0px;
+    background-color: white;
+
     &__title {
        font-size: 3em; 
        @include flex-djaw(0, center);
