@@ -31,7 +31,6 @@
     }
 
     &__row {
-
         &--odd {
             background-color: gray;
         }
@@ -40,6 +39,16 @@
             text-align: center;
             border: 2px solid black;
             padding: 10px;
+
+            &__image {
+                object-fit: contain;
+                max-height: 50px;
+            }
+
+            &__p {
+
+
+            }
 
             &__flip {
                 padding: 0px;
