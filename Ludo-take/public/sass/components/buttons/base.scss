@@ -7,6 +7,7 @@ button {
  //     padding: 5px;
  //     border: red solid;
  // }
+
  .button {
      border: black solid 2px;
      margin: 5px;
@@ -102,4 +103,46 @@ button {
      }
  
  }
+ 
+ .button {
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    transition: all 400ms ease;
+
+    &__principal {
+        background-color: $clr-btn-principal;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px  $clr-btn-principal-hover; 
+        }
+    }
+
+    &__secondary {
+        background-color: $clr-btn-secondary;
+
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-btn-secondary-hover; 
+        }
+    }
+
+    &__ter {
+        background-color: $clr-btn-ter;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px $clr-btn-ter-hover; 
+        }
+    }
+
+    &__return {
+        background-color: $clr-btn-return;
+        text-decoration: underline;
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-btn-return-hover; 
+        }
+    }
+}
  

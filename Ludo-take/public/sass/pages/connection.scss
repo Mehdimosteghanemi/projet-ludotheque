@@ -1,4 +1,14 @@
 .connection__form {
-    @include flex-djaw(0, center, center,);
+    @include flex-djaw(column, center, center,);
     height: 100%;
+
+    &__title {
+        margin: 10px 0px;
+    }
+
+    &__nav {
+        margin: 20px;
+        width: 100%;
+        @include flex-djaw(0, space-between, center,); 
+    }
 }
