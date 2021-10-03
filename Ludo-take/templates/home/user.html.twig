@@ -28,11 +28,11 @@
      {# end container of carousel #}
      {# start category #}
     <section class="container category-games__container">
-        <ul class="category-games">
-            <a class="button button--category category-games__button" href="#"><li class="">Cat1</li></a>
-            <a class="button button--category category-games__button" href="#"><li class="">Cat2</li></a>
-            <a class="button button--category category-games__button" href="#"><li class="">Cat3</li></a>
-        </ul>
+        <div class="category-games">
+            <a class="button button__principal" href="#">Jeux à 2</a>
+            <a class="button button__principal" href="#">Coopératif</a>
+            <a class="button button__principal" href="#">Mensonge & trahison</a>
+        </div>
     </section>
 
     {# Start crush card  #}
@@ -79,9 +79,9 @@
                                         {% endif %}
                                     {% endfor %}
                                     {% if gameOnChest %}
-                                        <a class="button button__home button__home--delete-chest" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
+                                        <a class="button button__secondary" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
                                     {% else %}
-                                        <a class="button button__home button__home--add-chest" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
+                                        <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
                                     {% endif %}
                                 
                             </div>

@@ -96,7 +96,7 @@ let chest = {
         let divButton = document.createElement("div");
         divButton.classList.add("return-table__row__col");
         let button = document.createElement("div");
-        button.classList.add("button", "return-table__row__col__button");
+        button.classList.add("button", "button__secondary", "return-table__row__col__button");
         button.textContent = "retour dans le coffre";
 
         let checkbox = chest.createCheckbox(gameId);

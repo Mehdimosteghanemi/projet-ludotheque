@@ -35,7 +35,7 @@
                             <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
                             <div class="chest-table__row__col">Dans le coffre</div>
                             <div class="chest-table__row__col">
-                                <div class="button chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
+                                <div class="button button__principal chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
                             </div>
                         </div>
                     {% endif %}    
@@ -66,7 +66,7 @@
                         </div> #}
                     </div>
                 </div>
-                <input type="submit" value="Imprimer le bon de retour" class="button button__chest">
+                <input type="submit" value="Imprimer le bon de retour" class="button button__principal">
             </div>
         </form>    
         <form class="chest__section__form--command" action="" method="POST">
@@ -113,7 +113,7 @@
                         
                     </div>   
                 </div>
-                <input type="submit" value="commander" class="button button__chest">
+                <input type="submit" value="commander" class="button button__principal">
             </div>
         </form>
     </section>

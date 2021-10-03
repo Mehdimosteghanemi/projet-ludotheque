@@ -108,8 +108,12 @@ button {
     font-weight: bold;
     padding: 10px 15px;
     margin: 5px;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgba(255, 255, 255, 0);
     transition: all 400ms ease;
+
+    &:hover {
+        border: 2px solid white;
+    }
 
     &__principal {
         background-color: $clr-btn-principal;
