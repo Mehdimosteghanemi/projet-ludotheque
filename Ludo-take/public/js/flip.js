@@ -1,7 +1,7 @@
 let flip = {
-    // Put on array every element who have the class .button__flip__back
+    // Put on array every element who have the class .button__flip--back
     front : document.getElementsByClassName('button__flip'),
-    back : document.getElementsByClassName('button__flip__back'),
+    back : document.getElementsByClassName('button__flip--back'),
     gameOnChest : document.querySelector('.command-table__info__chest'),
     init: function() {
         // use loop to handle every button
