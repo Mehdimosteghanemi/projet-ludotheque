@@ -8,18 +8,12 @@
         <div class="categories">
             <div class="block_content">
                 <ul >
-
-                
-
-                    <li><a href=" {{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
+                    <li><a href="{{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:4} ) }}" class="buttonCategory">Jeux en famille</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:6} ) }}" class="buttonCategory">Jeux expert</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:1} ) }}" class="buttonCategory">Jeux coopératifs</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:5} ) }}" class="buttonCategory">Jeux escape</a></li>
                     <li><a href="{{ path('game_indexByCategory', {id:2} ) }}" class="buttonCategory">Jeux à deux</a></li>
-                
-                
-
                 </ul>
             </div>
         </div>
@@ -44,7 +38,7 @@
 
                         <li><a href="{{ path('game_indexByPlayers', {string:'2 à 8 joueur(s)'}) }}" class="buttonCategory">2 à 8 joueurs</a></li>
 
-                       <li><a href="{{ path('game_indexByPlayers', {string:'2 à Plus de 10 joueurs'}) }}" class="buttonCategory">2 à 10 joueurs</a></li>
+                        <li><a href="{{ path('game_indexByPlayers', {string:'2 à Plus de 10 joueurs'}) }}" class="buttonCategory">2 à 10 joueurs</a></li>
 
                         <li><a href="{{ path('game_indexByPlayers', {string:'3 à 6 joueur(s)'}) }}" class="buttonCategory">3 à 6 joueurs</a></li>
 
@@ -59,34 +53,44 @@
     lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p> #}
     </div>
 
+{# Partie de droite, contenant la liste des jeux. #}
     <div class="right--content">
+    {# Liste des jeux. #}
         <ul class="gallery__game">
 
             {% for currentGamesList in gamesList %}
-
+        {# Jeux afficher de manière individuel avec toutes les infomartions utils sur ce dernier. #}
+        
             <li class="gallery__game--table">
+        {# Partie gauche de l'affichage du jeu, contenant l'image et un lien vers la page détaillé du jeu en question. #}
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
-                        <a href="#" class="gallery__link__game--list">
+                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
                         <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
                         </a>
                     </div>
+        {# Partie centrale de l'affichage du jeu, contenant le nom linké vers le détail du jeu, sa déscription réduite, son temps de jeu et le nombre de joueurs.#}
                     <div class="gallery__name__game--list game--content">
-                        <a href="#" class="gallery__link__game--list">
+                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
                         <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
                         </a>
                         <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
+                        <div class="player__time__game">
                             <p class="nbr--player__game">
                                 {{ currentGamesList.players}}
                             </p>
                             <p class="time__game">
-                                {{currentGamesList.timeOf}}
+                                {{currentGamesList.timeOf}} minutes environ
                             </p>
+                        </div>
                     </div>
+        {# Partie droite de l'affichage du jeu, contenant un bouton menant aux infomartion complète et un autre pour l'ajout au panier. #}
                     <div class="gallery__button--game game--content">
                         <div class="button__game">
+
                             <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>
                             <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a>
+
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ class GameController extends AbstractController
             'gamesList' => $gamesList,
         ]);
     }
-            
+  
     /**
      * Methode who show a game by this slug
      * @Route("/{slug}", name="slug", priority=-1)

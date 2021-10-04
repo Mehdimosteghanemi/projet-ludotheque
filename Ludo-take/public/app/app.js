@@ -1,3 +1,4 @@
+// Définition de toutes les variables dont on aura besoin pour dynamiser le formulaire d'inscription.
 const slidePage = document.querySelector(".slide-page");
 const nextBtnFirst = document.querySelector(".firstNext");
 const prevBtnSec = document.querySelector(".prev-1");
@@ -11,6 +12,8 @@ let current = 1;
 
 submitBtn.textContent = "Valider";
 
+
+// Script permettant au bouton "suivant" de la première partie du formulaire d'inscription, de faire disparaître cette dernière et apparaître la deuxième partie.
 nextBtnFirst.addEventListener("click", function(event){
   event.preventDefault()
       slidePage.style.display = "none",
@@ -20,17 +23,18 @@ nextBtnFirst.addEventListener("click", function(event){
       current += 1
 });
 
+
+// Script permettant au bouton "valider" de soummettre le formulaire et de renvoyer à l'accueil si ce dernier est correct.
 submitBtn.addEventListener("click", function(){
   bullet[current - 1].classList.add("active");
   progressCheck[current - 1].classList.add("active");
   progressText[current - 1].classList.add("active");
   current += 1;
-  // setTimeout(function(){
-    // alert("L'inscription est terminée");
-//   },800);
 }
 );
 
+
+// Script permettant au bouton "précedent" de la deuxième partie du formulaire d'inscription, de faire disparaître cette dernière et apparaître la premère partie.
 prevBtnSec.addEventListener("click", function(event){
   event.preventDefault();
   slidePage.style.display = "block";
