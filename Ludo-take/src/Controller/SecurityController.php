@@ -12,7 +12,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, string $email=""): Response
     {
         
 
@@ -26,7 +26,6 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('home_index');
         }
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'one_page' => true,]);
-
     }
 
     /**

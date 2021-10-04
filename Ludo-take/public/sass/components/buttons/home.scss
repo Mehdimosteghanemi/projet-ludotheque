@@ -1,0 +1,23 @@
+.button__home {
+    padding: 2px 5px;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+
+    &--delete-chest {
+        background-color: $clr-delete;
+
+        &:hover{
+            background-color: $clr-add-hover;
+        }
+    }
+
+    &--add-chest {
+        background-color: $clr-add;
+
+        &:hover{
+            background-color: $clr-delete-hover;
+        }
+    }
+}
