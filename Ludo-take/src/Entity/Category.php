@@ -7,9 +7,13 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * 
  */
 class Category
 {
@@ -17,11 +21,13 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank(message="Merci de saisir un nom de catégorie")
      */
     private $name;
 
@@ -49,6 +55,12 @@ class Category
     {
         $this->created_at = new DateTimeImmutable();
         $this->games = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+    }
+
+    public function __toString()
+    {
+        return $this->id . ' - ' . $this->name;
     }
 
     public function getId(): ?int

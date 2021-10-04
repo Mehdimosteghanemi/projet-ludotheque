@@ -1,8 +1,11 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
+
+  <h2>Ajout d'une catégorie</h2>
         {{form_start(formView)}}
             <div class="input-text__row">
                 {{ form_widget(formView.name) }}
@@ -11,5 +14,6 @@
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
             <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
         {{form_end(formView)}}
-        <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour</a>
+        <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour à la list</a>
 {% endblock %}
+

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/backoffice/categorie", name="backoffice_category_", requirements={"id":"\d+"})
+ * @Route("/backoffice/categorie", name="backoffice_category_", requirements={"id"="\d+"})
  */
 class CategoryController extends AbstractController
 {
@@ -20,18 +20,22 @@ class CategoryController extends AbstractController
      * Method for display all categories
      * 
      * URL: /backoffice/categorie/
-     * ROUTE: /backoffice_category_index
+     * ROUTE: backoffice_category_index
      * 
      * @Route("/", name="index")
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
 
+        $category = $categoryRepository->findAll();
+
+
         return $this->render('backoffice/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
             'title' => 'Catégories',
             'classRoute' => 'category',
             'headerArray' => ['nom', 'option',]
+            'category' => $category
         ]);
     }
 
@@ -104,11 +108,12 @@ class CategoryController extends AbstractController
      * 
      * @return Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, ?Category $category)
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
+        
+        
         if ($form->isSubmitted() && $form->isValid()) {
             if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
                 $this->getDoctrine()->getManager()->flush();
@@ -118,6 +123,7 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('backoffice_category_index');
         }
+
 
         return $this->render('backoffice/category/update.html.twig', [
             'category' => $category,
@@ -130,20 +136,22 @@ class CategoryController extends AbstractController
     /**
      * Method used to delete a category
      * 
-     *  URL: /backoffice/categorie/suppression/{id}
+     *  URL: /backoffice/categorie/{id}/suppression
      *  ROUTE: backoffice_category_delete
      * 
-     * @Route("/delete/{id}", name="delete", methods={"POST"})
+     * @Route("/{id}/suppression", name="delete", methods={"POST"})
      *
      * @return Response
      */
-    public function delete(Request $request, Category $category)
+    public function delete(Request $request, ?Category $category)
+
     {
         
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
+
 
             $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
         } else {
