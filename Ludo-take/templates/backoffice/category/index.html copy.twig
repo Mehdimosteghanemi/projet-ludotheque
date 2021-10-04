@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+
+    <main class="backoffice">
+        <section class="backoffice__section__title">
+            <h1>Bienvenue sur la partie catégorie</h1>
+            <p>Ici tu pourras voir la liste complète des catégories existantes, les modifiers et les supprimer.</p>
+        </section>
+
+        <section class="backoffice__section">
+            <div class="backoffice-table">
+                <div class="backoffice-table__title">
+                    <h2>Les catégories</h2>
+                </div>
+                <div class="backoffice-table__content">
+                    <div class="backoffice-table__row backoffice-table__row--head">
+                        <div class="backoffice-table__row__col backoffice-table__row__col--head">la catégorie</div>
+                        <div class="backoffice-table__row__col backoffice-table__row__col--head">option</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
