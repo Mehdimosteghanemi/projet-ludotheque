@@ -5,17 +5,39 @@
 {% block body %}
 
     <main class="backoffice">
-        <section class="backoffice__section__title">
+        <section class="backoffice__home__title">
             <h1>Bienvenue dans le backoffice</h1>
             <p></p>
         </section>
 
         <section class="backoffice__home">
-            <a class="button button__principal backoffice__home__button" href="#">Jeux</a>
+            {# <a class="button button__principal backoffice__home__button" href="#">Jeux</a>
             <a class="button button__principal backoffice__home__button" href="#">Catégories</a>
-            <a class="button button__principal backoffice__home__button" href="#">Abonnement</a>
-            <a class="button button__principal backoffice__home__button" href="#">Utilisateur</a>
-
+            <a class="button button__principal backoffice__home__button" href="#">Abonnement</a> #}
+            <div class="backoffice__home__button">
+                <a class="button button__principal backoffice__home__button__list" href="#">
+                    <p class="backoffice__home__button__list__p">Jeux</p>
+                </a>
+                <a class="button button__secondary backoffice__home__button__add" href="#">+</a>
+            </div>
+            <div class="backoffice__home__button">
+                <a class="button button__principal backoffice__home__button__list" href="{{path('backoffice_category_index')}}">
+                    <p class="backoffice__home__button__list__p">Catégories</p>
+                </a>
+                <a class="button button__secondary backoffice__home__button__add" href="#">+</a>
+            </div>
+            <div class="backoffice__home__button">
+                <a class="button button__principal backoffice__home__button__list" href="#">
+                    <p class="backoffice__home__button__list__p">Abonnement</p>
+                </a>
+                <a class="button button__secondary backoffice__home__button__add" href="#">+</a>
+            </div>
+            <div class="backoffice__home__button">
+                <a class="button button__principal backoffice__home__button__list" href="#">
+                    <p class="backoffice__home__button__list__p">Utilisateur</p>
+                </a>
+                <a class="button button__secondary backoffice__home__button__add" href="#">+</a>
+            </div>
             {# <a class="button button__principal backoffice__home__button" href="{{'backoffice_games_index'}}">Jeux</a>
             <a class="button button__principal backoffice__home__button" href="{{'backoffice_categories_index'}}">Catégories</a>
             <a class="button button__principal backoffice__home__button" href="{{'backoffice_subsciption_index'}}">Abonnement</a>

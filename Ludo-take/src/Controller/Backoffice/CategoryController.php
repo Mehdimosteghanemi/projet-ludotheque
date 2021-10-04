@@ -27,7 +27,8 @@ class CategoryController extends AbstractController
     {
 
         return $this->render('backoffice/category/index.html.twig', [
-            'category' => $categoryRepository->findAll()
+            'categories' => $categoryRepository->findAll(),
+            'title' => 'Catégories',
         ]);
     }
 

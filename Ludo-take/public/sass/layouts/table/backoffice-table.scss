@@ -1,6 +1,6 @@
 .backoffice-table {
     @include flex-djaw(column, 0, center);
-    width: 100%;
+    width: 95%;
     border: 2px solid black;
     margin: 10px 0px;
 
@@ -15,7 +15,7 @@
         padding: 5px 0px;
         // border-top: 2px solid black;
 
-        &--pair {
+        &--odd {
             background-color: rgb(226, 226, 104);
         }
 
