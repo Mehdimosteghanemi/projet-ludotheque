@@ -3,6 +3,7 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,7 @@ class CategoryController extends AbstractController
         return $this->render('backoffice/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
             'title' => 'Catégories',
+            'classRoute' => 'category',
         ]);
     }
 
@@ -49,18 +51,21 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($category);
+                $em->flush();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
-
-            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été créée.');
+                $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été créée.');
+            }
 
             return $this->redirectToRoute('backoffice_category_index');
         }
 
         return $this->render('backoffice/category/add.html.twig', [
-            'formView' => $form->createView()
+            'formView' => $form->createView(),
+            'classRoute' => 'category',
+            'title' => 'Catégories',
         ]);
     }
 

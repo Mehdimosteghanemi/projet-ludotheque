@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,6 +47,7 @@ class Category
 
     public function __construct()
     {
+        $this->created_at = new DateTimeImmutable();
         $this->games = new ArrayCollection();
     }
 
