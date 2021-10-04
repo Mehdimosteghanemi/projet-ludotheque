@@ -1,129 +1,121 @@
 {% extends 'base.html.twig' %}
 
+{% set inChest = 0 %}
+
 {% block title %}{{parent()}} - Coffre{% endblock %}
 
 {% block body %}
+
 <main class="chest">
-    <section class="chest__section__title first__section">
-        <h1>Titre</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, numquam excepturi laudantium sint perspiciatis doloribus corporis tempora minus fuga tempore!</p>
+    <section class="chest__section__title">
+        <h1>Bienvenue dans ton coffre</h1>
+        <p>C'est ici que tu peux voir les jeux en ta possession tu peux choisir de nous les retourné</p>
     </section>
 
     <section class="chest__section">
-        <table class="table">
-            <thead class="table__title">
-                <tr>
-                    <th colspan="4">Ton coffre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table__head">
-                    <td class="table__head__col">nom</td>
-                    <td class="table__head__col">date de location</td>
-                    <td class="table__head__col">status</td>
-                    <td class="table__head__col">option</td>
-                </tr>
-                <tr class="table__row table__row--odd">
-                    <td class="table__row__col">jeux</td>
-                    <td class="table__row__col">20/09/2021</td>
-                    <td class="table__row__col">chez vous</td>
-                    <td class="table__row__col">bouton</td>
-                </tr>
-                <tr class="table__row table__row--pair">
-                    <td class="table__row__col">jeux</td>
-                    <td class="table__row__col">20/09/2021</td>
-                    <td class="table__row__col">chez vous</td>
-                    <td class="table__row__col">bouton</td>
-                </tr>
-                <tr class="table__row table__row--odd">
-                    <td class="table__row__col">jeux</td>
-                    <td class="table__row__col">20/09/2021</td>
-                    <td class="table__row__col">chez vous</td>
-                    <td class="table__row__col">bouton</td>
-                </tr>
-                <tr class="table__row table__row--pair">
-                    <td class="table__row__col">jeux</td>
-                    <td class="table__row__col">20/09/2021</td>
-                    <td class="table__row__col">chez vous</td>
-                    <td class="table__row__col">bouton</td>
-                </tr>
-                <tr class="table__row table__row--odd">
-                    <td class="table__row__col">jeux</td>
-                    <td class="table__row__col">20/09/2021</td>
-                    <td class="table__row__col">chez vous</td>
-                    <td class="table__row__col">bouton</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section class="chest__section">
-        <div>
-            <table class="table">
-                <thead class="table__title">
-                    <tr>
-                        <th colspan="2">En attente de retour</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table__head">
-                        <td class="table__head__col">nom</td>
-                        <td class="table__head__col">option</td>
-                    </tr>
-                    <tr class="table__row table__row--odd">
-                        <td class="table__row__col">Jeux</td>
-                        <td class="table__row__col">bouton</td>
-                    </tr>
-                    <tr class="table__row table__row--pair">
-                        <td class="table__row__col">Jeux</td>
-                        <td class="table__row__col">bouton</td>
-                    </tr>
-                    <tr class="table__row table__row--odd">
-                        <td class="table__row__col">Jeux</td>
-                        <td class="table__row__col">bouton</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="" class="button">bouton</a>
-            <a href="" class="button">bouton</a>
-        </div>
-
-        <div class="chest__section__table_info">
-            <table class="table">
-                <thead class="table__title">
-                    <tr>
-                        <th colspan="2">Liste de commande</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table__head">
-                        <td class="table__head__col">prochain envoie</td>
-                        <td class="table__head__col">plus tard</td>
-                    </tr>
-                    <tr class="table__row table__row--odd">
-                        <td class="table__row__col"><a class="button--1" href="#">Jeux</></td>
-                        <td class="table__row__col"></td>
-                    </tr>
-                    <tr class="table__row table__row--pair">
-                        <td class="table__row__col">Jeux</td>
-                        <td class="table__row__col"></td>
-                    </tr>
-                    <tr class="table__row table__row--odd">
-                        <td class="table__row__col"></td>
-                        <td class="table__row__col">Jeux</td>
-                    </tr>
-                </tbody>
-                <a href="" class="button">bouton</a>
-            </table>
-            
-            <div class="tabel__information">
-                <h2>prochaine commande</h2>
-                <p>31/09/2021</p>
-                <h2>Nombre de jeux</h2>
-                <p>3/2</p>
-                <a href="" class="button">bouton</a>
+        <div class="chest-table">
+            <div class="chest-table__title">
+                <h2>Ton coffre</h2>
             </div>
-            
+            <div class="chest-table__content">
+                <div class="chest-table__row chest-table__row--head">
+                    <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">status</div>
+                    <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                </div>
+                {% for order in app.user.orders|reverse %}
+                    {% if order.status == 2 %}
+                        {% set inChest = inChest + 1 %}
+                        <div class="chest-table__row chest-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                            <div class="chest-table__row__col">
+                                <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
+                                <p class="chest-table__row__col__p">{{order.games.name}}</p>
+                            </div>
+                            <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
+                            <div class="chest-table__row__col">Dans le coffre</div>
+                            <div class="chest-table__row__col">
+                                <div class="button button__principal chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
+                            </div>
+                        </div>
+                    {% endif %}    
+                {% endfor %}
+            </div>
         </div>
+    </section>
+    <section class="chest__section">
+        <form class="chest__section__form--return" action="" method="POST">
+            <div>
+                <div class="return-table">
+                    <div class="return-table__title">
+                        <div>
+                            <h3>En attente de retour</h3>
+                        </div>
+                    </div>
+                    <div class="return-table__content">
+                        <div class="return-table__row return-table__row--head">
+                            <div class="return-table__row__col return-table__row__col--row">jeux</div>
+                            <div class="return-table__row__col return-table__row__col--row">option</div>
+                        </div>
+                        <input type="checkbox" name="returnForm" id="returnForm" class="checkbox--hiden" checked>
+                        {# create by public/chest.js (exemple) #}
+                        {# <div class="table__row table__row--odd">
+                            <input type="checkbox" name="" id="" class="checkbox--hiden" checked>
+                            <div class="table__row__col">Jeux</div>
+                            <div class="table__row__col">bouton</div>
+                        </div> #}
+                    </div>
+                </div>
+                <input type="submit" value="Imprimer le bon de retour" class="button button__principal">
+            </div>
+        </form>    
+        <form class="chest__section__form--command" action="" method="POST">
+            <div class="chest__section__table_info">
+                <div class="command-table">
+                    <div class="command-table__title">
+                        <tr>
+                            <th colspan="2">Liste de commande</th>
+                        </tr>
+                    </div>
+                    <div class="command-table__content">
+                        <div class="command-table__content__ship">
+                            <div class="command-table__content__ship__head">
+                                <p>prochain envoi</p>
+                                <p>plus tard</p>
+                            </div>
+                            <input type="checkbox" name="commandForm" id="commandForm" class="checkbox--hiden" checked>
+                            {% for order in app.user.orders %}
+                                {% if order.status == 1 %}
+                                    {% set inChest = inChest + 1 %}
+                                    <div class="command-table__content__ship__flip">
+                                        <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__flip__checkbox" checked>
+                                        <label class="button__flip" for="{{order.games.slug}}">
+                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
+                                            <p>{{order.games.name}}</p>
+                                            {# <a class="button__flip__back--delete" href="#">x</a> #}
+                                        </label>
+                                        <label class="button__flip button__flip--back">
+                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
+                                            <p>{{order.games.name}}</p>
+                                            {# <a class="button__flip__back--delete" href="#">x</a> #}
+                                        </label>
+                                        <a class="button--delete-chest" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>
+                                    </div>
+                                {% endif %}    
+                            {% endfor %}
+                        </div>
+                        <div class="command-table__content__info">
+                            <p class="command-table__content__info__row">prochaine commande</p>
+                            <p class="command-table__content__info__row">01/01/2022</p>
+                            <p class="command-table__content__info__row">nombre de jeux</p>
+                            <p class="command-table__content__info__row"> <em class="command-table__info__chest command-table__info__chest--{% if inChest <= 7 %}valid{% else %}unvalid{% endif %}">{{inChest}}</em>/7</p>
+                        </div>
+                        
+                    </div>   
+                </div>
+                <input type="submit" value="commander" class="button button__principal">
+            </div>
+        </form>
     </section>
     
     <section class="chest__section">
@@ -139,24 +131,22 @@
                     <td class="table__head__col">date de retour</td>
                     <td class="table__head__col">status</td>
                 </tr>
-                <tr class="table__row table__row--odd">
-                    <td class="table__row__col">Jeux</td>
-                    <td class="table__row__col">28/09/2021</td>
-                    <td class="table__row__col">En cours</td>
-                </tr>
-                <tr class="table__row table__row--pair">
-                    <td class="table__row__col">Jeux</td>
-                    <td class="table__row__col">28/09/2021</td>
-                    <td class="table__row__col">En cours</td>
-                </tr>
-                <tr class="table__row table__row--odd">
-                    <td class="table__row__col">Jeux</td>
-                    <td class="table__row__col">28/09/2021</td>
-                    <td class="table__row__col">En cours</td>
-                </tr>
+                {% for order in app.user.orders|reverse %}
+                    {% if order.status == 3 %}
+                        <tr class="table__row table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                            <td class="table__row__col">{{order.games.name}}</td>
+                            <td class="table__row__col">{{order.dateReturn|date("d/m/Y")}}</td>
+                            <td class="table__row__col">En attente de réception</td>
+                        </tr>
+                    {% endif %}    
+                {% endfor %}
             </tbody>
         </table>
     </section>
 
 </main>
+{% endblock %}
+{% block javascripts %} 
+<script src="{{ asset('js/chest.js') }}"></script> 
+    <script src="{{ asset('js/flip.js') }}"></script> 
 {% endblock %}
