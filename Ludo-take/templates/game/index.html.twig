@@ -99,3 +99,6 @@
 </div>
 {{ knp_pagination_render(gamesList) }}
 {% endblock %}
+{% block javascript %}
+    <script src="{{ asset('app/gameList.js') }}"></script>
+{% endblock %}

@@ -219,3 +219,32 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+
+// -----------------Pagination--------
+
+.next>a {
+    display: none;
+}
+
+.previous>a {
+    display: none;
+}
+
+.pagination {
+    text-align: center;
+    font-size: 1.4rem;
+    background-color: indianred;
+    margin: 0rem 42rem;
+    border-radius: 10px;
+    padding: 0.1rem;
+}
+
+.pagination>.last {
+    display: none;
+}
+
+.pagination>.current,
+.pagination>.page {
+    color: white;
+}
