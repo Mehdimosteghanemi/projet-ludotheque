@@ -1,0 +1,19 @@
+.flash {
+
+    margin-top: 10px;
+    text-align: center;
+    background-color: #EE7A45;
+    height: 3rem;
+    width: 50%;
+    transform: translateX(50%);
+    border-radius: 10px 10px 10px 10px;
+
+    &__error {
+        padding-top: 7px;
+        font-size: 2rem;
+    }
+
+}
+
+
+

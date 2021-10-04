@@ -12,7 +12,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, string $email=""): Response
     {
         
 
@@ -20,6 +20,7 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
+
 
         if ($this->getUser(["ROLE_USER"])) {
             return $this->redirectToRoute('home_index');

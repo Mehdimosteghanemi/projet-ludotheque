@@ -253,4 +253,6 @@
 
 .pagination>.page>a {
     color: white;
-}
+=======
+.button__game {
+    @include flex-djaw(column);

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+
+{% block body %}
+
+    <section class="game__slug">
+        <div class="game__slug__images">
+            <img src="{{ game.images }}" alt="image de la boite du jeux : {{ game.name }}">
+        </div>
+        
+        <div class="game__slug__info">
+            <h1 class="game__slug__info__name">{{ game.name }}</h1>
+            <p class="game__slug__info__description">{{ game.description[0:1500]}}...</p>
+            <div class="game__slug__tag">
+                <ul class="game__slug__tag__list">
+                    <li class="button--tag game__slug__tag__list__button">{{ game.players}}</li>
+                    <li class="button--tag game__slug__tag__list__button">{% if game.timeOf == 20 %}moins de {% endif %}{{ game.timeOf}} minutes {% if game.timeOf > 20 %}environ{% endif %}</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    
+{% endblock %}
