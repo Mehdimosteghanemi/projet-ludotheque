@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} - Backoffice{% endblock %}
+
+{% block body %}
+
+    <main class="backoffice">
+        <section class="backoffice__section__title">
+            <h1>Bienvenue dans le backoffice</h1>
+            <p></p>
+        </section>
+
+        <section class="backoffice__home">
+            <a class="button button__principal backoffice__home__button" href="#">Jeux</a>
+            <a class="button button__principal backoffice__home__button" href="#">Catégories</a>
+            <a class="button button__principal backoffice__home__button" href="#">Abonnement</a>
+            <a class="button button__principal backoffice__home__button" href="#">Utilisateur</a>
+
+            {# <a class="button button__principal backoffice__home__button" href="{{'backoffice_games_index'}}">Jeux</a>
+            <a class="button button__principal backoffice__home__button" href="{{'backoffice_categories_index'}}">Catégories</a>
+            <a class="button button__principal backoffice__home__button" href="{{'backoffice_subsciption_index'}}">Abonnement</a>
+            <a class="button button__principal backoffice__home__button" href="{{'backoffice_user_index'}}">Utilisateur</a> #}
+        </section>
+    </main>
+{% endblock %}
