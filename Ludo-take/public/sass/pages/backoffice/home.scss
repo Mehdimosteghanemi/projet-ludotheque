@@ -1,0 +1,7 @@
+.backouffice__home {
+    @include flex-djaw(0, 0, 0, wrap);
+
+    &__button {
+        width: 50%;
+    }
+}
