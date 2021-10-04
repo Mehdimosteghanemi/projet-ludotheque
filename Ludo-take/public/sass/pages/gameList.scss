@@ -234,17 +234,23 @@
 .pagination {
     text-align: center;
     font-size: 1.4rem;
-    background-color: indianred;
-    margin: 0rem 42rem;
+    font-weight: 700;
+    background-color: rgb(30 141 230);
+    margin: 0rem 41rem;
     border-radius: 10px;
     padding: 0.1rem;
 }
 
-.pagination>.last {
+.pagination>.last,
+.pagination>.first {
     display: none;
 }
 
 .pagination>.current,
-.pagination>.page {
+.pagination>.page>a:hover {
+    color: rgb(255 177 32);
+}
+
+.pagination>.page>a {
     color: white;
 }
