@@ -1,6 +1,8 @@
-$clr-delete: red;
+$clr-delete: rgb(209, 34, 34);
+$clr-delete-hover: rgb(172, 17, 17);
 $clr-modify: blue;
-$clr-add: green;
+$clr-add: rgb(31, 231, 31);
+$clr-add-hover: rgb(28, 156, 28);
 $clr-comment: yellow;
 $clr-confirm: green;
 
@@ -23,3 +25,19 @@ $clr-burgerLines-invisible: rgba(0, 0, 0, 0);
 
 $clr-button-form : rgb(255 177 32);
 $clr-button-form-hover: rgb(27, 141, 223);
+$clt-button-chest: rgb(27, 141, 223);
+$clt-button-chest-hover: rgb(21, 42, 224);
+
+$clr-button-flip : rgb(46, 238, 46);
+$clr-button-flip-hover : green;
+$clr-button-flip-back : rgb(255, 70, 70);
+$clr-button-flip-back-hover : rgb(167, 14, 14);
+
+$clr-btn-principal : rgb(24, 194, 216);
+$clr-btn-principal-hover : rgb(92, 225, 243);
+$clr-btn-secondary : rgb(250, 246, 0);
+$clr-btn-secondary-hover : rgb(245, 242, 91);
+$clr-btn-ter : green;
+$clr-btn-ter-hover : green;
+$clr-btn-return : white;
+$clr-btn-return-hover : rgb(160, 160, 160);

@@ -87,8 +87,10 @@
         {# Partie droite de l'affichage du jeu, contenant un bouton menant aux infomartion complète et un autre pour l'ajout au panier. #}
                     <div class="gallery__button--game game--content">
                         <div class="button__game">
-                            <a href ="{{ currentGamesList.slug }}" class="clk--button">En savoir plus</a>
-                            <a class="clk--button">Ajouter au panier</a>
+
+                            <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>
+                            <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a>
+
                         </div>
                     </div>
                 </div>
