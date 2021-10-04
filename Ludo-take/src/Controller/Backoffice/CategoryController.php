@@ -3,6 +3,7 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/backoffice/categorie", name="backoffice_category_", requirements={"id":"\d+"})
+ * @Route("/backoffice/categorie", name="backoffice_category_", requirements={"id"="\d+"})
  */
 class CategoryController extends AbstractController
 {
@@ -19,15 +20,18 @@ class CategoryController extends AbstractController
      * Method for display all categories
      * 
      * URL: /backoffice/categorie/
-     * ROUTE: /backoffice_category_index
+     * ROUTE: backoffice_category_index
      * 
      * @Route("/", name="index")
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
 
+        $category = $categoryRepository->findAll();
+
+
         return $this->render('backoffice/category/index.html.twig', [
-            'category' => $categoryRepository->findAll()
+            'category' => $category
         ]);
     }
 
@@ -97,19 +101,21 @@ class CategoryController extends AbstractController
      * 
      * @return Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, ?Category $category)
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
+        
+        
         if ($form->isSubmitted() && $form->isValid()) {
             
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
-
+            
             return $this->redirectToRoute('backoffice_category_index');
         }
+
 
         return $this->render('backoffice/category/update.html.twig', [
             'category' => $category,
@@ -120,21 +126,21 @@ class CategoryController extends AbstractController
     /**
      * Method used to delete a category
      * 
-     *  URL: /backoffice/categorie/suppression/{id}
+     *  URL: /backoffice/categorie/{id}/suppression
      *  ROUTE: backoffice_category_delete
      * 
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/{id}/suppression", name="delete")
      *
      * @return Response
      */
-    public function delete(Category $category)
+    public function delete(?Category $category)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($category);
-        $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($category);
+            $em->flush();
 
-        $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+        // $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
 
         return $this->redirectToRoute('backoffice_category_index');
     }

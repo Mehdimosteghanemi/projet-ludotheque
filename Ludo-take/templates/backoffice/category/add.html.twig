@@ -1,0 +1,16 @@
+
+
+{% block content %}
+
+    <h2>Ajout d'une catégorie</h2>
+
+    {{ form_start(formView, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(formView, {'attr':{'class':'form'}}) }}
+    <button class="button__principal"> Valider </button>
+    {{ form_end(formView) }}
+
+    <p>
+        <a href="{{ path('backoffice_category_index') }}">Retour à la liste</a>
+    </p>
+
+{% endblock %}
