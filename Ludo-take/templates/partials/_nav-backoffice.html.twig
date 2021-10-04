@@ -45,5 +45,10 @@
                 </form>
             <h2>{{title}}</h2>
         </nav>  
+        <section class="header__navigation header__navigation--backoffice">
+            {% for value in headerArray %}
+                <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
+            {% endfor %}
+        </section>
     {% endif %}
 </header>

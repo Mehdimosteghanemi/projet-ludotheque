@@ -12,10 +12,10 @@
         
         <div class="backoffice-table">
             <div class="backoffice-table__content">
-                <div class="backoffice-table__row backoffice-table__row--head">
+                {# <div class="backoffice-table__row backoffice-table__row--head">
                     <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Nom</h3>
                     <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Option</h3>
-                </div>
+                </div> #}
                 {% for category in categories|reverse %}
                     <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
                         <div class="backoffice-table__row__col">{{category.name}}</div>

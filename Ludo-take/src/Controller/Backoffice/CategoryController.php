@@ -31,6 +31,7 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
             'title' => 'Catégories',
             'classRoute' => 'category',
+            'headerArray' => ['nom', 'option',]
         ]);
     }
 
