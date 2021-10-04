@@ -17,7 +17,15 @@
                 </div>
                 <div class="backoffice-table__content">
                     <div class="backoffice-table__row backoffice-table__row--head">
-                        <div class="backoffice-table__row__col backoffice-table__row__col--head">la catégorie</div>
+
+                        <div class="backoffice-table__row__col backoffice-table__row__col--head">la catégorie</div
+                        
+                        {% for currentCategory in category %}
+
+                        <p>{{currentCategory.name}}</p>
+
+                        {% endfor %}
+
                         <div class="backoffice-table__row__col backoffice-table__row__col--head">option</div>
                     </div>
                 </div>
