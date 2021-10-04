@@ -12,6 +12,7 @@ button {
      border: black solid 2px;
      margin: 5px;
      padding: 7px;
+     font-weight: bold;
      border-radius: 10px;
      transition:all 200ms ease-in-out;
  
@@ -55,12 +56,7 @@ button {
      }
  
      &--log-in-out {
-         background-color: $clr-login;
-         @media(min-width: 900px) {
-            position: absolute;
-            top: 20px;
-            right: 20px;  
-         }
+        background-color: $clr-login;
          
          &:hover {
              background-color: darken($clr-login, 15%);
