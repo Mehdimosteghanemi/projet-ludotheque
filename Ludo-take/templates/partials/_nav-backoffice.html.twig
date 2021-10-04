@@ -15,7 +15,7 @@
             </li>
             <li class="button__arround">
                 <a class="link" href="{{path('backoffice_category_index')}}">Categories</a>
-                <a class="button button__secondary button__secondary--nav" href="#">+</a>
+                <a class="button button__secondary button__secondary--nav" href="{{path('backoffice_category_add')}}">+</a>
             </li>
             <li class="button__arround">
                 <a class="link" href="{{path('backoffice_category_index')}}">Abonnement</a>
@@ -44,11 +44,13 @@
                     <button class="s-btn" type="submit">GO</button>
                 </form>
             <h2>{{title}}</h2>
-        </nav>  
-        <section class="header__navigation header__navigation--backoffice">
-            {% for value in headerArray %}
-                <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
-            {% endfor %}
-        </section>
+        </nav>
+        {% if headerArray is defined %}  
+            <section class="header__navigation header__navigation--backoffice">
+                {% for value in headerArray %}
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
+                {% endfor %}
+            </section>
+        {% endif %}
     {% endif %}
 </header>
