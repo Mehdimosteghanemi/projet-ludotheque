@@ -9,23 +9,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', null, [
-                'label' => 'Nom de la catégorie',
-                'attr' => [
-                    'placeholder' => "Sasir une nom de catégorie",
-                ]
-            ])
-            // ->add('color')
-            // ->add('created_at')
-            // ->add('updated_at')
-            // ->add('games')
+                'row_attr' => ['class' => 'input-text__row'],
+                'attr' => ['class' => 'input-text__row__input'],
+                'label_attr' => ['class' => 'input-text__row__label'],
+            ]) 
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
+
     {
         $resolver->setDefaults([
             'data_class' => Category::class,

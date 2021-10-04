@@ -19,6 +19,7 @@ class HomeController extends AbstractController
         return $this->render('backoffice/home/index.html.twig', [
             'controller_name' => 'HomeController',
             'one_page' => true,
+            'title' => 'home',
         ]);
     }
 }

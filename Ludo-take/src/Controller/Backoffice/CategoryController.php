@@ -31,6 +31,10 @@ class CategoryController extends AbstractController
 
 
         return $this->render('backoffice/category/index.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+            'title' => 'Catégories',
+            'classRoute' => 'category',
+            'headerArray' => ['nom', 'option',]
             'category' => $category
         ]);
     }
@@ -52,18 +56,21 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($category);
+                $em->flush();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
-
-            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été créée.');
+                $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été créée.');
+            }
 
             return $this->redirectToRoute('backoffice_category_index');
         }
 
         return $this->render('backoffice/category/add.html.twig', [
-            'formView' => $form->createView()
+            'formView' => $form->createView(),
+            'classRoute' => 'category',
+            'title' => 'Catégories',
         ]);
     }
 
@@ -108,18 +115,21 @@ class CategoryController extends AbstractController
         
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $this->getDoctrine()->getManager()->flush();
+            if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
+                $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
-            
+                $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
+            }
+
             return $this->redirectToRoute('backoffice_category_index');
         }
 
 
         return $this->render('backoffice/category/update.html.twig', [
             'category' => $category,
-            'formView' => $form->createView()
+            'formView' => $form->createView(),
+            'classRoute' => 'category',
+            'title' => 'Catégories',
         ]);
     }
 
@@ -129,18 +139,24 @@ class CategoryController extends AbstractController
      *  URL: /backoffice/categorie/{id}/suppression
      *  ROUTE: backoffice_category_delete
      * 
-     * @Route("/{id}/suppression", name="delete")
+     * @Route("/{id}/suppression", name="delete", methods={"POST"})
      *
      * @return Response
      */
-    public function delete(?Category $category)
-    {
+    public function delete(Request $request, ?Category $category)
 
+    {
+        
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
 
-        // $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+
+            $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+        } else {
+            $this->addFlash('info', 'erreur.');
+        }
 
         return $this->redirectToRoute('backoffice_category_index');
     }

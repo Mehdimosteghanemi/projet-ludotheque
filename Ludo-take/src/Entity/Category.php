@@ -53,6 +53,7 @@ class Category
 
     public function __construct()
     {
+        $this->created_at = new DateTimeImmutable();
         $this->games = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
     }

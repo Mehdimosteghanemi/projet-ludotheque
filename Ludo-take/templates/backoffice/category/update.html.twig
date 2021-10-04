@@ -1,16 +1,17 @@
+{% extends 'base.html.twig' %}
 
-{% block content %}
+{% block title %}Catégories{% endblock %}
 
-    <h2>Edition d'une catégorie</h2>
-    <!-- https://symfony.com/doc/current/forms.html#client-side-html-validation -->
-    <!-- Nous gènère un formulair de ce type : <form action="" novalidate="novalidate"></form> -->
-    {{ form_start(formView, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_row(formView.name, {'attr': {'class':'geronimo'}}) }}
-    <button class="button__principal">Valider</button>
-    {{ form_end(formView) }}
-
-    <p>
-        <a href="{{ path('backoffice_category_index') }}">Retour à la liste</a>
-    </p>
-
+{% block body %}
+  <h2>Edition d'une catégorie</h2>
+        {{form_start(formView)}}
+            <div class="input-text__row">
+                {{ form_widget(formView.name) }}
+                {{ form_label(formView.name) }}
+            </div>    
+            <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
+            <button class="button button__principal">Editer</button>
+        {{form_end(formView)}}
+        <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour à la liste</a>
 {% endblock %}
+

@@ -1,16 +1,19 @@
 
+{% extends 'base.html.twig' %}
 
-{% block content %}
+{% block title %}Catégories{% endblock %}
 
-    <h2>Ajout d'une catégorie</h2>
+{% block body %}
 
-    {{ form_start(formView, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_row(formView, {'attr':{'class':'form'}}) }}
-    <button class="button__principal"> Valider </button>
-    {{ form_end(formView) }}
-
-    <p>
-        <a href="{{ path('backoffice_category_index') }}">Retour à la liste</a>
-    </p>
-
+  <h2>Ajout d'une catégorie</h2>
+        {{form_start(formView)}}
+            <div class="input-text__row">
+                {{ form_widget(formView.name) }}
+                {{ form_label(formView.name) }}
+            </div>    
+            <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
+            <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
+        {{form_end(formView)}}
+        <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour à la list</a>
 {% endblock %}
+
