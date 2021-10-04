@@ -9,6 +9,6 @@
                 {{ form_label(formView.name) }}
             </div>    
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
-            <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
+            <button class="button button__principal">Editer</button>
         {{form_end(formView)}}
 {% endblock %}

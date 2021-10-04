@@ -20,7 +20,7 @@
                     <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
                         <div class="backoffice-table__row__col">{{category.name}}</div>
                         <div class="backoffice-table__row__col">
-                            <div class="button button__principal backoffice-table__row__col__button">Editer</div>
+                            <a class="button button__principal backoffice-table__row__col__button" href="{{ path('backoffice_category_update', {'id': category.id}) }}">Editer</a>
                             <form method="post" action="{{ path('backoffice_category_delete', {'id': category.id}) }}">
                                 <input type="hidden" name="token" value="{{ csrf_token('delete' ~ category.id) }}"/>
                                 <button class="button button__delete backoffice-table__row__col__button" type="submit">Supprimer</button>
