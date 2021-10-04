@@ -125,8 +125,9 @@ let carousel = {
      * It's calling automaticaly after a transition.
      */
     handleTransition: function(evt) {
+        console.log(evt.target.className);
         // Checking after what transition it's running
-        if (carousel.lastDirection === 'next') {
+        if (carousel.lastDirection === 'next' && evt.target.className === "carousel__window__slider") {
             // We're taking the first child and move it after the actual last child (this action create a infinite loop because everytimes the first become the last)
             carousel.slider.appendChild(carousel.slider.firstElementChild);
             // the transition and the movement start at the same time we cant see a movement because the transition none make it instant
