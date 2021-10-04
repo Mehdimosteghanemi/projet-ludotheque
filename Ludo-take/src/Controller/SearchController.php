@@ -27,17 +27,25 @@ class SearchController extends AbstractController
 
         $query = $request->query->get('search');
         
-        // $pregQuery = preg_replace("/^(.){3,128}$/" ,$query);
-        // dd($pregQuery);
-        //    "/^[.]{3,128}$/"
         $results = $gameRepository->searchGameByName($query);
 
-        $searchResult = $paginatorInterface->paginate(
-            $results,
-            $request->query->getInt('page', 1),
-            5
-        );
+        if (!$results) {
 
+            // throw $this->createNotFoundException("Le jeu $query n'existe pas.");
+            $this->addFlash('error', 'Le jeu ' . $query . ' n\'existe pas.');
+
+            return $this->redirectToRoute('game_index');
+
+        } else {
+
+            $searchResult = $paginatorInterface->paginate(
+                $results,
+                $request->query->getInt('page', 1),
+                5
+            );
+
+        }
+        
         return $this->render('search/index.html.twig', [
             'results' => $searchResult,
             'query' => $query
