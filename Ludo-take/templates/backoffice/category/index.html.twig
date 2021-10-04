@@ -21,8 +21,8 @@
                         <div class="backoffice-table__row__col">{{category.name}}</div>
                         <div class="backoffice-table__row__col">
                             <div class="button button__principal backoffice-table__row__col__button">Editer</div>
-                            <form action="">
-                                <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"/>
+                            <form method="post" action="{{ path('backoffice_category_delete', {'id': category.id}) }}">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete' ~ category.id) }}"/>
                                 <button class="button button__delete backoffice-table__row__col__button" type="submit">Supprimer</button>
                             </form>
                             

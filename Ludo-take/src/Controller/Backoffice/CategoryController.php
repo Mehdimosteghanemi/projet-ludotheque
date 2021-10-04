@@ -124,18 +124,22 @@ class CategoryController extends AbstractController
      *  URL: /backoffice/categorie/suppression/{id}
      *  ROUTE: backoffice_category_delete
      * 
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/delete/{id}", name="delete", methods={"POST"})
      *
      * @return Response
      */
-    public function delete(Category $category)
+    public function delete(Request $request, Category $category)
     {
+        
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($category);
+            $em->flush();
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($category);
-        $em->flush();
-
-        $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+            $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+        } else {
+            $this->addFlash('info', 'erreur.');
+        }
 
         return $this->redirectToRoute('backoffice_category_index');
     }
