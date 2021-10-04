@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -25,6 +26,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "E-mail incorrect.")
+     * @Assert\NotBlank(message="Merci de saisir un email")
      */
     private $email;
 
@@ -35,6 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
+     * @Assert\Email(message = "Mot de passe incorect.")
+     * @Assert\NotBlank(message="Merci de saisir un mot de passe")
      * @ORM\Column(type="string")
      */
     private $password;

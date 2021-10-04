@@ -5,7 +5,8 @@
 
 {% block body %} 
 
-<div class="container">
+<div class="container" id="register--container">
+
 
     <header>S'inscrire à Ludo'Take !</header>
 
@@ -44,7 +45,7 @@
 
             <div class="field">
                 {{ form_row(userForm.firstname, {
-                    attr:{placeholder:'Prénom'},
+                    attr:{placeholder:'Prénom', value: app.request.query.get("email")},
                     label: ' '
                 }) }}
             </div>
@@ -88,7 +89,6 @@
                     label: ' '
                 }) }}
             </div>
-
             <div class="field">
                 {{ form_row(userForm.address_number, {
                     attr:{placeholder:'Numéro de rue'},
@@ -112,9 +112,9 @@
 
             <div class="field btns">
                 <button class="prev-1 prev">Précedent</button>
+                {{ form_end(userForm) }}
             </div>
         </div>
-        {{ form_end(userForm) }}
     </div>
 </div>
 {% endblock %}

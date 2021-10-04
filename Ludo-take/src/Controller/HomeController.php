@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,12 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(GameRepository $gameRepository): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'games' => $gameRepository->findBy([], ['created_at' => 'DESC']),
         ]);
+    }
+
+    /**
+     * @Route("/", name="registration", methods={"POST"})
+     */
+    public function redirectToRegistration(): RedirectResponse
+    {
+        $email = $_POST['email'];
+        return $this->redirectToRoute('register', ['email' => $email]);
     }
 }

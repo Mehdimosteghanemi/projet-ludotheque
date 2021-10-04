@@ -17,8 +17,7 @@
             {% if is_granted('ROLE_USER') %}
 
                 <li class="button__arround"><a class="button button--1 button--favorites header__navigation__list__button header__navigation__list__button--favorites" href="#">Favoris</a></li>
-                <li class="button__arround"><a class="button button--2 button--games header__navigation__list__button header__navigation__list__button--games" href="{{ path('game_index') }}">Liste des jeux</a></li>
-                
+                <li class="button__arround"><a class="button button--2 button--games header__navigation__list__button header__navigation__list__button--games" href="{{ path('game_index') }}">Liste des jeux</a></li>                
                 <li class="button__arround">
                    {# <div class="search-box">
                         <input class="s-box" type="text" name="search" placeholder="Type keyword">
@@ -26,18 +25,13 @@
                         <i class="fab fa-searchengin"></i>
                         </a>
                     </div> #}
-
                     <form class="search-box" action="{{ path('search_index') }}">
                         <input class="s-box" type="search" placeholder="Ex : Monopoly" aria-label="Search" name="search">
                         <button class="s-btn" type="submit">GO</button>
                         {# <i class="fab fa-searchengin"></i> #}
                     </form>
-
-
-
-                </li>
-
-                <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="#">Coffre</a></li> 
+                </li>   
+                <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('chest_index') }}">Coffre</a></li> 
                 <li class="button__arround"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_logout') }}"><button>Me déconnecter</button></a></li>
 
             {% else %}
