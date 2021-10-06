@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux{% endblock %}
+
+{% block body %}
+
+  <h2>Ajout d'un jeu</h2>
+        {{form_start(formView)}}
+            <div class="input-text__row">
+                {{ form_widget(formView.firstname) }}
+                {{ form_label(formView.firstname) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.lastname) }}
+                {{ form_label(formView.lastname) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.email) }}
+                {{ form_label(formView.email) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.password) }}
+                {{ form_label(formView.password) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.addressRoad) }}
+                {{ form_label(formView.addressRoad) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.addressNumber) }}
+                {{ form_label(formView.addressNumber) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.addressZipCode) }}
+                {{ form_label(formView.addressZipCode) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.addressCity) }}
+                {{ form_label(formView.addressCity) }}
+            </div>
+            <div class="input-text__row">
+                {{ form_widget(formView.addressDetail) }}
+                {{ form_label(formView.addressDetail) }}
+            </div>
+            <div class="input-text__row">
+                {{ form_widget(formView.status) }}
+                {{ form_label(formView.status) }}
+            </div>   
+            <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
+            <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
+        {{form_end(formView)}}
+        <a class="button button__return" href="{{path('backoffice_game_index')}}">Retour à la list</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+
+
+     <h1>Utilisateurs</h1>
+
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for currentUser in user %}
+                <tr>
+                    <td>{{ currentUser.id }}</td>
+                    <td>{{ currentUser.firstname }}</td>
+                    <td>{{ currentUser.lastname }}</td>
+                    <td>{{ currentUser.email }}</td>
+                    <td>{{ currentUser.roles ? currentUser.roles|json_encode : '' }}</td>
+                    <td>
+                        <a href="{{ path('backoffice_user_show', {'id': currentUser.id}) }}">show</a>
+                        <a href="{{ path('backoffice_user_update', {'id': currentUser.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   
+    <a href="{{ path('backoffice_user_add') }}">Create new</a>
+
+{% endblock %}
