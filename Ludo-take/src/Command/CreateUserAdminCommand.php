@@ -14,7 +14,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class MakeUserAdminCommand extends Command
 {
-    protected static $defaultName = 'make:user:admin';
+    protected static $defaultName = 'create:user:admin';
     protected static $defaultDescription = 'Add a short description for your command';
 
     private $hasher;
