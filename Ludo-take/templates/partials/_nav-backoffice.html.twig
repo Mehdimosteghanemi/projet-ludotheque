@@ -1,0 +1,62 @@
+<header class="header">
+    <nav class="header__navigation">
+        <input type="checkbox" name="burger-menu" id="burger-menu" class="burger__checkbox">
+        <label class="burger" for="burger-menu">
+                <div class="burger__line burger__line1"></div>
+                <div class="burger__line burger__line2"></div>
+                <div class="burger__line burger__line3"></div>
+        </label>
+        <ul class="header__navigation__list">
+
+            <li class="button__arround"><a class="button button__return" href="{{path('home_index')}}">Retour au site</a></li>
+            <li class="button__arround">
+                <a class="link" href="{{path('backoffice_game_index')}}">Jeux</a>
+                <a class="button button__secondary button__secondary--nav" href="{{path('backoffice_game_add')}}">+</a>
+            </li>
+            <li class="button__arround">
+                <a class="link" href="{{path('backoffice_category_index')}}">Categories</a>
+                <a class="button button__secondary button__secondary--nav" href="{{path('backoffice_category_add')}}">+</a>
+            </li>
+            <li class="button__arround">
+                <a class="link" href="{{path('backoffice_category_index')}}">Abonnement</a>
+                <a class="button button__secondary button__secondary--nav" href="#">+</a>
+            </li>
+            
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+ 
+                <li class="button__arround">
+                    <a class="link" href="{{path('backoffice_user_index')}}">Utilisateurs</a>
+                    <a class="button button__secondary button__secondary--nav" href="{{path('backoffice_user_add')}}">+</a>
+                </li>
+               
+            {% endif %}
+
+                <li class="button__arround"><a class="button button--log-in-out" href="{{ path('app_logout') }}">Me déconnecter</a></li>
+        </ul>
+        
+    </nav>  
+    {% if title is not same as('home') %}
+        <nav class="header__navigation header__navigation--backoffice"> 
+            {% if app.request.get('_route') matches '{_add$}'%}
+                <a class="button button__return" href="{{path('backoffice_' ~ classRoute ~ '_index')}}">Retour à la list</a>
+                <h2>{{title}}</h2>
+            {% else %}
+                <a class="button button__secondary" href="{{ path('backoffice_' ~ classRoute ~ '_add') }}">ajouter</a> 
+                <h2>{{title}}</h2>
+            {% endif %}
+                    
+                {# <form class="search-box" action="{{ path('search_index') }}">
+                    <input class="s-box" type="search" placeholder="Ex : Monopoly" aria-label="Search" name="search">
+                    <button class="s-btn" type="submit">GO</button>
+                </form> #}
+            
+        </nav>
+        {% if headerArray is defined %}  
+            <section class="header__navigation header__navigation--backoffice">
+                {% for value in headerArray %}
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
+                {% endfor %}
+            </section>
+        {% endif %}
+    {% endif %}
+</header>

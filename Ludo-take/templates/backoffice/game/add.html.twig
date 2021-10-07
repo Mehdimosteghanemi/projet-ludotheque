@@ -1,0 +1,44 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux{% endblock %}
+
+{% block body %}
+    <div class="backoffice__form">
+        {{form_start(formView)}}
+            <div class="input-text__row">
+                {{ form_widget(formView.name) }}
+                {{ form_label(formView.name) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.description) }}
+                {{ form_label(formView.description) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.images) }}
+                {{ form_label(formView.images) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.difficulty) }}
+                {{ form_label(formView.difficulty) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.players) }}
+                {{ form_label(formView.players) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.time_of) }}
+                {{ form_label(formView.time_of) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.stock) }}
+                {{ form_label(formView.stock) }}
+            </div>       
+            <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
+            <button class="button button__principal">{{ button_label|default('Créer') }}</button>
+        {{form_end(formView)}}
+    </div>    
+    <a class="button button__return" href="{{path('backoffice_game_index')}}">Retour à la list</a>
+    
+{% endblock %}
+

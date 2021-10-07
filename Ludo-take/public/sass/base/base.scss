@@ -1,6 +1,7 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
+
 h1{
     font-size: 4em;
     @media (max-width: 600px) {
@@ -42,6 +43,7 @@ body {
     -moz-box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.63);
     background-color: white;
     border: 2px black solid; 
+    border-top: none;
     @include flex-djaw(column, center);
     width: 75%;
     margin: auto;
@@ -60,7 +62,7 @@ body:has(>.one__page) {
 }
 
 .visitor__section {
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 em {
@@ -68,12 +70,13 @@ em {
     font-style: italic;
 }
 
-.first__section {
-    padding-top: 117px;
-}
 .one__page {
     height: 100vh;
     padding: 0px;
     border-top: none;
     border-bottom: none;
+}
+
+.hidden {
+    display: none;
 }

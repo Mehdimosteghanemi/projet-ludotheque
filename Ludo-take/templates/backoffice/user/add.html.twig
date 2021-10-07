@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux{% endblock %}
+
+{% block body %}
+
+    <div class="backoffice__form">
+        {{form_start(formView)}}
+             <div class="input-text__row">
+                {{ form_widget(formView.firstname, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.firstname, 'Prénom',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>  
+            <div class="input-text__row">
+                {{ form_widget(formView.lastname, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.lastname, 'Nom',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.email, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.email, 'E-mail',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.plainPassword, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.plainPassword, 'Mot de passe',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.address_road, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.address_road, 'Rue',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.address_number, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.address_number, 'Numéro',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.address_zip_code, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.address_zip_code, 'Code postal',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>   
+            <div class="input-text__row">
+                {{ form_widget(formView.address_city, {
+                    'attr': {'class': 'input-text__row__input'}
+                }) }}
+                {{ form_label(formView.address_city, 'Ville',{
+                    'label_attr': {'class': 'input-text__row__label'}
+                }) }}
+            </div>
+            {# <div class="input-text__row">
+                {{ form_widget(formView.address_detail) }}
+                {{ form_label(formView.address_detail) }}
+            </div> #} 
+            <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
+            <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
+            <div class="hidden">
+                {{ form_row(formView.submit) }}
+            </div>
+        {{form_end(formView)}}
+    </div>
+        <a class="button button__return" href="{{path('backoffice_game_index')}}">Retour à la list</a>
+{% endblock %}

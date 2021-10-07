@@ -7,10 +7,12 @@ button {
  //     padding: 5px;
  //     border: red solid;
  // }
+
  .button {
      border: black solid 2px;
      margin: 5px;
      padding: 7px;
+     font-weight: bold;
      border-radius: 10px;
      transition:all 200ms ease-in-out;
  
@@ -18,6 +20,27 @@ button {
          color: white;
      }
  
+     &--add-chest {
+         background-color: $clr-add;
+         padding: 2px 5px;
+         font-size: 0.5em;
+         &:hover{
+            background-color: $clr-add-hover;
+        }
+     }
+
+     &--delete-chest {
+        background-color: $clr-delete;
+        padding: 2px 5px;
+        font-size: 1em;
+        font-weight: bold;
+        border: 2px solid black;
+        border-radius: 10px;
+        &:hover{
+           background-color: $clr-delete-hover;
+       }
+    }
+
      &--signin {
          background-color: $clr-signin;
          &:hover {
@@ -33,12 +56,7 @@ button {
      }
  
      &--log-in-out {
-         background-color: $clr-login;
-         @media(min-width: 900px) {
-            position: absolute;
-            top: 20px;
-            right: 20px;  
-         }
+        background-color: $clr-login;
          
          &:hover {
              background-color: darken($clr-login, 15%);
@@ -81,4 +99,68 @@ button {
      }
  
  }
+ 
+ .button {
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 2px solid rgba(255, 255, 255, 0);
+    transition: all 400ms ease;
+
+    &:hover {
+        border: 2px solid white;
+    }
+
+    &__principal {
+        background-color: $clr-btn-principal;
+
+        &--nav {
+            margin: 0px;
+            border: none;
+            box-shadow: none;
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px  $clr-btn-principal-hover; 
+        }
+    }
+
+    &__secondary {
+        background-color: $clr-btn-secondary;
+
+        &--nav {
+            margin: 0px;
+            padding: 2px;
+        }
+
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-btn-secondary-hover; 
+        }
+    }
+
+    &__ter {
+        background-color: $clr-btn-ter;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px $clr-btn-ter-hover; 
+        }
+    }
+
+    &__return {
+        background-color: $clr-btn-return;
+        text-decoration: underline;
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-btn-return-hover; 
+        }
+    }
+
+    &__delete {
+        background-color: $clr-btn-delete;
+        &:hover {
+            box-shadow: 0px 0px 0px 3px $clr-btn-delete-hover; 
+        }
+    }
+}
  
