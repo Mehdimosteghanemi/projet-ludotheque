@@ -6,7 +6,7 @@
 
     <div class="backoffice__form">
         {{form_start(formView)}}
-             <div class="input-text__row">
+            <div class="input-text__row">
                 {{ form_widget(formView.firstname, {
                     'attr': {'class': 'input-text__row__input'}
                 }) }}
@@ -76,7 +76,7 @@
             </div> #} 
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
             <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
-            <div class="hidden">
+             <div class="hidden">
                 {{ form_row(formView.submit) }}
             </div>
         {{form_end(formView)}}

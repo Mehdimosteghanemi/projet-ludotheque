@@ -34,7 +34,7 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
             'title' => 'Utilisateur',
             'classRoute' => 'user',
-            'headerArray' => ['id', 'nom', 'prénom', 'adresse', 'numéro de rue', 'code postal', 'ville', 'complément d\'adresse', 'e-mail', 'mot de passe', 'role', 'statu'],
+            'headerArray' => ['id', 'nom/prénom', 'adresse', 'e-mail', 'role', 'statut', 'option'],
             'user' => $user
         ]);
     }
@@ -77,7 +77,7 @@ class UserController extends AbstractController
         return $this->renderForm('backoffice/user/add.html.twig', [
             'formView' => $form,
             'user' => $user,
-            'title' => 'Utilisateurs',
+            'title' => 'Ajout d\'un utilisateur',
             'classRoute' => 'user',
     
         ]);
@@ -112,12 +112,19 @@ class UserController extends AbstractController
      */
     public function update(Request $request, User $user, UserPasswordHasherInterface $passwordHasher)
     {
-        $this->denyAccessUnlessGranted('USER_EDIT', $user, "Vous ne passerez paaaaaaaaaas !!");
+        // $this->denyAccessUnlessGranted('USER_EDIT', $user, "Vous ne passerez paaaaaaaaaas !!");
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setPassword(
+                $passwordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -126,7 +133,9 @@ class UserController extends AbstractController
 
         return $this->renderForm('backoffice/user/update.html.twig', [
             'user' => $user,
-            'form' => $form
+            'formView' => $form,
+            'title' => 'Edition d\'un utilisateur',
+            'classRoute' => 'user',
         ]);
     }
 

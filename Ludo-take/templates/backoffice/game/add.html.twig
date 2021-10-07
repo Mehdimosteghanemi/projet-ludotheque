@@ -4,8 +4,7 @@
 {% block title %}Jeux{% endblock %}
 
 {% block body %}
-
-  <h2>Ajout d'un jeu</h2>
+    <div class="backoffice__form">
         {{form_start(formView)}}
             <div class="input-text__row">
                 {{ form_widget(formView.name) }}
@@ -34,14 +33,12 @@
             <div class="input-text__row">
                 {{ form_widget(formView.stock) }}
                 {{ form_label(formView.stock) }}
-            </div>   
-            <div class="input-text__row">
-                {{ form_widget(formView.available) }}
-                {{ form_label(formView.available) }}
-            </div>      
+            </div>       
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
-            <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
+            <button class="button button__principal">{{ button_label|default('Créer') }}</button>
         {{form_end(formView)}}
-        <a class="button button__return" href="{{path('backoffice_game_index')}}">Retour à la list</a>
+    </div>    
+    <a class="button button__return" href="{{path('backoffice_game_index')}}">Retour à la list</a>
+    
 {% endblock %}
 

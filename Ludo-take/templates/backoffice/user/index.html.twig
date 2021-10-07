@@ -1,44 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur{% endblock %}
+{% block title %}jeux{% endblock %}
 
 {% block body %}
 
-
-     <h1>Utilisateurs</h1>
-
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Roles</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for currentUser in user %}
-                <tr>
-                    <td>{{ currentUser.id }}</td>
-                    <td>{{ currentUser.firstname }}</td>
-                    <td>{{ currentUser.lastname }}</td>
-                    <td>{{ currentUser.email }}</td>
-                    <td>{{ currentUser.roles ? currentUser.roles|json_encode : '' }}</td>
-                    <td>
-                        <a href="{{ path('backoffice_user_show', {'id': currentUser.id}) }}">show</a>
-                        <a href="{{ path('backoffice_user_update', {'id': currentUser.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="9">no records found</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-   
-    <a href="{{ path('backoffice_user_add') }}">Create new</a>
-
+    <main class="backoffice">
+        {# <section class="backoffice__section__title">
+            <h1>Bienvenue sur la partie jeu</h1>
+            <p>Ici tu pourras voir la liste complète des jeux existantes, les modifiers et les supprimer.</p>
+        </section> #}
+        
+        <div class="backoffice-table">
+            <div class="backoffice-table__content">
+                {# <div class="backoffice-table__row backoffice-table__row--head">
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Nom</h3>
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Option</h3>
+                </div> #}
+                {% for user in users|reverse %}
+                    <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                        <div class="backoffice-table__row__col">{{user.id}}</div>
+                        <div class="backoffice-table__row__col">{{user.lastname}}/{{user.firstname}}</div>
+                        <div class="backoffice-table__row__col">{{user.addressNumber}} {{user.addressRoad}} {{user.addressZipCode}} {{user.addressCity}}</div>
+                        <div class="backoffice-table__row__col">{{user.email}}</div>
+                        <div class="backoffice-table__row__col">
+                            {% for role in user.roles %}
+                                {{role}} 
+                            {% endfor %}
+                        </div>
+                        <div class="backoffice-table__row__col">{{user.status}}</div>
+                        <div class="backoffice-table__row__col">
+                            <a class="button button__principal backoffice-table__row__col__button" href="{{ path('backoffice_user_update', {'id': user.id}) }}">Editer</a>
+                            <form method="post" action="{{ path('backoffice_user_delete', {'id': user.id}) }}">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete' ~ user.id) }}"/>
+                                <button class="button button__delete backoffice-table__row__col__button" type="submit">Supprimer</button>
+                            </form> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
 {% endblock %}
