@@ -3,7 +3,7 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-  <h2>Edition d'une catégorie</h2>
+    <div class="backoffice__form">
         {{form_start(formView)}}
             <div class="input-text__row">
                 {{ form_widget(formView.name) }}
@@ -12,6 +12,7 @@
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
             <button class="button button__principal">Editer</button>
         {{form_end(formView)}}
-        <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour à la liste</a>
+    </div>
+    <a class="button button__return" href="{{path('backoffice_category_index')}}">Retour à la liste</a>
 {% endblock %}
 

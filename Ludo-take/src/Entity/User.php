@@ -38,8 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
-     * @Assert\Email(message = "Mot de passe incorect.")
-     * @Assert\NotBlank(message="Merci de saisir un mot de passe")
      * @ORM\Column(type="string")
      */
     private $password;

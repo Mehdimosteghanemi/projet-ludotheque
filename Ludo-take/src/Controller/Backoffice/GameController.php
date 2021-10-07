@@ -70,7 +70,7 @@ class GameController extends AbstractController
         return $this->render('backoffice/game/add.html.twig', [
             'formView' => $form->createView(),
             'classRoute' => 'game',
-            'title' => 'Catégories',
+            'title' => 'Ajout d\'un nouveau jeu',
         ]);
     }
 
@@ -129,7 +129,7 @@ class GameController extends AbstractController
             'game' => $game,
             'formView' => $form->createView(),
             'classRoute' => 'game',
-            'title' => 'Catégories',
+            'title' => 'Edition d\'un jeu',
         ]);
     }
 
