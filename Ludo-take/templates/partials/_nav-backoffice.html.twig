@@ -37,13 +37,19 @@
     </nav>  
     {% if title is not same as('home') %}
         <nav class="header__navigation header__navigation--backoffice"> 
-
-            <a class="button button__secondary" href="{{ path('backoffice_' ~ classRoute ~ '_add') }}">ajouter</a>         
-                <form class="search-box" action="{{ path('search_index') }}">
+            {% if app.request.get('_route') matches '{_add$}'%}
+                <a class="button button__return" href="{{path('backoffice_' ~ classRoute ~ '_index')}}">Retour à la list</a>
+                <h2>{{title}}</h2>
+            {% else %}
+                <a class="button button__secondary" href="{{ path('backoffice_' ~ classRoute ~ '_add') }}">ajouter</a> 
+                <h2>{{title}}</h2>
+            {% endif %}
+                    
+                {# <form class="search-box" action="{{ path('search_index') }}">
                     <input class="s-box" type="search" placeholder="Ex : Monopoly" aria-label="Search" name="search">
                     <button class="s-btn" type="submit">GO</button>
-                </form>
-            <h2>{{title}}</h2>
+                </form> #}
+            
         </nav>
         {% if headerArray is defined %}  
             <section class="header__navigation header__navigation--backoffice">

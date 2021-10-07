@@ -70,7 +70,7 @@ class CategoryController extends AbstractController
         return $this->render('backoffice/category/add.html.twig', [
             'formView' => $form->createView(),
             'classRoute' => 'category',
-            'title' => 'Catégories',
+            'title' => 'Ajout d\'une catégorie',
         ]);
     }
 
@@ -129,7 +129,7 @@ class CategoryController extends AbstractController
             'category' => $category,
             'formView' => $form->createView(),
             'classRoute' => 'category',
-            'title' => 'Catégories',
+            'title' => 'Edition d\'une catégorie',
         ]);
     }
 

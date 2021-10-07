@@ -77,7 +77,7 @@ class UserController extends AbstractController
         return $this->renderForm('backoffice/user/add.html.twig', [
             'formView' => $form,
             'user' => $user,
-            'title' => 'Utilisateurs',
+            'title' => 'Ajout d\'un utilisateur',
             'classRoute' => 'user',
     
         ]);
@@ -134,7 +134,7 @@ class UserController extends AbstractController
         return $this->renderForm('backoffice/user/update.html.twig', [
             'user' => $user,
             'formView' => $form,
-            'title' => 'Utilisateurs',
+            'title' => 'Edition d\'un utilisateur',
             'classRoute' => 'user',
         ]);
     }
