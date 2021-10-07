@@ -114,6 +114,12 @@ button {
     &__principal {
         background-color: $clr-btn-principal;
 
+        &--nav {
+            margin: 0px;
+            border: none;
+            box-shadow: none;
+        }
+
         &:hover {
             box-shadow: 0px 0px 0px 3px  $clr-btn-principal-hover; 
         }
@@ -121,6 +127,11 @@ button {
 
     &__secondary {
         background-color: $clr-btn-secondary;
+
+        &--nav {
+            margin: 0px;
+            padding: 2px;
+        }
 
         &:hover {
             color: black;
@@ -142,6 +153,13 @@ button {
         &:hover {
             color: black;
             box-shadow: 0px 0px 0px 3px $clr-btn-return-hover; 
+        }
+    }
+
+    &__delete {
+        background-color: $clr-btn-delete;
+        &:hover {
+            box-shadow: 0px 0px 0px 3px $clr-btn-delete-hover; 
         }
     }
 }

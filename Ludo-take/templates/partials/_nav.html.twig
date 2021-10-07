@@ -32,7 +32,14 @@
                     </form>
                 </li>   
                 <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('chest_index') }}">Coffre</a></li> 
-                <li class="button__arround--log-in-out"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_logout') }}">Me déconnecter</a></li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+
+                    <li class="button__arround"><a class="button button--4 button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('backoffice_index') }}">Backoffice</a></li> 
+
+                {% endif %}
+
+                <li class="button__arround button__arround--log-in-out"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_logout') }}">Me déconnecter</a></li>
 
             {% else %}
 
@@ -41,7 +48,7 @@
                 <li class="button__arround"><a class="button button--2 header__navigation__list__button header__navigation__list__button--2" href="{{ path('home_index') }}#games">Nos jeux</a></li>
                 <li class="button__arround"><a class="button button--5 header__navigation__list__button header__navigation__list__button--5" href="{{ path('home_index') }}#offers">Nos offres</a></li>
                 <li class="button__arround"><a class="button button--faq header__navigation__list__button header__navigation__list__button--faq" href="{{ path('home_index') }}#faq">FAQ</a></li>
-                <li class="button__arround--log-in-out"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_login') }}">Me connecter</a></li>
+                <li class="button__arround button__arround--log-in-out"><a class="button button--log-in-out header__head__button header__head__button--log-in-out" href="{{ path('app_login') }}">Me connecter</a></li>
 
             {% endif %}
         </ul>

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}jeux{% endblock %}
+
+{% block body %}
+
+    <main class="backoffice">
+        {# <section class="backoffice__section__title">
+            <h1>Bienvenue sur la partie jeu</h1>
+            <p>Ici tu pourras voir la liste complète des jeux existantes, les modifiers et les supprimer.</p>
+        </section> #}
+        
+        <div class="backoffice-table">
+            <div class="backoffice-table__content">
+                {# <div class="backoffice-table__row backoffice-table__row--head">
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Nom</h3>
+                    <h3 class="backoffice-table__row__col backoffice-table__row__col--head">Option</h3>
+                </div> #}
+                {% for game in games|reverse %}
+                    <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                        <div class="backoffice-table__row__col">{{game.name}}</div>
+                        <div class="backoffice-table__row__col">{{game.description[0:100]}}...</div>
+                        <div class="backoffice-table__row__col"><img class="chest-table__row__col__image" src="{{game.images}}" alt=""></div>
+                        <div class="backoffice-table__row__col">{{game.difficulty}}</div>
+                        <div class="backoffice-table__row__col">{{game.players}}</div>
+                        <div class="backoffice-table__row__col">{{game.timeOf}}</div>
+                        <div class="backoffice-table__row__col">{{game.available|default(0)}}/{{game.stock|default(0)}}</div>
+                        <div class="backoffice-table__row__col">
+                            <a class="button button__principal backoffice-table__row__col__button" href="{{ path('backoffice_game_update', {'id': game.id}) }}">Editer</a>
+                            <form method="post" action="{{ path('backoffice_game_delete', {'id': game.id}) }}">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete' ~ game.id) }}"/>
+                                <button class="button button__delete backoffice-table__row__col__button" type="submit">Supprimer</button>
+                            </form> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
