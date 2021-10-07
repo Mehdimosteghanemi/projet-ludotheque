@@ -52,7 +52,7 @@
         transform: rotateY(0deg);
     }
 
-    &:hover {
+    &--front:hover {
         background-color: $clr-button-flip-hover;
 
     }
