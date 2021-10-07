@@ -25,8 +25,8 @@
             {% if is_granted('ROLE_SUPER_ADMIN') %}
  
                 <li class="button__arround">
-                    <a class="link" href="{{path('backoffice_category_index')}}">Utilisateurs</a>
-                    <a class="button button__secondary button__secondary--nav" href="#">+</a>
+                    <a class="link" href="{{path('backoffice_user_index')}}">Utilisateurs</a>
+                    <a class="button button__secondary button__secondary--nav" href="{{path('backoffice_user_add')}}">+</a>
                 </li>
                
             {% endif %}
