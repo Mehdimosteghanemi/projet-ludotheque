@@ -2,7 +2,7 @@
 
     margin-top: 10px;
     text-align: center;
-    background-color: #EE7A45;
+    background-color: $clr-flash;
     height: 3rem;
     width: 50%;
     transform: translateX(50%);
@@ -11,6 +11,7 @@
     &__error {
         padding-top: 7px;
         font-size: 2rem;
+        background-color: $clr-flash-error;
     }
 
 }
