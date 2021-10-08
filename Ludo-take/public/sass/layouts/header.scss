@@ -46,6 +46,11 @@
             }
         }
 
+        &--backoffice {
+            @include flex-djaw(0, space-around, center);
+            border-top: 2px solid black;
+        }
+
     }
 
 }

@@ -1,6 +1,6 @@
 let flip = {
     // Put on array every element who have the class .button__flip--back
-    front : document.getElementsByClassName('button__flip'),
+    front : document.getElementsByClassName('button__flip--front'),
     back : document.getElementsByClassName('button__flip--back'),
     gameOnChest : document.querySelector('.command-table__info__chest'),
     init: function() {
@@ -21,7 +21,6 @@ let flip = {
     },
 
     numberChange: function() {
-        console.log('coucou');
         if (flip.gameOnChest.textContent <= 7) {
             flip.gameOnChest.classList.remove('command-table__info__chest--unvalid');
             flip.gameOnChest.classList.add('command-table__info__chest--valid');
