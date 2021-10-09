@@ -1,3 +1,6 @@
+$clr-principal: rgb(30, 139, 89);
+$clr-principal-hover: rgb(41, 202, 127);
+
 $clr-delete: rgb(209, 34, 34);
 $clr-delete-hover: rgb(172, 17, 17);
 $clr-modify: blue;
@@ -43,9 +46,9 @@ $clr-btn-return : white;
 $clr-btn-return-hover : rgb(160, 160, 160);
 $clr-btn-delete : rgb(238, 75, 75);
 $clr-btn-delete-hover : rgb(245, 101, 101);
-$clr-principal: rgb(30, 139, 89);
-$clr-principal-hover: rgb(41, 202, 127);
 
-$clr-table-bg : rgb(30, 139, 89);
-$clr-flash: rgb(30, 139, 89);
+$clr-table-bg : $clr-principal;
+$clr-flash: $clr-principal;
 $clr-flash-error: rgb(238, 75, 75);
+$clr-flash-success: $clr-principal;
+$clr-flash-modify: rgb(245, 242, 91);
