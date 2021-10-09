@@ -111,8 +111,12 @@ button {
         font-size: 1.2em;
         &:hover {
             color: black;
-            box-shadow: 0px 0px 0px 3px $clr-btn-nav-hover; 
+            box-shadow: 0px 0px 0px 3px $clr-principal; 
         }
+    }
+
+    &--active {
+        text-decoration: underline $clr-principal 4px;
     }
 }
  

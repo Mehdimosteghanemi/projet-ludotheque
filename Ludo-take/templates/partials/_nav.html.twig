@@ -16,8 +16,8 @@
         <ul class="header__navigation__list">
             {% if is_granted('ROLE_USER') %}
 
-                <li class="button__arround"><a class="button button--nav button--favorites header__navigation__list__button header__navigation__list__button--favorites" href="#">Favoris</a></li>
-                <li class="button__arround"><a class="button button--nav button--games header__navigation__list__button header__navigation__list__button--games" href="{{ path('game_index') }}">Liste des jeux</a></li>                
+                <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'fav_index') ? 'button--active' : '' }}" href="#">Favoris</a></li>
+                <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'game_index') ? 'button--active' : '' }}" href="{{ path('game_index') }}">Liste des jeux</a></li>                
                 <li class="button__arround">
                    {# <div class="search-box">
                         <input class="s-box" type="text" name="search" placeholder="Type keyword">
@@ -31,11 +31,11 @@
                         {# <i class="fab fa-searchengin"></i> #}
                     </form>
                 </li>   
-                <li class="button__arround"><a class="button button--nav button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('chest_index') }}">Coffre</a></li> 
+                <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'chest_index') ? 'button--active' : '' }}" href="{{ path('chest_index') }}">Coffre</a></li> 
 
                 {% if is_granted('ROLE_ADMIN') %}
 
-                    <li class="button__arround"><a class="button button--nav button--chest header__navigation__list__button header__navigation__list__button--chest" href="{{ path('backoffice_index') }}">Backoffice</a></li> 
+                    <li class="button__arround"><a class="button button--nav" href="{{ path('backoffice_index') }}">Backoffice</a></li> 
 
                 {% endif %}
 

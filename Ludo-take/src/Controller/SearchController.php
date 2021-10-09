@@ -46,8 +46,8 @@ class SearchController extends AbstractController
 
         }
         
-        return $this->render('search/index.html.twig', [
-            'results' => $searchResult,
+        return $this->render('game/index.html.twig', [
+            'gamesList' => $searchResult,
             'query' => $query
         ]);
     }  
