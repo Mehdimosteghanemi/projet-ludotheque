@@ -27,7 +27,7 @@
                 {% for order in app.user.orders|reverse %}
                     {% if order.status == 2 %}
                         {% set inChest = inChest + 1 %}
-                        <div class="chest-table__row chest-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
+                        <div class="chest-table__row chest-table__row--{% if inChest is odd %}odd{% else %}pair{% endif %}">
                             <div class="chest-table__row__col">
                                 <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
                                 <p class="chest-table__row__col__p">{{order.games.name}}</p>

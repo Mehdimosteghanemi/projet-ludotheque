@@ -74,6 +74,10 @@
                 {{ form_widget(formView.address_detail) }}
                 {{ form_label(formView.address_detail) }}
             </div> #} 
+            <div class="input-text__row">
+                {{ form_widget(formView.roles) }}
+                {{ form_label(formView.roles) }}
+            </div>
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
             <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
             <div class="hidden">
