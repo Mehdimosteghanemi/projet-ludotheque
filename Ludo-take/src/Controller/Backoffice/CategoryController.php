@@ -118,7 +118,7 @@ class CategoryController extends AbstractController
             if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
                 $this->getDoctrine()->getManager()->flush();
 
-                $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
+                $this->addFlash('modify', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
             }
 
             return $this->redirectToRoute('backoffice_category_index');
@@ -153,9 +153,9 @@ class CategoryController extends AbstractController
             $em->flush();
 
 
-            $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
         } else {
-            $this->addFlash('info', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
+            $this->addFlash('error', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_category_index');

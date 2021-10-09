@@ -71,7 +71,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('info', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été ajouté.');
+            $this->addFlash('success', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été ajouté.');
             
             return $this->redirectToRoute('backoffice_user_index');
         }
@@ -123,7 +123,7 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('info', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été modifié.');
+            $this->addFlash('modify', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été modifié.');
 
             return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -155,9 +155,9 @@ class UserController extends AbstractController
             $em->remove($user);
             $em->flush();
 
-            $this->addFlash('info', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été supprimé.');
+            $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été supprimé.');
         } else {
-            $this->addFlash('info', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
+            $this->addFlash('error', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);

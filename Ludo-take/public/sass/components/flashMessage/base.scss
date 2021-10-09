@@ -11,6 +11,14 @@
         background-color: $clr-flash-error;
     }
 
+    &__success {
+        background-color: $clr-flash-success;
+    }
+
+    &__modify {
+        background-color: $clr-flash-modify;
+    }
+
     &__message {
         color: white;
     }
