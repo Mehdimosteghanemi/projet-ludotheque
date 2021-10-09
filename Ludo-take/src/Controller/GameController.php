@@ -28,12 +28,13 @@ class GameController extends AbstractController
      * @Route("/", name="index")
      * 
      */
-    public function index(GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function index(GameRepository $gameRepository, CategoryRepository $categoryRepository, Request $request, PaginatorInterface $paginatorInterface): Response
     {
 
         $data = $gameRepository->findBy([], ['created_at' => 'DESC', ]);
+        $category = $categoryRepository->findAll();
 
-        
+        dump($category, $data);
         
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
@@ -43,6 +44,7 @@ class GameController extends AbstractController
 
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList,
+            'category' => $category
         ]);
     }
   
