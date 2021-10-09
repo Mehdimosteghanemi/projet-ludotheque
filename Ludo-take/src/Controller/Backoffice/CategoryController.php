@@ -155,7 +155,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
         } else {
-            $this->addFlash('info', 'erreur.');
+            $this->addFlash('info', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_category_index');
