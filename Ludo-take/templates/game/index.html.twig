@@ -8,12 +8,9 @@
         <div class="categories">
             <div class="block_content">
                 <ul >
-                    <li><a href="{{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:4} ) }}" class="buttonCategory">Jeux en famille</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:6} ) }}" class="buttonCategory">Jeux expert</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:1} ) }}" class="buttonCategory">Jeux coopératifs</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:5} ) }}" class="buttonCategory">Jeux escape</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:2} ) }}" class="buttonCategory">Jeux à deux</a></li>
+                    {% for category in categoriesList %}
+                        <li><a href="{{ path('game_indexByCategory', {id: category.id } ) }}" class="buttonCategory">{{category.name}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
