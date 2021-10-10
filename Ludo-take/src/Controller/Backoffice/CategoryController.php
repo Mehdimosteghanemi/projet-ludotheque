@@ -134,7 +134,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * Method used to link a category with game
      * 
      * URL: /backoffice/categorie/lien/{id}
@@ -152,6 +152,44 @@ class CategoryController extends AbstractController
             'classRoute' => 'category',
             'title' => $category->getName(),
             'gameList' => $gameRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * Method used to link a category with game
+     * 
+     * URL: /backoffice/categorie/lien/{id}
+     * ROUTE: :backoffice_category_link
+     *
+     * @Route("/lien/{id}", name="link_post", methods={"POST"})
+     * 
+     * @return Response
+     */
+    public function createLink(Request $request ,Category $category, GameRepository $gameRepository, CategoryRepository $categoryRepository)
+    {
+        if ($this->isCsrfTokenValid('csurf'.$category->getId(), $request->request->get('token'))) {
+            foreach ($_POST as $gameId => $value) {
+                if ($value === "on") {
+                    $category->addGame($gameRepository->find($gameId));
+                } elseif ($value === "off") {
+                    $category->removeGame($gameRepository->find($gameId));
+                }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($category);
+                $em->flush();
+            }
+
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été lié aux jeux.');
+        } else {
+            $this->addFlash('error', 'Une erreur est survenue la modification n\'a pas eu lieux.');
+        }
+
+        return $this->redirectToRoute('backoffice_category_index', [
+            'categories' => $categoryRepository->findAll(),
+            'title' => 'Catégories',
+            'classRoute' => 'category',
+            'headerArray' => ['nom', 'option',],
+            'category' => $category
         ]);
     }
 

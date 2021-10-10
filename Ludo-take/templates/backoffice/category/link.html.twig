@@ -6,12 +6,22 @@
     <div class="backoffice__form">
         <form class="form__categories" method="POST">
             {% for game in gameList %}
-                <input class="hidden form__categories__input" type="checkbox" name="{{ game.id }}" id="{{ game.id }}">  
+                {% for categoryGame in game.category %}
+                    {% if categoryGame.name == category.name %}
+                        <input class="hidden form__categories__input" type="checkbox" name="{{ game.id }}" id="{{ game.id ~ "-first" }}" value="off" checked>
+                    {% endif %}
+                {% endfor %}
+                <input class="hidden form__categories__input" type="checkbox" name="{{ game.id }}" id="{{ game.id }}"
+                    {% for categoryGame in game.category %}
+                        {{ (categoryGame.name == category.name) ? "checked" : "" }}
+                    {% endfor %}
+                >  
                 <label class="form__categories__label" for="{{ game.id }}">
                     <img class="form__categories__image"  src="{{ game.images }}" alt="">
                     <p class="form__categories__text">{{ game.name}}</p>
                 </label>              
             {% endfor %}
+            <input type="hidden" name="token" value="{{ csrf_token('csurf' ~ category.id) }}"/>
             <button class="button button__principal">Validée la selection</button>
         </form>
     </div>
