@@ -1,4 +1,88 @@
 .section__404 {
-    @include flex-djaw(0, center, center,);
+    @include flex-djaw(column, center, center,);
     height: 100%;
+}
+
+.card-404 {
+    width: 180px;
+    height: 300px;
+}
+
+.card-troll {
+    width: 180px;
+
+    &--text {
+        text-align: center;
+    }
+}
+
+.card {
+
+    &__container {
+        @include flex-djaw();  
+    }
+    
+    &__flip {
+        backface-visibility: hidden;
+        z-index: -1;
+
+        &__inner {
+            position: relative;
+            transition: all 1000ms; 
+            transform-style: preserve-3d;
+            animation: flip 800ms linear 3000ms forwards;
+        }
+        
+        &--front {
+            transform: rotateY(0deg);
+        }
+
+        &--back {
+            position: absolute;
+            top: 0;
+            transform: rotateY(180deg);
+        }
+
+        &__finger {
+            height: 100px;
+            position: absolute;
+            top: 120px;
+            left: 80px;
+            animation: shake 200ms alternate infinite forwards;
+        }
+
+        &--troll {
+
+            top: 25%;
+        }
+    }
+    
+}
+
+.dice {
+    
+    &__img {
+        background: center / contain url(https://i.pinimg.com/originals/6e/47/18/6e4718fe800770147f83bbf59c136ed1.jpg);
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        @include flex-djaw(0, center, center);  
+        
+    }
+    
+    &__number {
+        font-weight: bold;
+        color: white;
+        font-size: 1.6em;
+    }
+}
+
+@keyframes flip {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(180deg);}
+}
+
+@keyframes shake {
+    from {transform: rotate(-40deg);}
+    to {transform: rotate(40deg);}
 }
