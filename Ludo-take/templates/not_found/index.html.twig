@@ -1,19 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}404{% endblock %}
+{% block title %}{{parent()}} 404{% endblock %}
 
 {% block body %}
 
 <div class="section__404">
-    <h1>NOT FOUND {{ search }}! </h1>
-    <p>Une erreur est survenue </p>
-    <div class="card">
-        <div class="card__flip--front">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCTOkB6u-E6EsjPE_2mK39Z-DcJV0RPYqNpLzjVDXQzp8rlkVKXni52PT-N3tknK8dMc&usqp=CAU" alt="">
+    <h2>A-t-on trouvé  la page : {{ search }}! </h2>
+    <h1>???</h1>
+    <div class="card__container">
+        {# card 1 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCTOkB6u-E6EsjPE_2mK39Z-DcJV0RPYqNpLzjVDXQzp8rlkVKXni52PT-N3tknK8dMc&usqp=CAU" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+            </div>
         </div>
-        <div class="card__flip--back">
-            <p>Not found</p>
+        {# card 2 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://i.pinimg.com/originals/c5/b1/f3/c5b1f35d29702f1d9cb49f5760029603.png" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+                <img class="card__flip__finger" src="./img/finger.png" alt="">
+            </div>
+        </div>
+        {# card 3 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://ludiworld.com/newshop/30426/100-proteges-cartes-dos-magic-the-gathering-ultra-pro.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back card__flip--troll">
+                <img class="card-troll" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+                <h3 class="card-troll--text">NOPE !!!</h3>
+            </div>
+        </div>
+        {# card 4 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://i.pinimg.com/236x/a3/30/6e/a3306e3499202e07c3e384f01df1d7ab.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+            </div>
+        </div>
+        {# card 5 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://www.ccmagique.fr/wp-content/uploads/195-2.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+            </div>
         </div>
     </div>
+    <div class="dice__img">
+        <p class="dice__number">20</p>
+    </div>
+    
 </div>
+{% endblock %}
+{% block javascripts %} 
+    <script src="{{ asset('js/roll.js') }}"></script> 
 {% endblock %}
