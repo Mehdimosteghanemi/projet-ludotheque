@@ -5,6 +5,7 @@ namespace App\Controller\Backoffice;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -130,6 +131,27 @@ class CategoryController extends AbstractController
             'formView' => $form->createView(),
             'classRoute' => 'category',
             'title' => 'Edition d\'une catégorie',
+        ]);
+    }
+
+        /**
+     * Method used to link a category with game
+     * 
+     * URL: /backoffice/categorie/lien/{id}
+     * ROUTE: :backoffice_category_link
+     *
+     * @Route("/lien/{id}", name="link", methods={"GET"})
+     * 
+     * @return Response
+     */
+    public function link(Category $category, GameRepository $gameRepository)
+    {
+
+        return $this->render('backoffice/category/link.html.twig', [
+            'category' => $category,
+            'classRoute' => 'category',
+            'title' => $category->getName(),
+            'gameList' => $gameRepository->findAll(),
         ]);
     }
 
