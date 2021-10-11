@@ -18,7 +18,6 @@
                 </div> #}
                 {% for user in users|reverse %}
                     <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
-                        <div class="backoffice-table__row__col">{{user.id}}</div>
                         <div class="backoffice-table__row__col">{{user.lastname}} {{user.firstname}}</div>
                         <div class="backoffice-table__row__col">{{user.addressNumber}} {{user.addressRoad}} {{user.addressZipCode}} {{user.addressCity}}</div>
                         <div class="backoffice-table__row__col">{{user.email}}</div>
