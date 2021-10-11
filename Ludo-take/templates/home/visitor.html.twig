@@ -3,6 +3,8 @@
         <div class="header__separate__line" id="email"></div>
     </div>
 
+    
+
     <section class="visitor__section visitor__section--join">
         <h2 class="visitor__section__title">Des jeux livrés chez toi en un clique</h2>
         <p class="visitor__section__paragraph">En vrai il faut 12 cliques, et encore plus ça peut même être après demain pour la livraison, mais on t'aime tout de même</p>
@@ -20,15 +22,31 @@
     </div>
 
     <section class="visitor__section visitor__section--concept">
-        <h2 class="visitor__section__title">Le concept</h2>
-        <p class="visitor__section__paragraph">Parce que acheter un jeu peu coûter cher, parce que produire un jeu joue sur la santé de la planète. Pour éviter de solliciter la fabrication d'un jeu ou encore
-        sa distribution en camion / bateau. Nous avons décider de pousser au maximum l'utilisation d'un jeu de société. Concrètement, nous trouvons le jeu en occasion, dans un bon état voir proche du neuf que nous vous proposons en location. Celui-ci sera remplacé uniquement lorsqu'il aura donné sa dernière partie pour partir la tête haute et d'avoir fait vivre des émotions à une dernière famille ou groupe d'amis! Jeux de société, organisation de soirée jeu autour d'une table et bien plus à découvrir.</p>
+        <h2 class="visitor__section__title visitor__section__title--concept">Le concept</h2>
+        <div class="visitor__section__cards">
+            <div class="visitor__section__card">
+                <img src="./img/home-visitor/cash.svg" alt="">
+                <p class="visitor__section__card__text">Parce que acheter un jeu peu couter cher et encombrer.</p>
+            </div>
+            <div class="visitor__section__card">
+                <img src="./img/home-visitor/world.svg" alt="">
+                <p class="visitor__section__card__text">Parce que produire un jeu joue sur la santé de la planète.</p>
+            </div>
+            <div class="visitor__section__card">
+                <img src="./img/home-visitor/chap.svg" alt="">
+                <p class="visitor__section__card__text">Parce que jouer est source de détante et de joie.</p>
+            </div>
+        </div>
+        <div class="visitor__section__card visitor__section__card--big">
+            <img src="./img/home-visitor/card.svg" alt="">
+            <p class="visitor__section__card__text">Nous avons décider de pousser au maximum l'utilisation d'un jeu de société. Concrètement, nous trouvons le jeu en occasion, dans un bon état voir proche du neuf que nous vous proposons en location. Celui-ci sera remplacé uniquement lorsqu'il aura donné sa dernière partie pour partir la tête haute et d'avoir fait vivre des émotions à une dernière famille ou groupe d'amis! Jeux de société, organisation de soirée jeu autour d'une table et bien plus à découvrir.</p>
+        </div>
     </section>
 
     <div class="header__separate">
         <div class="header__separate__line" id="games"></div>
     </div>
-    
+
     <section class="visitor__section visitor__section--games">
         <h2 class="visitor__section__title">Nos jeux</h2>
         <p class="visitor__section__paragraph">Des jeux, en veux-tu? En voilà!!</p>
@@ -128,7 +146,7 @@
         </div>
 
         
-        <a href="#" class="button button--signin">En voir plus...</a>
+        <a href="#" class="button button__principal">En voir plus...</a>
     </section>
 
     <div class="header__separate">
@@ -175,36 +193,50 @@
     </section>
 
     <div class="header__separate">
-        <div class="header__separate__line" id="delivery"></div>
-    </div>
-
-    <section class="visitor__section visitor__section--delivery">
-        <img src="" alt="Personnage qui porte un carton">
-        <h2 class="visitor__section__title">A la maison, en déplacement. Tu cliques, on livre en 24/48h!</h2>
-    </section>
-
-    <div class="header__separate">
         <div class="header__separate__line" id="offers"></div>
     </div>
 
     <section class="visitor__section visitor__section--offers" >
-        <h2 class="visitor__section__title">Nos offres</h2>
+        <h2 class="visitor__section__title">Une offre</h2>
         
         <div class="offers__container">
             <div class="offers__container__standard">
-                <h4>Standard</h4>
-                <p class="visitor__section__paragraph">9,99€</p>
-                <p class="visitor__section__paragraph">7 jeux chaque mois</p>
+                <h3 class="offers__container__standard__title">Standard</h3>
+                <h4 class="offers__container__standard__price"><strong class="offers__container__standard__price__number">9,99€</strong>/Mois</h4>
+                <p class="offers__container__standard__text">7 jeux chaque mois</p>
+                <p class="offers__container__standard__text">+</p>
+                <p class="offers__container__standard__text">Livraison 24h</p>
+                <p class="offers__container__standard__text">+</p>
+                <p class="offers__container__standard__text">Avantage lancement</p>
+                
+                <a href="{{ path('register') }}" class="button button__principal offers__container__standard__button">C'est trop bien !!! Je m'inscris</a>
             </div>
         </div>
-        <a href="#" class="button button--signin">C'est trop bien !!! Je m'inscris</a>
+
+        <div class="header__separate">
+        <div class="header__separate__line" id="delivery"></div>
+    </div>
+
+    <section class="visitor__section visitor__section--delivery">
+        <div class="visitor__section__card visitor__section__card--big">
+            <div>
+                <h3 class="visitor__section__card__text visitor__section__card__text--color">Pas besoin d'emprunter de chemin boueux pour atteindre le graal...</h3>
+                <h3 class="visitor__section__card__text visitor__section__card__text--color">Lud O'theque le fait pour vous !</h3>
+                <p class="visitor__section__card__text visitor__section__card__text--big">A la maison, en déplacement. Tu cliques, on livre en 24/48h!</p>
+            </div>
+            
+            <img src="./img/home-visitor/scooter.svg" alt="">
+        </div>
+        
+    </section>
+        
     </section>
       <div class="header__separate">
         <div class="header__separate__line" id="faq"></div>
     </div>
 
     <section class="visitor__section visitor__section--faq" >
-        <h2 class="visitor__section__title">Foire Aux Questions</h2>
+        <h2 class="visitor__section__title visitor__section__card__text--color">Foire Aux Questions</h2>
         <div class="faq__container">
             <div class="faq__container__box">
                 <input type="checkbox" name="question" id="question1" class="faq__container__box__checkbox">
