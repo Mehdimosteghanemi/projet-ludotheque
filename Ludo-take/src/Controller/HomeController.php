@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,11 +17,14 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="index", methods={"GET"})
      */
-    public function index(GameRepository $gameRepository): Response
+    public function index(GameRepository $gameRepository, CategoryRepository $categoryRepository): Response
     {
+        $categoryList = $categoryRepository->findAll();
+        shuffle($categoryList);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'games' => $gameRepository->findBy([], ['created_at' => 'DESC']),
+            'categoryList' => $categoryList,
         ]);
     }
 
