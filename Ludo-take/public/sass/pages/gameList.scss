@@ -1,6 +1,6 @@
 // -----------------------------------General list of game-------------------------
 .container--game {
-    padding-top: 8rem;
+    padding-top: 3rem;
     @media(max-width: 900px) {
         padding-top: 4rem;
     }
@@ -10,7 +10,8 @@
     display: block;
     width: 23%;
     float: left;
-    margin-right: 2%;
+    margin-left: 4px;
+    text-align: center;
 }
 
 .right--content {
@@ -41,7 +42,7 @@
     display: table-cell;
     vertical-align: middle;
     @media (max-width: 500px) {
-        padding-left: 5rem;
+        padding-left: 6rem;
     }
     @media (max-width:900) {
         padding-left: 7rem;
@@ -56,7 +57,17 @@
     border-bottom: lightgray 1px solid;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 900px){
+        text-align: left;
+        width: 100%;
+        height: 100%;
+        border-bottom: none;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
 }
+
 // ---------------------
 // div containing 3 parts of a games presentation(LEFT, MIDDLE AND RIGHT).
 .gallery__game--list {
@@ -168,7 +179,7 @@
 
 // Containing fillter's button.
 .block_content {
-    border-bottom: lightgray 1px solid;;
+    // border-bottom: lightgray 1px solid;
 }
 // ---------------------
 // Categories button style
@@ -189,7 +200,11 @@
 	text-shadow:0px 1px 0px #ffffff;
     text-align: center;
 	margin-bottom: 1rem;
-    width: 100%;
+    width: 40%;
+
+    @media(max-width: 1000px){
+        width: 100%;
+    }
 }
 .buttonCategory:hover {
 	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
@@ -228,9 +243,16 @@
     font-size: 1.4rem;
     font-weight: 500;
     background-color: #faf600;
-    margin: 0rem 41rem;
     border-radius: 10px;
     padding: 0.1rem;
+    width: 50%;
+    right: 50%;
+    transform: translateX(50%);
+
+    @media(min-width: 850px){
+        width: 15%;
+        transform: translateX(270%);
+    }
 }
 // ---------------------
 
