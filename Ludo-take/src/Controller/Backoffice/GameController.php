@@ -34,7 +34,7 @@ class GameController extends AbstractController
             'games' => $gameRepository->findAll(),
             'title' => 'Jeux',
             'classRoute' => 'game',
-            'headerArray' => ['nom', 'description', 'image', 'difficulté', 'joueurs', 'durée', 'stock', 'option'],
+            'headerArray' => ['nom', 'description', 'image', 'difficulté', 'joueurs', 'durée', 'stock'],
             'game' => $game
         ]);
     }

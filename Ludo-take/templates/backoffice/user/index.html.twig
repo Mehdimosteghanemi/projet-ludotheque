@@ -18,19 +18,19 @@
                 </div> #}
                 {% for user in users|reverse %}
                     <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
-                        <div class="backoffice-table__row__col">{{user.id}}</div>
-                        <div class="backoffice-table__row__col">{{user.lastname}} {{user.firstname}}</div>
-                        <div class="backoffice-table__row__col">{{user.addressNumber}} {{user.addressRoad}} {{user.addressZipCode}} {{user.addressCity}}</div>
-                        <div class="backoffice-table__row__col">{{user.email}}</div>
-                        <div class="backoffice-table__row__col backoffice-table__role">
-                            {% for role in user.roles %}
-                                {% if role == "ROLE_USER" %} <div> Utilisateur </div> {% endif %}
-                                {% if role == "ROLE_ADMIN" %} <div> Admin </div> {% endif %}
-                                {% if role == "ROLE_SUPER_ADMIN" %} <div> Super admin </div> {% endif %}
-                            {% endfor %}
+                        <div class="backoffice-table__row__col--info">
+                            <div class="backoffice-table__row__col">{{user.lastname}} {{user.firstname}}</div>
+                            <div class="backoffice-table__row__col">{{user.addressNumber}} {{user.addressRoad}} {{user.addressZipCode}} {{user.addressCity}}</div>
+                            <div class="backoffice-table__row__col backoffice-table__row__col--mail">{{user.email}}</div>
+                            <div class="backoffice-table__row__col backoffice-table__role">
+                                {% for role in user.roles %}
+                                    {% if role == "ROLE_USER" %} <div> Utilisateur </div> {% endif %}
+                                    {% if role == "ROLE_ADMIN" %} <div> Admin </div> {% endif %}
+                                    {% if role == "ROLE_SUPER_ADMIN" %} <div> Super admin </div> {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="backoffice-table__row__col">{{user.status}}</div>
-                        <div class="backoffice-table__row__col">
+                        <div class="backoffice-table__row__col backoffice-table__row__col--button">
                             <a class="button button__principal backoffice-table__row__col__button" href="{{ path('backoffice_user_update', {'id': user.id}) }}">Editer</a>
                             <form method="post" action="{{ path('backoffice_user_delete', {'id': user.id}) }}">
                                 <input type="hidden" name="token" value="{{ csrf_token('delete' ~ user.id) }}"/>
