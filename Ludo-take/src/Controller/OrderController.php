@@ -26,6 +26,9 @@ class OrderController extends AbstractController
             $order1 = $orderRepository->findOneBy(['games' => $game->getId(), 'users' => $security->getUser()->getId(), 'status' => 1]);
             // $order2 = $orderRepository->findOneBy(['games' => $game->getId(), 'users' => $security->getUser()->getId(), 'status' => 2]);
             if ($order1) {
+                
+                $this->addFlash('error', 'Le jeu ' . $game->getName() . ' ne peux pas être ajouté.');
+
                 return $this->redirectToRoute('chest_index');
             } else {
                 // it's notfound we can create
@@ -37,6 +40,9 @@ class OrderController extends AbstractController
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($order);
                 $manager->flush();
+                
+                $this->addFlash('success', 'Le jeu ' . $game->getName() . ' a bien été ajouté.');
+
                 return $this->redirectToRoute('chest_index');
             }
             // if (isset($security->getUser()->))
@@ -56,10 +62,13 @@ class OrderController extends AbstractController
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($order[0]);
                 $manager->flush();
+
+                $this->addFlash('success', 'Le jeu ' . $game->getName() . ' a bien été retiré.');
+
                 return $this->redirectToRoute('chest_index');
             } else {
                 // it's not just redirect
-                
+                $this->addFlash('error', 'Le jeu ' . $game->getName() . ' ne peux pas être retiré.');
                 return $this->redirectToRoute('chest_index');
             }
             // if (isset($security->getUser()->))

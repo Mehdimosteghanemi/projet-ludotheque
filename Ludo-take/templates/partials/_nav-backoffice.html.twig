@@ -55,10 +55,11 @@
             
         </nav>
         {% if headerArray is defined %}  
-            <section class="header__navigation header__navigation--backoffice">
+            <section class="header__navigation header__navigation--backoffice backoffice-table__row__col--info">
                 {% for value in headerArray %}
                     <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
                 {% endfor %}
+                <h3 class="backoffice-table__row__col backoffice-table__row__col--head backoffice-table__row__col--option">option</h3> 
             </section>
         {% endif %}
     {% endif %}

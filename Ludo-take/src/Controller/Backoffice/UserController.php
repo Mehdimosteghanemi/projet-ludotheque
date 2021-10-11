@@ -34,7 +34,7 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
             'title' => 'Utilisateur',
             'classRoute' => 'user',
-            'headerArray' => ['nom/prénom', 'adresse', 'e-mail', 'role', 'statut', 'option'],
+            'headerArray' => ['noms', 'adresse', 'mail', 'role'],
             'user' => $user
         ]);
     }
