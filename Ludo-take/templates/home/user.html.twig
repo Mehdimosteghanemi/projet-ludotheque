@@ -8,13 +8,13 @@
     <section class="container__slider">
         <div class="slider">
             {% for game in games|slice(0,10) %}
-                <a href="#"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
+                <a href="{{ path('game_slug', {'slug' : game.slug}) }}"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
             {% endfor %}
-            <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
+            {# <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
             <a href="#"><img src="img/concept.jpg" alt="boite du jeu concept" class="img__slider"></a>
             <a href="#"><img src="img/galerapagos.jpg" alt="boite du jeu galerapagos" class="img__slider"></a>
             <a href="#"><img src="img/sheriff-of-nottingham.jpg" alt="boite du jeu sheriff de nottingham" class="img__slider"></a>
-            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a>
+            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a> #}
 
             <div class="next">
                 <i class="fas fa-chevron-right"></i>
@@ -74,19 +74,21 @@
                     {% for game in games|slice(0,10) %}
                         <div class="carousel__window__slider__card">
                             <div class="carousel__window__card">
-                                <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
-                                <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
-                                    {% set gameOnChest = false %}
-                                    {% for order in app.user.orders %}
-                                        {% if order.games == game and order.status <= 1 %}
-                                            {% set gameOnChest = true %}            
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% if gameOnChest %}
-                                        <a class="button button__secondary" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
-                                    {% else %}
-                                        <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
+                                <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
+                                    <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
+                                    <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+                                </a>
+                                {% set gameOnChest = false %}
+                                {% for order in app.user.orders %}
+                                    {% if order.games == game and order.status <= 1 %}
+                                        {% set gameOnChest = true %}            
                                     {% endif %}
+                                {% endfor %}
+                                {% if gameOnChest %}
+                                    <a class="button button__secondary" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
+                                {% else %}
+                                    <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
+                                {% endif %}
                                 
                             </div>
                         </div>

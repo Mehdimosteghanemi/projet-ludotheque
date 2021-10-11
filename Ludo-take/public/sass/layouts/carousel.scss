@@ -54,6 +54,11 @@
                 object-fit: contain;
                 max-height: 50%;
             }
+
+            &__link {
+                @include flex-djaw(column, center, center);
+                height: 80%;
+            }
         }
     }
 }

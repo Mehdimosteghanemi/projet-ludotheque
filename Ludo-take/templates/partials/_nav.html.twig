@@ -16,7 +16,7 @@
         <ul class="header__navigation__list">
             {% if is_granted('ROLE_USER') %}
 
-                <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'fav_index') ? 'button--active' : '' }}" href="#">Favoris</a></li>
+                {# <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'fav_index') ? 'button--active' : '' }}" href="#">Favoris</a></li> #}
                 <li class="button__arround"><a class="button button--nav {{(app.request.get('_route') is same as 'game_index') ? 'button--active' : '' }}" href="{{ path('game_index') }}">Liste des jeux</a></li>                
                 <li class="button__arround">
                    {# <div class="search-box">

@@ -17,9 +17,22 @@
                     <li class="button--tag game__slug__tag__list__button">{{ game.players}}</li>
                     <li class="button--tag game__slug__tag__list__button">{% if game.timeOf == 20 %}moins de {% endif %}{{ game.timeOf}} minutes {% if game.timeOf > 20 %}environ{% endif %}</li>
                 </ul>
+
+                {% set gameOnChest = false %}
+
+                {% for order in app.user.orders %}
+                {% if order.games == game and order.status <= 1 %}
+                    {% set gameOnChest = true %}            
+                {% endif %}
+                {% endfor %}
+                {% if gameOnChest %}
+                    <a class="button button__delete" href="{{ path('order_delete', {'id' : game.id}) }}">retirer du coffre</a>
+                {% else %}
+                    <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter au coffre</a> 
+                {% endif %}
             </div>
         </div>
-
+        
     </section>
-    
+   
 {% endblock %}
