@@ -29,9 +29,9 @@
   background: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 3.5rem 3rem 0rem 4rem;
-  // margin-left: 7.3rem;
-}
+  padding: 4.6rem 3rem 0rem 4rem;
+  top: 50%;
+  transform: translateY(-4%);}
 
 .container header {
   font-size: 2rem;
@@ -50,7 +50,7 @@
 }
 
 .form-outer form .page {
-  width: 25%;
+  width: 50%;
 }
 
 .form-outer form .page .title {
@@ -60,9 +60,9 @@
 }
 
 .form-outer form .page .field {
-  width: 20.2rem;
+  width: 20.9rem;
   height: 2.6rem;
-  margin: 3rem 0;
+  margin: 2.3rem 0;
   display: flex;
   position: relative;
 }
@@ -90,11 +90,11 @@ form .page .field select {
 }
 
 form .page .field button {
-  width: 93%;
+  width: 94%;
   height: calc(100% + 5px);
   border: none;
   background: $clr-button-form;
-  margin-top: -1.6rem;
+  margin-top: -0.6rem;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
