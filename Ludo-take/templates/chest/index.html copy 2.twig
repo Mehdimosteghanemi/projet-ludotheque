@@ -88,14 +88,18 @@
                                 {% if order.status == 1 %}
                                     {% set inChest = inChest + 1 %}
                                     <div class="command-table__content__ship__flip">
-                                        <div class="button__switch-checkbox__parent">
-                                            <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__checkbox hidden" checked>
-                                            <label class="button button__principal button__switch-checkbox" for="{{order.games.slug}}">
-                                                <img class="button__flip__image" src="{{order.games.images}}" alt="">
-                                                <p>{{order.games.name}}</p>
-                                                <a class="button__switch-checkbox--delete" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>
-                                            </label>
-                                        </div>    
+                                        <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__flip__checkbox" checked>
+                                        <label class="button__flip button__flip--front" for="{{order.games.slug}}">
+                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
+                                            <p>{{order.games.name}}</p>
+                                            {# <a class="button__flip__back--delete" href="#">x</a> #}
+                                        </label>
+                                        <label class="button__flip button__flip--back">
+                                            <img class="button__flip__image" src="{{order.games.images}}" alt="">
+                                            <p>{{order.games.name}}</p>
+                                            {# <a class="button__flip__back--delete" href="#">x</a> #}
+                                        </label>
+                                        <a class="button--delete-chest" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>
                                     </div>
                                 {% endif %}    
                             {% endfor %}
@@ -143,6 +147,6 @@
 </main>
 {% endblock %}
 {% block javascripts %} 
-    <script src="{{ asset('js/chest.js') }}"></script> 
+<script src="{{ asset('js/chest.js') }}"></script> 
     <script src="{{ asset('js/flip.js') }}"></script> 
 {% endblock %}

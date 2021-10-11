@@ -16,7 +16,7 @@
         // border-top: 2px solid black;
 
         &--odd {
-            background-color: rgb(226, 226, 104);
+            background-color: $clr-table-bg;
         }
 
         &__col {

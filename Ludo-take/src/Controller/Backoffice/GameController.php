@@ -61,7 +61,7 @@ class GameController extends AbstractController
                 $em->persist($game);
                 $em->flush();
 
-                $this->addFlash('success', 'La catégorie ' . $game->getName() . ' a bien été créée.');
+                $this->addFlash('success', 'Le jeu ' . $game->getName() . ' a bien été créée.');
             }
 
             return $this->redirectToRoute('backoffice_game_index');
@@ -118,7 +118,7 @@ class GameController extends AbstractController
             if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
                 $this->getDoctrine()->getManager()->flush();
 
-                $this->addFlash('success', 'La catégorie ' . $game->getName() . ' a bien été modifié.');
+                $this->addFlash('modify', 'Le jeu ' . $game->getName() . ' a bien été modifié.');
             }
 
             return $this->redirectToRoute('backoffice_game_index');
@@ -153,9 +153,9 @@ class GameController extends AbstractController
             $em->flush();
 
 
-            $this->addFlash('info', 'La catégorie ' . $game->getName() . ' a bien été supprimé.');
+            $this->addFlash('success', 'Le jeux ' . $game->getName() . ' a bien été supprimé.');
         } else {
-            $this->addFlash('info', 'erreur.');
+            $this->addFlash('error', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_game_index');

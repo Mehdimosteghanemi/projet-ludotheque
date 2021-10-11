@@ -30,14 +30,14 @@
                     'label_attr': {'class': 'input-text__row__label'}
                 }) }}
             </div>   
-            <div class="input-text__row">
+            {# <div class="input-text__row">
                 {{ form_widget(formView.plainPassword, {
                     'attr': {'class': 'input-text__row__input'}
                 }) }}
                 {{ form_label(formView.plainPassword, 'Mot de passe',{
                     'label_attr': {'class': 'input-text__row__label'}
                 }) }}
-            </div>   
+            </div>    #}
             <div class="input-text__row">
                 {{ form_widget(formView.address_road, {
                     'attr': {'class': 'input-text__row__input'}
@@ -74,6 +74,11 @@
                 {{ form_widget(formView.address_detail) }}
                 {{ form_label(formView.address_detail) }}
             </div> #} 
+            <div class="input-text__row">
+                {{ form_label(formView.roles) }}
+                {{ form_widget(formView.roles) }}
+                
+            </div>
             <input type="hidden" name="token" value="{{ csrf_token('add') }}"/>
             <button class="button button__principal">{{ button_label|default('Ajouter') }}</button>
              <div class="hidden">

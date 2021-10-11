@@ -5,6 +5,7 @@ namespace App\Controller\Backoffice;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\GameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -118,7 +119,7 @@ class CategoryController extends AbstractController
             if ($this->isCsrfTokenValid('add', $request->request->get('token'))) {
                 $this->getDoctrine()->getManager()->flush();
 
-                $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
+                $this->addFlash('modify', 'La catégorie ' . $category->getName() . ' a bien été modifié.');
             }
 
             return $this->redirectToRoute('backoffice_category_index');
@@ -130,6 +131,65 @@ class CategoryController extends AbstractController
             'formView' => $form->createView(),
             'classRoute' => 'category',
             'title' => 'Edition d\'une catégorie',
+        ]);
+    }
+
+    /**
+     * Method used to link a category with game
+     * 
+     * URL: /backoffice/categorie/lien/{id}
+     * ROUTE: :backoffice_category_link
+     *
+     * @Route("/lien/{id}", name="link", methods={"GET"})
+     * 
+     * @return Response
+     */
+    public function link(Category $category, GameRepository $gameRepository)
+    {
+
+        return $this->render('backoffice/category/link.html.twig', [
+            'category' => $category,
+            'classRoute' => 'category',
+            'title' => $category->getName(),
+            'gameList' => $gameRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * Method used to link a category with game
+     * 
+     * URL: /backoffice/categorie/lien/{id}
+     * ROUTE: :backoffice_category_link
+     *
+     * @Route("/lien/{id}", name="link_post", methods={"POST"})
+     * 
+     * @return Response
+     */
+    public function createLink(Request $request ,Category $category, GameRepository $gameRepository, CategoryRepository $categoryRepository)
+    {
+        if ($this->isCsrfTokenValid('csurf'.$category->getId(), $request->request->get('token'))) {
+            foreach ($_POST as $gameId => $value) {
+                if ($value === "on") {
+                    $category->addGame($gameRepository->find($gameId));
+                } elseif ($value === "off") {
+                    $category->removeGame($gameRepository->find($gameId));
+                }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($category);
+                $em->flush();
+            }
+
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été lié aux jeux.');
+        } else {
+            $this->addFlash('error', 'Une erreur est survenue la modification n\'a pas eu lieux.');
+        }
+
+        return $this->redirectToRoute('backoffice_category_index', [
+            'categories' => $categoryRepository->findAll(),
+            'title' => 'Catégories',
+            'classRoute' => 'category',
+            'headerArray' => ['nom', 'option',],
+            'category' => $category
         ]);
     }
 
@@ -153,9 +213,9 @@ class CategoryController extends AbstractController
             $em->flush();
 
 
-            $this->addFlash('info', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été supprimé.');
         } else {
-            $this->addFlash('info', 'erreur.');
+            $this->addFlash('error', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_category_index');

@@ -15,8 +15,8 @@
         padding: 5px 0px;
         // border-top: 2px solid black;
 
-        &--pair {
-            background-color: rgb(226, 226, 104);
+        &--odd {
+            background-color: $clr-table-bg;
         }
 
         &__col {

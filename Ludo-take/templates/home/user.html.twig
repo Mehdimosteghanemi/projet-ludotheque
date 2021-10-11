@@ -27,10 +27,9 @@
 
      {# end container of carousel #}
      {# start category #}
-    <section class="container category-games__container">
+    <section class="category-games__container">
         <div class="category-games">
 
-            
             {% for currentCategory in category|slice(0,3) %}
                     <a class="button button__principal" href="{{ path('game_indexByCategory', {id:currentCategory.id} ) }}">{{ currentCategory.name }}</a>
             {% endfor %}
@@ -68,7 +67,7 @@
         </section>
 
         <section class="carousel">
-            <div class="carousel__arrow carousel__arrow--previous"></div>
+            <div class="carousel__arrow carousel__arrow--previous"><</div>
             <div class="carousel__window">
                 <div class="carousel__window__slider">
                     {% for game in games|slice(0,10) %}

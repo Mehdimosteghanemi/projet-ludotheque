@@ -2,4 +2,19 @@
 
     @include flex-djaw(0, space-around);
     width: 100%;
+    @media (max-width: 700px) {
+        @include flex-djaw(column, space-around, center);
+    }
+
+    &__container {
+        width: 100%; 
+    }
+    &__button {
+        width: 25%;
+        text-align: center;
+
+        @media (max-width: 700px) {
+            width: 80%;
+        }
+    }
 }
