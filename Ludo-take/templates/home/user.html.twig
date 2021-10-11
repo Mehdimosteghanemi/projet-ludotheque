@@ -30,10 +30,9 @@
     <section class="container category-games__container">
         <div class="category-games">
 
-            {% for currentCategory in category %}
-                
-            <a class="button button__principal" href="{{ path('game_indexByCategory', {id:currentCategory.id} ) }}">{{ currentCategory.name }}</a>
-
+            
+            {% for currentCategory in category|slice(0,3) %}
+                    <a class="button button__principal" href="{{ path('game_indexByCategory', {id:currentCategory.id} ) }}">{{ currentCategory.name }}</a>
             {% endfor %}
 
         </div>
