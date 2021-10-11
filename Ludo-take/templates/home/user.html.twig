@@ -67,15 +67,13 @@
 {% for game in categoryList[0] %}    
     {{ dump('game') }}
 {% endfor %} #}
-
+        <h3>{{categoryList[0].name}}</h3>
         <section class="carousel">
             <div class="carousel__arrow carousel__arrow--previous"><</div>
             <div class="carousel__window">
                 <div class="carousel__window__slider">
                     {% for game in categoryList[0].games|slice(0,10) %}
-        
-                        {# {{ dump(game) }} #}
-                    
+                        
                         <div class="carousel__window__slider__card">
                             <div class="carousel__window__card">
                                 <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
