@@ -19,13 +19,17 @@ class HomeController extends AbstractController
      */
     public function index(GameRepository $gameRepository, CategoryRepository $categoryRepository): Response
     {
+        $categoryList = $categoryRepository->findAll();
+        shuffle($categoryList);
+      
         $category =$categoryRepository->findAll();
         shuffle($category);
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'games' => $gameRepository->findBy([], ['created_at' => 'DESC']),
-            'category' => $category
+            'category' => $category,
+            'categoryList' => $categoryList,
         ]);
     }
 

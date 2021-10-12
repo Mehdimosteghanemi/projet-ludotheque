@@ -66,12 +66,19 @@
                 <p class="crush__card__admin-name"><em>Sinan ne peut plus s'en passer!</em></p>
             </a>
         </section>
-
+        {# {{ dump(categoryList[0].games[0].name) }}
+{% for game in categoryList[0] %}    
+    {{ dump('game') }}
+{% endfor %} #}
+        
         <section class="carousel">
+        
             <div class="carousel__arrow carousel__arrow--previous"><</div>
             <div class="carousel__window">
+            <h3 class="carousel__title">{{categoryList[0].name}}</h3>
                 <div class="carousel__window__slider">
-                    {% for game in games|slice(0,10) %}
+                    {% for game in categoryList[0].games|slice(0,10) %}
+                        
                         <div class="carousel__window__slider__card">
                             <div class="carousel__window__card">
                                 <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
