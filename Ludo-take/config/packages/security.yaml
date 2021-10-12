@@ -46,6 +46,7 @@ security:
         - { path: ^/backoffice, roles: ROLE_ADMIN }
         - { path: ^/backoffice/utilisateurs/modifier, roles: ROLE_SUPER_ADMIN }
         - { path: ^/backoffice/abonements, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
 
     role_hierarchy:
 
