@@ -5,9 +5,7 @@
 
 {% block body %} 
 <div class="container">
-
-    <header>S'inscrire à Ludo'Take !</header>
-
+<header>S'inscrire à Ludo'thèque !</header>
         <div class="progress-bar">
             <div class="step">
                <p>
@@ -40,7 +38,7 @@
 
             <div class="field">
             {{ form_row(userForm.firstname, {
-                attr:{placeholder:'Prénom'},
+                attr:{  placeholder:'Prénom'},
                 label: ' '
             }) }}
             </div>
@@ -54,7 +52,8 @@
 
             <div class="field" id="signMail">
             {{ form_row(userForm.email, {
-                attr:{placeholder:'Adresse Mail'},
+                attr:{placeholder:'Adresse Mail',
+                        value: app.request.query.get("email")},
                 label: ' '
             }) }}
             </div>
@@ -112,9 +111,9 @@
 
         </div>
     </div>
+</div>
       {% block javascript %}
         <script src="{{ asset('app/app.js') }}"></script>
       {% endblock %}
-</div>
 
 {% endblock %}

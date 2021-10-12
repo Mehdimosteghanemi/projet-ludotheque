@@ -1,5 +1,6 @@
 .game__slug {
     @include flex-djaw(0, 0, center);
+    height: 100%;
 
     &__info {
 
@@ -8,6 +9,7 @@
 
     &__tag__list {
         @include flex-djaw();
+        margin-bottom: 30px;
 
         &__button {
             border-radius: 20px;

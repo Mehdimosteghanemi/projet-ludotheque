@@ -21,9 +21,14 @@ class HomeController extends AbstractController
     {
         $categoryList = $categoryRepository->findAll();
         shuffle($categoryList);
+      
+        $category =$categoryRepository->findAll();
+        shuffle($category);
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'games' => $gameRepository->findBy([], ['created_at' => 'DESC']),
+            'category' => $category,
             'categoryList' => $categoryList,
         ]);
     }

@@ -1,5 +1,10 @@
 $clr-principal: rgb(30, 139, 89);
 $clr-principal-hover: rgb(41, 202, 127);
+$clr-principal-tone: #CCE4E3;
+$clr-principal-deep: #007A73;
+$clr-secondary: #89A8A7;
+$clr-secondary-brighter: #21c493;
+$clr-contrast: #CE648E;
 
 $clr-delete: rgb(209, 34, 34);
 $clr-delete-hover: rgb(172, 17, 17);
@@ -14,7 +19,8 @@ $clr-unchecked:red;
 
 $clr-signin: rgb(255 177 32);
 $clr-faq: #ce6ba6;
-$clr-login: #eb5356;
+$clr-login: $clr-contrast;
+
 
 $clr-1: #20cbce;
 $clr-2: rgb(235, 151, 41);
@@ -36,10 +42,10 @@ $clr-button-flip-hover : green;
 $clr-button-flip-back : rgb(255, 70, 70);
 $clr-button-flip-back-hover : rgb(167, 14, 14);
 
-$clr-btn-principal : rgb(24, 194, 216);
-$clr-btn-principal-hover : rgb(92, 225, 243);
-$clr-btn-secondary : rgb(250, 246, 0);
-$clr-btn-secondary-hover : rgb(245, 242, 91);
+$clr-btn-principal : $clr-principal-deep;
+$clr-btn-principal-hover : $clr-principal;
+$clr-btn-secondary : $clr-secondary;
+$clr-btn-secondary-hover : $clr-secondary-brighter;
 $clr-btn-ter : green;
 $clr-btn-ter-hover : green;
 $clr-btn-return : white;
@@ -47,7 +53,7 @@ $clr-btn-return-hover : rgb(160, 160, 160);
 $clr-btn-delete : rgb(238, 75, 75);
 $clr-btn-delete-hover : rgb(245, 101, 101);
 
-$clr-table-bg : $clr-principal;
+$clr-table-bg : $clr-principal-tone;
 $clr-flash: $clr-principal;
 $clr-flash-error: rgb(238, 75, 75);
 $clr-flash-success: $clr-principal;
