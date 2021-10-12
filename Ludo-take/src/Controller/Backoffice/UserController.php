@@ -32,9 +32,9 @@ class UserController extends AbstractController
 
         return $this->render('backoffice/user/index.html.twig', [
             'users' => $userRepository->findAll(),
-            'title' => 'Utilisateur',
+            'title' => 'Utilisateurs',
             'classRoute' => 'user',
-            'headerArray' => ['noms', 'adresse', 'mail', 'role'],
+            'headerArray' => ['nom', 'adresse', 'e-mail', 'rôle'],
             'user' => $user
         ]);
     }
