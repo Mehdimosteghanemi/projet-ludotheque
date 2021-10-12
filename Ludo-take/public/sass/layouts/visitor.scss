@@ -55,6 +55,11 @@
         &--big {
             @include flex-djaw(0, space-around, center);
             width: 90%;
+
+            @media(max-width: 900px){
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 
