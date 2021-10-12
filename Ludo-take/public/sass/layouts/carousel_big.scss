@@ -22,7 +22,7 @@
     opacity: 1;
 }
 
-.next, .previous {
+.next-btn, .previous-btn {
     color: #fff;
     font-size: 3rem;
     position: absolute;
@@ -31,20 +31,20 @@
     cursor: pointer;
 }
 
-.next {
+.next-btn {
     right: 20rem;
 }
 
-.previous {
+.previous-btn {
     left: 20rem;
 }
 
 @media (max-width: 2500px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 
@@ -56,11 +56,11 @@
 
 
 @media (max-width: 2000px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 
@@ -71,11 +71,11 @@
 }
 
 @media (max-width: 1024px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 
@@ -86,11 +86,11 @@
 }
 
 @media (max-width: 900px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 
