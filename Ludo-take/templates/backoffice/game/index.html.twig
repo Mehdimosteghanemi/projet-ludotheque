@@ -22,7 +22,7 @@
                             <div class="backoffice-table__row__col">{{game.name}}</div>
                             <div class="backoffice-table__row__col">{{game.description[0:100]}}...</div>
                             <div class="backoffice-table__row__col"><img class="chest-table__row__col__image" src="{{game.images}}" alt=""></div>
-                            <div class="backoffice-table__row__col">{{game.difficulty}}</div>
+                            {# <div class="backoffice-table__row__col">{{game.difficulty}}</div> #}
                             <div class="backoffice-table__row__col">{{game.players}}</div>
                             <div class="backoffice-table__row__col">{{game.timeOf}}</div>
                             <div class="backoffice-table__row__col">{{game.available|default(0)}}/{{game.stock|default(0)}}</div>
