@@ -5,7 +5,7 @@
 
     &__title {
         padding: 5px;
-        border-bottom: 2px solid $clr-principal;
+        border-bottom: 2px solid $clr-principal-deep;
     }
 
     &__arrow {
@@ -15,8 +15,8 @@
     }
 
     &__window {
-        border: 2px $clr-principal solid;
-        // background-color: $clr-principal-brighter;
+        border: 3px $clr-principal-deep solid;
+        background-color: $clr-principal-tone;
         border-radius: 10px;
         width: 80%;
         overflow: hidden;
@@ -45,8 +45,9 @@
         }
 
         &__card {
-            border: 2px black solid;
+            border: 2px $clr-principal-deep solid;
             @include flex-djaw(column, space-around, center);
+            background-color: white;
             height: 300px;
             border-radius: 10px;
             margin: 12px;

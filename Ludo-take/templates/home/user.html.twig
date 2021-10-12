@@ -71,39 +71,41 @@
     {{ dump('game') }}
 {% endfor %} #}
         
-        <section class="carousel">
-        
-            <div class="carousel__arrow carousel__arrow--previous"><</div>
-            <div class="carousel__window">
-            <h3 class="carousel__title">{{categoryList[0].name}}</h3>
-                <div class="carousel__window__slider">
-                    {% for game in categoryList[0].games|slice(0,10) %}
-                        
-                        <div class="carousel__window__slider__card">
-                            <div class="carousel__window__card">
-                                <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
-                                    <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
-                                    <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
-                                </a>
-                                {% set gameOnChest = false %}
-                                {% for order in app.user.orders %}
-                                    {% if order.games == game and order.status <= 1 %}
-                                        {% set gameOnChest = true %}            
+        {% for numberLoop in 0..3 %}
+            <section class="carousel">
+            
+                <div class="carousel__arrow carousel__arrow--previous carousel{{numberLoop}}__arrow--previous"><</div>
+                <div class="carousel__window">
+                <h3 class="carousel__title">{{categoryList[numberLoop].name}}</h3>
+                    <div class="carousel__window__slider carousel{{numberLoop}}__window__slider">
+                        {% for game in categoryList[numberLoop].games|slice(0,10) %}
+                            
+                            <div class="carousel__window__slider__card">
+                                <div class="carousel__window__card carousel{{numberLoop}}__window__card">
+                                    <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
+                                        <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
+                                        <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+                                    </a>
+                                    {% set gameOnChest = false %}
+                                    {% for order in app.user.orders %}
+                                        {% if order.games == game and order.status <= 1 %}
+                                            {% set gameOnChest = true %}            
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if gameOnChest %}
+                                        <a class="button button__secondary" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
+                                    {% else %}
+                                        <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
                                     {% endif %}
-                                {% endfor %}
-                                {% if gameOnChest %}
-                                    <a class="button button__secondary" href="{{ path('order_delete', {'id' : game.id}) }}">retirer</a>
-                                {% else %}
-                                    <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
-                                {% endif %}
-                                
+                                    
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="carousel__arrow carousel__arrow--next">></div>
-        </section>
+                <div class="carousel__arrow carousel__arrow--next carousel{{numberLoop}}__arrow--next">></div>
+            </section>
+        {% endfor %}    
 {# end carousel secondary #}
 
 </main>
