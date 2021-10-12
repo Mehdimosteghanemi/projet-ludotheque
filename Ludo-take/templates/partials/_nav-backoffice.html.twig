@@ -1,4 +1,7 @@
 <header class="header">
+    <div class="header__head">
+        <a href="{{ path('backoffice_index') }}"><h1 class="header__head__title">Lud O'thèque</h1></a>
+    </div>
     <nav class="header__navigation">
         <input type="checkbox" name="burger-menu" id="burger-menu" class="burger__checkbox">
         <label class="burger" for="burger-menu">
@@ -52,10 +55,11 @@
             
         </nav>
         {% if headerArray is defined %}  
-            <section class="header__navigation header__navigation--backoffice">
+            <section class="header__navigation header__navigation--backoffice backoffice-table__row__col--info">
                 {% for value in headerArray %}
                     <h3 class="backoffice-table__row__col backoffice-table__row__col--head">{{value}}</h3> 
                 {% endfor %}
+                <h3 class="backoffice-table__row__col backoffice-table__row__col--head backoffice-table__row__col--option">option</h3> 
             </section>
         {% endif %}
     {% endif %}

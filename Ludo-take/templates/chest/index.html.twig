@@ -8,33 +8,37 @@
 
 <main class="chest">
     <section class="chest__section__title">
-        <h1>Bienvenue dans ton coffre</h1>
-        <p>C'est ici que tu peux voir les jeux en ta possession tu peux choisir de nous les retourné</p>
+        <h1>Bienvenue dans votre coffre</h1>
+        <p>C'est ici que vous pouvez voir les jeux en votre possession, vous pouvez choisir de nous les retourner.</p>
     </section>
 
     <section class="chest__section">
         <div class="chest-table">
             <div class="chest-table__title">
-                <h2>Ton coffre</h2>
+                <h2>Votre coffre</h2>
             </div>
             <div class="chest-table__content">
                 <div class="chest-table__row chest-table__row--head">
-                    <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">status</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                    {# <div class="chest-table__row__col__info"> #}
+                        <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">statut</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                    {# </div> #}
                 </div>
                 {% for order in app.user.orders|reverse %}
                     {% if order.status == 2 %}
                         {% set inChest = inChest + 1 %}
                         <div class="chest-table__row chest-table__row--{% if inChest is odd %}odd{% else %}pair{% endif %}">
-                            <div class="chest-table__row__col">
-                                <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
-                                <p class="chest-table__row__col__p">{{order.games.name}}</p>
-                            </div>
-                            <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
-                            <div class="chest-table__row__col">Dans le coffre</div>
-                            <div class="chest-table__row__col">
+                            {# <div class="chest-table__row__col__info"> #}
+                                <div class="chest-table__row__col">
+                                    <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
+                                    <p class="chest-table__row__col__p">{{order.games.name}}</p>
+                                </div>
+                                <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
+                                <div class="chest-table__row__col">Dans le coffre</div>
+                            {# </div> #}
+                            <div class="chest-table__row__col ">
                                 <div class="button button__principal chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
                             </div>
                         </div>
@@ -55,7 +59,7 @@
                     <div class="return-table__content">
                         <div class="return-table__row return-table__row--head">
                             <div class="return-table__row__col return-table__row__col--row">jeux</div>
-                            <div class="return-table__row__col return-table__row__col--row">option</div>
+                            <div class="return-table__row__col return-table__row__col--row return-table__row__col--hidden-resp">option</div>
                         </div>
                         <input type="checkbox" name="returnForm" id="returnForm" class="checkbox--hiden" checked>
                         {# create by public/chest.js (exemple) #}
@@ -125,7 +129,7 @@
                 <tr class="table__head">
                     <td class="table__head__col">nom</td>
                     <td class="table__head__col">date de retour</td>
-                    <td class="table__head__col">status</td>
+                    <td class="table__head__col">statut</td>
                 </tr>
                 {% for order in app.user.orders|reverse %}
                     {% if order.status == 3 %}

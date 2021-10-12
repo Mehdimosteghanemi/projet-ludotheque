@@ -18,6 +18,9 @@
     &__head {
         width: 100%;
         @include flex-djaw(0, center, center);
+        @media (max-width: 700px){
+            @include flex-djaw(0, start, center);
+        }
     }
 
     &__separate {

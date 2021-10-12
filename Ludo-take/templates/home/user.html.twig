@@ -1,26 +1,26 @@
 <main>
     <section class="home__user">
-        <h1 class="home__user__title">Bienvenue sur Lud O'thèque</h1>
+        <h1 class="home__user__title">Bienvenue {{ app.user.firstname }}</h1>
 
-        <p class="home__user__p">Votre aventure commence ici, elle sera faite de bonheurs, de partages et de franches rigolades!</p>
+        <p class="home__user__p">Votre aventure commence ici, elle sera jonchée de bonheur, de partage et de franches rigolades!</p>
         <hr class="home__user__hr">
     </section>
     <section class="container__slider">
         <div class="slider">
             {% for game in games|slice(0,10) %}
-                <a href="#"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
+                <a href="{{ path('game_slug', {'slug' : game.slug}) }}"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
             {% endfor %}
-            <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
+            {# <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
             <a href="#"><img src="img/concept.jpg" alt="boite du jeu concept" class="img__slider"></a>
             <a href="#"><img src="img/galerapagos.jpg" alt="boite du jeu galerapagos" class="img__slider"></a>
             <a href="#"><img src="img/sheriff-of-nottingham.jpg" alt="boite du jeu sheriff de nottingham" class="img__slider"></a>
-            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a>
+            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a> #}
 
-            <div class="next">
+            <div class="next-btn">
                 <i class="fas fa-chevron-right"></i>
             </div>
 
-            <div class="previous">
+            <div class="previous-btn">
                 <i class="fas fa-chevron-left"></i>
             </div>
         </div>
@@ -66,16 +66,26 @@
                 <p class="crush__card__admin-name"><em>Sinan ne peut plus s'en passer!</em></p>
             </a>
         </section>
-
-        <section class="carousel">
-            <div class="carousel__arrow carousel__arrow--previous"><</div>
-            <div class="carousel__window">
-                <div class="carousel__window__slider">
-                    {% for game in games|slice(0,10) %}
-                        <div class="carousel__window__slider__card">
-                            <div class="carousel__window__card">
-                                <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
-                                <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+        {# {{ dump(categoryList[0].games[0].name) }}
+{% for game in categoryList[0] %}    
+    {{ dump('game') }}
+{% endfor %} #}
+        
+        {% for numberLoop in 0..3 %}
+            <section class="carousel">
+            
+                <div class="carousel__arrow carousel__arrow--previous carousel{{numberLoop}}__arrow--previous"><</div>
+                <div class="carousel__window">
+                <h3 class="carousel__title">{{categoryList[numberLoop].name}}</h3>
+                    <div class="carousel__window__slider carousel{{numberLoop}}__window__slider">
+                        {% for game in categoryList[numberLoop].games|slice(0,10) %}
+                            
+                            <div class="carousel__window__slider__card">
+                                <div class="carousel__window__card carousel{{numberLoop}}__window__card">
+                                    <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
+                                        <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
+                                        <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+                                    </a>
                                     {% set gameOnChest = false %}
                                     {% for order in app.user.orders %}
                                         {% if order.games == game and order.status <= 1 %}
@@ -87,14 +97,15 @@
                                     {% else %}
                                         <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
                                     {% endif %}
-                                
+                                    
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="carousel__arrow carousel__arrow--next">></div>
-        </section>
+                <div class="carousel__arrow carousel__arrow--next carousel{{numberLoop}}__arrow--next">></div>
+            </section>
+        {% endfor %}    
 {# end carousel secondary #}
 
 </main>

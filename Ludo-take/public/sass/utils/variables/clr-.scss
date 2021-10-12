@@ -4,6 +4,7 @@ $clr-principal-tone: #CCE4E3;
 $clr-principal-deep: #007A73;
 $clr-secondary: #89A8A7;
 $clr-secondary-brighter: #21c493;
+$clr-contrast: #CE648E;
 
 $clr-delete: rgb(209, 34, 34);
 $clr-delete-hover: rgb(172, 17, 17);
@@ -18,7 +19,8 @@ $clr-unchecked:red;
 
 $clr-signin: rgb(255 177 32);
 $clr-faq: #ce6ba6;
-$clr-login: #eb5356;
+$clr-login: $clr-contrast;
+
 
 $clr-1: #20cbce;
 $clr-2: rgb(235, 151, 41);

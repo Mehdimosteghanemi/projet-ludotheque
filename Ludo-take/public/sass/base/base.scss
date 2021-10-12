@@ -4,25 +4,37 @@
 
 h1{
     font-size: 4em;
-    @media (max-width: 600px) {
-        font-size: 3em;
+    @media (max-width: 700px) {
+        font-size: 2.5em;
     }
 }
 
 h2{
     font-size: 3em;
+    @media (max-width: 700px){
+        font-size: 1.8em;
+    }
 }
 
 h3{
     font-size: 2em;
+    @media (max-width: 700px){
+        font-size: 1.5em;
+    }
 }
 
 h4{
     font-size: 1.5em;
+    @media (max-width: 700px){
+        font-size: 1.2em;
+    }
 }
 
 p {
     font-size: 1.2em;  
+    @media (max-width: 700px){
+        font-size: 1em;
+    }
 }
 
 html {
@@ -47,7 +59,10 @@ body {
     @include flex-djaw(column, center);
     width: 75%;
     margin: auto;
-    @media (max-width: 600px) {
+    @media (max-width: 1100px) {
+        width: 90%;  
+    }
+    @media (max-width: 900px) {
         width: 100%;  
         margin: 0px;
     }
