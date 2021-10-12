@@ -49,6 +49,24 @@
             top: 120px;
             left: 80px;
             animation: shake 200ms alternate infinite forwards;
+
+            &--mehdi {
+                height: 180px;
+                top: 45px;
+                left: 15px;
+            }
+
+            &--romain {
+                height: 180px;
+                top: 75px;
+                left: 55px;
+            }
+
+            &--sinan {
+                height: 130px;
+                top: 70px;
+                left: 35px;
+            }
         }
 
         &--troll {
