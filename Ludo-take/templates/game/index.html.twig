@@ -77,7 +77,7 @@
                                 {{ currentGamesList.players}}
                             </p>
                             <p class="time__game">
-                                {{currentGamesList.timeOf}} minutes environ
+                                {% if currentGamesList.timeOf != '' %} {{currentGamesList.timeOf}} minutes environ {% endif %}
                             </p>
                         </div>
                     </div>
