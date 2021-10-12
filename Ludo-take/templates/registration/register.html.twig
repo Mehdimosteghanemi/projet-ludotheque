@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %} 
-<div class="container">
+<div class="container container__registration">
 <header>S'inscrire à Ludo'thèque !</header>
         <div class="progress-bar">
             <div class="step">
@@ -66,7 +66,7 @@
                 }) }}
             </div>
             <div class="field">
-                <button class="firstNext next">Next</button>
+                <button class="firstNext next--register">Next</button>
             </div>
         </div>
 
@@ -105,15 +105,13 @@
         </div>
 
         <div class="field btns">
-
             <button class="prev-1 prev">Précedent</button>
             {{ form_end(userForm) }}
-
         </div>
     </div>
+</div>
 </div>
       {% block javascript %}
         <script src="{{ asset('app/app.js') }}"></script>
       {% endblock %}
-
 {% endblock %}
