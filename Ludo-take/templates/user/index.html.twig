@@ -1,25 +1,38 @@
 {% extends 'base.html.twig' %}
-{% block title %}Profil de {{ app.user.firstname }} {{ app.user.lastname }}{% endblock %}
+{% block title %}Profil de
+	{{ app.user.firstname }}
+	{{ app.user.lastname }}
+{% endblock %}
 
 {% block body %}
-	<div class="grix xs4 container">
-		{% for message in app.flashes('message') %}
-			<div class="col-xs4">
-				<div class="p-3 my-2 rounded-2 success">{{message}}</div>
+	<div class="grid">
+		<div class="grid__title">
+			<h1>Profil de
+				{{ app.user.firstname }}
+				{{ app.user.lastname }}</h1>
+		</div>
+
+		<div class="grid__content">
+			<div class="grid__content__head">Nom :
 			</div>
-		{% endfor %}
-		<div class="col-xs4">
-			<h1>Profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+			<div class="grid__content__data">{{ app.user.lastname }}
+			</div>
 		</div>
-		<div class="col-xs1">Nom :</div>
-		<div class="col-xs3">{{ app.user.lastname }}</div>
-		<div class="col-xs1">Prénom :</div>
-		<div class="col-xs3">{{ app.user.firstname }}</div>
-		<div class="col-xs1">Email :</div>
-		<div class="col-xs3">{{ app.user.email }}</div>
-		<div class="col-xs4">
-		<a href="#" class="btn blue">Modifier le profil</a>
-		<a href="#" class="btn blue">Modifier le mot de passe</a>
+       
+		<div class="grid__content">
+			<div class="grid__content__head">Prénom :
+			</div>
+			<div class="grid__content__data">{{ app.user.firstname }}
+			</div>
 		</div>
+
+		<div class="grid__content">
+			<div class="grid__content__head">Email :
+			</div>
+			<div class="grid__content__data">{{ app.user.email }}
+			</div>
+		
+		</div>	
+		<img class="grid__feuille" src="./img/svg/feuillage.svg" alt="">
 	</div>
-{% endblock %}
+</div>{% endblock %}
