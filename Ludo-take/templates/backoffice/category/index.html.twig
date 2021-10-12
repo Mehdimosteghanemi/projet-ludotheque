@@ -21,6 +21,7 @@
                         <div class="backoffice-table__row__col">{{category.name}}</div>
                         <div class="backoffice-table__row__col">
                             <a class="button button__principal backoffice-table__row__col__button" href="{{ path('backoffice_category_update', {'id': category.id}) }}">Editer</a>
+                            <a class="button button__secondary backoffice-table__row__col__button" href="{{ path('backoffice_category_link', {'id': category.id}) }}">Gestion des jeux</a>
                             <form method="post" action="{{ path('backoffice_category_delete', {'id': category.id}) }}">
                                 <input type="hidden" name="token" value="{{ csrf_token('delete' ~ category.id) }}"/>
                                 <button class="button button__delete backoffice-table__row__col__button" type="submit">Supprimer</button>

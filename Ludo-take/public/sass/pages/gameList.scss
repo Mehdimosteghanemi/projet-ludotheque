@@ -1,6 +1,6 @@
 // -----------------------------------General list of game-------------------------
 .container--game {
-    padding-top: 8rem;
+    padding-top: 3rem;
     @media(max-width: 900px) {
         padding-top: 4rem;
     }
@@ -10,7 +10,9 @@
     display: block;
     width: 23%;
     float: left;
-    margin-right: 2%;
+    margin-left: 4px;
+    text-align: center;
+    z-index: 2;
 }
 
 .right--content {
@@ -23,11 +25,11 @@
 .gallery__game {
     @media(max-width: 500px) {
     right: 50%;
-    transform: translateX(-19%);
+    transform: translateX(14%);
     }
     @media(min-width: 501px) {
     right: 50%;
-    transform: translateX(6%);
+    transform: translateX(15%);
     }
     @media(min-width: 901px) {
         right: 50%;
@@ -40,23 +42,28 @@
     height: 100%;
     display: table-cell;
     vertical-align: middle;
-    @media (max-width: 500px) {
-        padding-left: 5rem;
-    }
-    @media (max-width:900) {
-        padding-left: 7rem;
-    }
 }
 // ---------------------
 // li containing DIV who containing the game.
 .gallery__game--table {
     text-align: left;
-    width: 100%;
+    width: 95%;
     height: 100%;
     border-bottom: lightgray 1px solid;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+    transform: translateX(2%);
+
+    @media (max-width: 900px){
+        text-align: left;
+        width: 100%;
+        height: 100%;
+        border-bottom: none;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
 }
+
 // ---------------------
 // div containing 3 parts of a games presentation(LEFT, MIDDLE AND RIGHT).
 .gallery__game--list {
@@ -81,10 +88,21 @@
         height: 6rem;
     }
 }
+
+.gallery__image__game:hover {
+    transform: scale(1.3);
+	transition: .3s;
+}
+
+.gallery__transitionX--img-game {
+    @media (max-width: 900px) {
+    transform: translateX(68%)
+};
+}
 // ---------------------
 // LEFT PART: picture of the game.
 .gallery__image__game--list {
-    width: 20%;
+    width: 25%;
     @media (max-width: 900) {
         margin-left: 3rem;
         padding-bottom: 0.4rem;
@@ -94,7 +112,7 @@
 // MIDDLE PART container: Containing elements for second part of game presentation.
 .gallery__name__game--list {
     @media(min-width: 500px) {
-        width: 68%;
+        width: 70%;
     }
     @media(min-width: 1023px) {
         width: 68%;
@@ -109,6 +127,10 @@
 .span__title--game {
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+.span__title--game:hover {
+    color: $clr-principal-hover;
 }
 // ---------------------
 // MIDDLE PART: Containing description of game.
@@ -151,7 +173,7 @@
 // ---------------------
 // RIGHT PART: Containing elements of last parts of game presentation.
 .gallery__button--game{
-    width: 32%;
+    width: 20%;
 }
 // ---------------------
 // RIGHT PART: Containing button for "infomartion & add to card".
@@ -162,13 +184,19 @@
         flex-direction: column;
     }
 }
+
+.gallery__transitionX--button-game {
+    @media (max-width: 900px) {
+    transform: translateX(15%)
+};
+}
 // ---------------------
 
 // -----------------------------------Filter Button-------------------------
 
 // Containing fillter's button.
 .block_content {
-    border-bottom: lightgray 1px solid;;
+    // border-bottom: lightgray 1px solid;
 }
 // ---------------------
 // Categories button style
@@ -189,7 +217,11 @@
 	text-shadow:0px 1px 0px #ffffff;
     text-align: center;
 	margin-bottom: 1rem;
-    width: 100%;
+    width: 40%;
+
+    @media(max-width: 1000px){
+        width: 100%;
+    }
 }
 .buttonCategory:hover {
 	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
@@ -227,10 +259,17 @@
     text-align: center;
     font-size: 1.4rem;
     font-weight: 500;
-    background-color: #faf600;
-    margin: 0rem 41rem;
+    background-color: $clr-principal-deep;
     border-radius: 10px;
     padding: 0.1rem;
+    width: 50%;
+    right: 50%;
+    transform: translateX(50%);
+
+    @media(min-width: 850px){
+        width: 15%;
+        transform: translateX(270%);
+    }
 }
 // ---------------------
 
@@ -243,7 +282,7 @@
 // Style for number of current page and hover.
 .pagination>.current,
 .pagination>.page>a:hover {
-    color: #18c2d8;
+    color: $clr-principal-tone;
 }
 // ---------------------
 // Style for no-current number in pagination.

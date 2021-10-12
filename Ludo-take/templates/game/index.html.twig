@@ -8,12 +8,9 @@
         <div class="categories">
             <div class="block_content">
                 <ul >
-                    <li><a href="{{ path('game_indexByCategory', {id:3} ) }}" class="buttonCategory">Jeux d'ambiance</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:4} ) }}" class="buttonCategory">Jeux en famille</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:6} ) }}" class="buttonCategory">Jeux expert</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:1} ) }}" class="buttonCategory">Jeux coopératifs</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:5} ) }}" class="buttonCategory">Jeux escape</a></li>
-                    <li><a href="{{ path('game_indexByCategory', {id:2} ) }}" class="buttonCategory">Jeux à deux</a></li>
+                    {% for category in categoriesList %}
+                        <li><a href="{{ path('game_indexByCategory', {id: category.id } ) }}" class="buttonCategory">{{category.name}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -21,7 +18,7 @@
         <div class="subcategory">
             <div class="block_content">
                 
-                    <h4 class="number__players">nombre de joueurs</h4>
+                    <h4 class="number__players">Nombre de joueurs</h4>
 
                     <ul>
                         <li><a href="{{ path('game_indexByPlayers', {string:'2 joueur(s)'}) }}" class="buttonCategory">2 joueurs</a></li>
@@ -66,7 +63,7 @@
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
                         <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
-                        <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game">
+                        <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game gallery__transitionX--img-game">
                         </a>
                     </div>
         {# Partie centrale de l'affichage du jeu, contenant le nom linké vers le détail du jeu, sa déscription réduite, son temps de jeu et le nombre de joueurs.#}
@@ -80,12 +77,12 @@
                                 {{ currentGamesList.players}}
                             </p>
                             <p class="time__game">
-                                {{currentGamesList.timeOf}} minutes environ
+                                {% if currentGamesList.timeOf != '' %} {{currentGamesList.timeOf}} minutes environ {% endif %}
                             </p>
                         </div>
                     </div>
         {# Partie droite de l'affichage du jeu, contenant un bouton menant aux infomartion complète et un autre pour l'ajout au panier. #}
-                    <div class="gallery__button--game game--content">
+                    <div class="gallery__button--game game--content gallery__transitionX--button-game">
                         <div class="button__game">
 
                             <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>

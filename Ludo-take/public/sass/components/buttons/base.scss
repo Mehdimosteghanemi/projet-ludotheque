@@ -20,14 +20,6 @@ button {
          color: white;
      }
  
-     &--add-chest {
-         background-color: $clr-add;
-         padding: 2px 5px;
-         font-size: 0.5em;
-         &:hover{
-            background-color: $clr-add-hover;
-        }
-     }
 
      &--delete-chest {
         background-color: $clr-delete;
@@ -48,53 +40,13 @@ button {
           }
      }
  
-     &--faq {
-         background-color: $clr-faq;
-         &:hover {
-             background-color: darken($clr-faq, 15%);
-          }
-     }
+    
  
      &--log-in-out {
         background-color: $clr-login;
          
          &:hover {
              background-color: darken($clr-login, 15%);
-          }
-     }
- 
-     &--1 {
-         background-color: $clr-1;
-         &:hover {
-             background-color: darken($clr-1, 15%);
-          }
-     }
- 
-     &--2 {
-         background-color: $clr-2;
-         &:hover {
-             background-color: darken($clr-2, 15%);
-          }
-     }
- 
-     &--3 {
-         background-color: $clr-3;
-         &:hover {
-             background-color: darken($clr-3, 15%);
-          }
-     }
- 
-     &--4 {
-         background-color: $clr-4;
-         &:hover {
-             background-color: darken($clr-4, 15%);
-          }
-     }
- 
-     &--5 {
-         background-color: $clr-5;
-         &:hover {
-             background-color: darken($clr-5, 15%);
           }
      }
  
@@ -139,14 +91,6 @@ button {
         }
     }
 
-    &__ter {
-        background-color: $clr-btn-ter;
-
-        &:hover {
-            box-shadow: 0px 0px 0px 3px $clr-btn-ter-hover; 
-        }
-    }
-
     &__return {
         background-color: $clr-btn-return;
         text-decoration: underline;
@@ -161,6 +105,18 @@ button {
         &:hover {
             box-shadow: 0px 0px 0px 3px $clr-btn-delete-hover; 
         }
+    }
+
+    &--nav {
+        font-size: 1.2em;
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-principal; 
+        }
+    }
+
+    &--active {
+        text-decoration: underline $clr-principal 4px;
     }
 }
  

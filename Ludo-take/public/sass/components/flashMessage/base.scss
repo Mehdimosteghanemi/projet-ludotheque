@@ -1,18 +1,27 @@
 .flash {
-
+    @include flex-djaw(0, center, center);
     margin-top: 10px;
-    text-align: center;
-    background-color: #EE7A45;
-    height: 3rem;
+    background-color: $clr-flash;
+    height: 2.5rem;
     width: 50%;
     transform: translateX(50%);
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
 
     &__error {
-        padding-top: 7px;
-        font-size: 2rem;
+        background-color: $clr-flash-error;
     }
 
+    &__success {
+        background-color: $clr-flash-success;
+    }
+
+    &__modify {
+        background-color: $clr-flash-modify;
+    }
+
+    &__message {
+        color: white;
+    }
 }
 
 

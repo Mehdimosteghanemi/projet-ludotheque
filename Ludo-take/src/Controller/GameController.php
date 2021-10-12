@@ -28,13 +28,11 @@ class GameController extends AbstractController
      * @Route("/", name="index")
      * 
      */
-    public function index(GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function index(GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface, CategoryRepository $categoryRepository): Response
     {
 
         $data = $gameRepository->findBy([], ['created_at' => 'DESC', ]);
-
-        
-        
+       
         $gamesList = $paginatorInterface->paginate(
             $data, // Query containing the data to paginate (here our articles)
             $request->query->getInt('page', 1), // Current page number, in to url, 1 if null
@@ -43,6 +41,8 @@ class GameController extends AbstractController
 
         return $this->render('game/index.html.twig', [
             'gamesList' => $gamesList,
+            'categoriesList' => $categoryRepository->findBy([], ['name' => 'ASC']),
+
         ]);
     }
   
@@ -76,7 +76,8 @@ class GameController extends AbstractController
         );
         // dd($gamesList);
         return $this->render('game/index.html.twig', [
-            'gamesList' => $gamesList
+            'gamesList' => $gamesList,
+            'categoriesList' => $categoryRepository->findBy([], ['name' => 'ASC']),
         ]);
     }
     
@@ -88,7 +89,7 @@ class GameController extends AbstractController
      *  @Route("/joueurs/{string}", name="indexByPlayers")
      * 
      */
-    public function indexByPlayers(string $string, GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface): Response
+    public function indexByPlayers(string $string, GameRepository $gameRepository, Request $request, PaginatorInterface $paginatorInterface, CategoryRepository $categoryRepository): Response
     {
 
         $data = $gameRepository->findBy(['players' => $string]);
@@ -100,8 +101,8 @@ class GameController extends AbstractController
         );
         
         return $this->render('game/index.html.twig', [
-            'gamesList' => $gamesList
-            
+            'gamesList' => $gamesList,
+            'categoriesList' => $categoryRepository->findBy([], ['name' => 'ASC']),
 
         ]);
     }

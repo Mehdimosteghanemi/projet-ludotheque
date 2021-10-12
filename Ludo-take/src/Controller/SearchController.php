@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,7 @@ class SearchController extends AbstractController
      * 
      * @Route("/", name="index")
      */
-    public function index(Request $request, GameRepository $gameRepository, PaginatorInterface $paginatorInterface): Response
+    public function index(Request $request, GameRepository $gameRepository, PaginatorInterface $paginatorInterface, CategoryRepository $categoryRepository): Response
     {
 
         $query = $request->query->get('search');
@@ -46,9 +47,10 @@ class SearchController extends AbstractController
 
         }
         
-        return $this->render('search/index.html.twig', [
-            'results' => $searchResult,
-            'query' => $query
+        return $this->render('game/index.html.twig', [
+            'gamesList' => $searchResult,
+            'query' => $query,
+            'categoriesList' => $categoryRepository->findBy([], ['name' => 'ASC']),
         ]);
     }  
 }

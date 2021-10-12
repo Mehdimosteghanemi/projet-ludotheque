@@ -70,6 +70,8 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash('success', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été ajouté.');
             
             return $this->redirectToRoute('backoffice_user_index');
         }
@@ -119,14 +121,9 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user->setPassword(
-                $passwordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('modify', 'L\'utilisateur ' . $form->get('firstname')->getData() . ' ' . $form->get('lastname')->getData() . ' a bien été modifié.');
 
             return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -152,10 +149,15 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user)
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+        
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();
+
+            $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été supprimé.');
+        } else {
+            $this->addFlash('error', 'Une erreur est survenue la suppression n\'a pas eu lieux.');
         }
 
         return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);

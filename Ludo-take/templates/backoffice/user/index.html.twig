@@ -19,12 +19,14 @@
                 {% for user in users|reverse %}
                     <div class="backoffice-table__row backoffice-table__row--{% if loop.index is odd %}odd{% else %}pair{% endif %}">
                         <div class="backoffice-table__row__col">{{user.id}}</div>
-                        <div class="backoffice-table__row__col">{{user.lastname}}/{{user.firstname}}</div>
+                        <div class="backoffice-table__row__col">{{user.lastname}} {{user.firstname}}</div>
                         <div class="backoffice-table__row__col">{{user.addressNumber}} {{user.addressRoad}} {{user.addressZipCode}} {{user.addressCity}}</div>
                         <div class="backoffice-table__row__col">{{user.email}}</div>
-                        <div class="backoffice-table__row__col">
+                        <div class="backoffice-table__row__col backoffice-table__role">
                             {% for role in user.roles %}
-                                {{role}} 
+                                {% if role == "ROLE_USER" %} <div> Utilisateur </div> {% endif %}
+                                {% if role == "ROLE_ADMIN" %} <div> Admin </div> {% endif %}
+                                {% if role == "ROLE_SUPER_ADMIN" %} <div> Super admin </div> {% endif %}
                             {% endfor %}
                         </div>
                         <div class="backoffice-table__row__col">{{user.status}}</div>
