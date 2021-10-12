@@ -1,7 +1,7 @@
 .header {
     @include flex-djaw(column, center, flex-end);
     padding: 5px;
-    background-color: #f2f5ff;
+    background-color: $clr-principal-tone;
     border-bottom: 2px solid black;
     border-top: none;
     position: sticky;
@@ -18,11 +18,15 @@
     &__head {
         width: 100%;
         @include flex-djaw(0, center, center);
+        @media (max-width: 700px){
+            @include flex-djaw(0, start, center);
+        }
     }
 
     &__separate {
         width: 100%;
         @include flex-djaw(0, center);
+
         &__line {
             width: 50%;
             // border: 1px solid black;

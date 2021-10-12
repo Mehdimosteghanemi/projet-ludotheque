@@ -5,8 +5,8 @@ let etape = 0;
 
 let nbr__img = img__slider.length;
 
-let previous = document.querySelector('.previous');
-let next = document.querySelector('.next');
+let previous = document.querySelector('.previous-btn');
+let next = document.querySelector('.next-btn');
 
 function removeActiveImages() {
     for( let i = 0 ; i < nbr__img ; i++ ) {

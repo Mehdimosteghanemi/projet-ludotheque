@@ -4,31 +4,43 @@
 
 h1{
     font-size: 4em;
-    @media (max-width: 600px) {
-        font-size: 3em;
+    @media (max-width: 700px) {
+        font-size: 2.5em;
     }
 }
 
 h2{
     font-size: 3em;
+    @media (max-width: 700px){
+        font-size: 1.8em;
+    }
 }
 
 h3{
     font-size: 2em;
+    @media (max-width: 700px){
+        font-size: 1.5em;
+    }
 }
 
 h4{
     font-size: 1.5em;
+    @media (max-width: 700px){
+        font-size: 1.2em;
+    }
 }
 
 p {
     font-size: 1.2em;  
+    @media (max-width: 700px){
+        font-size: 1em;
+    }
 }
 
 html {
     // https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80
     background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxzZWFy[…]MjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
-    background-color: rgba(216, 172, 76, 0.562);
+    background-color: #13514E;
     background-blend-mode: darken;
     // background-image: url('https://cdn.pixabay.com/photo/2020/09/10/05/46/parchment-5559354_960_720.jpg');
     // background-size: auto;
@@ -47,7 +59,10 @@ body {
     @include flex-djaw(column, center);
     width: 75%;
     margin: auto;
-    @media (max-width: 600px) {
+    @media (max-width: 1100px) {
+        width: 90%;  
+    }
+    @media (max-width: 900px) {
         width: 100%;  
         margin: 0px;
     }

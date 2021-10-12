@@ -18,7 +18,7 @@
         <div class="subcategory">
             <div class="block_content">
                 
-                    <h4 class="number__players">nombre de joueurs</h4>
+                    <h4 class="number__players">Nombre de joueurs</h4>
 
                     <ul>
                         <li><a href="{{ path('game_indexByPlayers', {string:'2 joueur(s)'}) }}" class="buttonCategory">2 joueurs</a></li>
@@ -86,7 +86,18 @@
                         <div class="button__game">
 
                             <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>
-                            <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a>
+                            {% set gameOnChest = false %}
+                            {% for order in app.user.orders %}
+                                {% if order.games == currentGamesList and order.status <= 1 %}
+                                    {% set gameOnChest = true %}            
+                                {% endif %}
+                            {% endfor %}
+                            {% if gameOnChest %}
+                                <a class="button button__delete" href="{{ path('order_delete', {'id' : currentGamesList.id}) }}">retirer du coffre</a>
+                            {% else %}
+                                <a class="button button__principal" href="{{ path('order_new', {'id' : currentGamesList.id}) }}">ajouter au coffre</a> 
+                            {% endif %}
+                            {# <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a> #}
 
                         </div>
                     </div>

@@ -1,11 +1,3 @@
-// body {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-//   overflow: hidden;
-// }
-
 .registration__view__header {
   @include flex-djaw(column, flex-end, center);
 
@@ -19,24 +11,25 @@
   }
 }
 
-::selection {
-  color: #fff;
-  background: #d43f8d;
-}
-
 .container {
   width: 21rem;
   background: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 3.5rem 3rem 0rem 4rem;
-  // margin-left: 7.3rem;
+  padding: 3rem 3rem 0rem 4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container__registration {
+  height: 100%
 }
 
 .container header {
   font-size: 2rem;
   font-weight: 600;
-  margin: 0 0 2rem 0;
+  margin: 0 0 -0.1rem 0;
 }
 
 .container .form-outer {
@@ -50,7 +43,7 @@
 }
 
 .form-outer form .page {
-  width: 25%;
+  width: 50%;
 }
 
 .form-outer form .page .title {
@@ -60,12 +53,13 @@
 }
 
 .form-outer form .page .field {
-  width: 20.2rem;
-  height: 2.6rem;
-  margin: 3rem 0;
+  width: 20.9rem;
+  height: 2rem;
+  margin: 1.7rem 0;
   display: flex;
   position: relative;
 }
+
 
 form .page .field .label {
   position: absolute;
@@ -90,11 +84,11 @@ form .page .field select {
 }
 
 form .page .field button {
-  width: 93%;
+  width: 94%;
   height: calc(100% + 5px);
   border: none;
-  background: $clr-button-form;
-  margin-top: -1.6rem;
+  background: $clr-principal;
+  margin-top: -0.6rem;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
@@ -106,9 +100,7 @@ form .page .field button {
 }
 
 form .page .field button:hover {
-  background: $clr-button-form-hover;
-  
-  
+  background: $clr-principal-hover;
 }
 
 form .page .btns button {
@@ -121,7 +113,7 @@ form .page .btns button.prev {
   font-size: 17px;
 }
 
-form .page .btns button.next {
+form .page .btns button.next--register {
   margin-left: 3px;
 }
 
@@ -158,8 +150,8 @@ form .page .btns button.next {
 }
 
 .progress-bar .step .bullet.active {
-  border-color: rgb(30 141 230);
-  background: rgb(255 177 32);
+  border-color: $clr-principal-hover;
+  background: $clr-principal-hover;
 }
 
 .progress-bar .step .bullet span {
@@ -184,7 +176,7 @@ form .page .btns button.next {
 }
 
 .progress-bar .step .bullet.active:after {
-  background: rgb(30 141 230);
+  background: $clr-principal-hover;
   transform: scaleX(0);
   transform-origin: left;
   animation: animate 0.5s linear forwards;
@@ -201,7 +193,7 @@ form .page .btns button.next {
 }
 
 .progress-bar .step p.active {
-  color: rgb(30 141 230);
+  color: $clr-principal-hover;
   transition: 0.2s linear;
 }
 
@@ -217,6 +209,7 @@ form .page .btns button.next {
 .progress-bar .step .check.active {
   display: block;
   color: #fff;
+  padding-top: 0.1rem;
 }
 
 /*# sourceMappingURL=sass.css.map */
