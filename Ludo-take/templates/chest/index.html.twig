@@ -19,22 +19,26 @@
             </div>
             <div class="chest-table__content">
                 <div class="chest-table__row chest-table__row--head">
-                    <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">statut</div>
-                    <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                    {# <div class="chest-table__row__col__info"> #}
+                        <div class="chest-table__row__col chest-table__row__col--head">jeux</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">date de location</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">statut</div>
+                        <div class="chest-table__row__col chest-table__row__col--head">option</div>
+                    {# </div> #}
                 </div>
                 {% for order in app.user.orders|reverse %}
                     {% if order.status == 2 %}
                         {% set inChest = inChest + 1 %}
                         <div class="chest-table__row chest-table__row--{% if inChest is odd %}odd{% else %}pair{% endif %}">
-                            <div class="chest-table__row__col">
-                                <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
-                                <p class="chest-table__row__col__p">{{order.games.name}}</p>
-                            </div>
-                            <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
-                            <div class="chest-table__row__col">Dans le coffre</div>
-                            <div class="chest-table__row__col">
+                            {# <div class="chest-table__row__col__info"> #}
+                                <div class="chest-table__row__col">
+                                    <img class="chest-table__row__col__image" src="{{order.games.images}}" alt="">
+                                    <p class="chest-table__row__col__p">{{order.games.name}}</p>
+                                </div>
+                                <div class="chest-table__row__col">{{order.dateCommand|date("d/m/Y")}}</div>
+                                <div class="chest-table__row__col">Dans le coffre</div>
+                            {# </div> #}
+                            <div class="chest-table__row__col ">
                                 <div class="button button__principal chest-table__row__col__button" data-game-id="{{order.games.id}}">Retourner</div>
                             </div>
                         </div>
@@ -55,7 +59,7 @@
                     <div class="return-table__content">
                         <div class="return-table__row return-table__row--head">
                             <div class="return-table__row__col return-table__row__col--row">jeux</div>
-                            <div class="return-table__row__col return-table__row__col--row">option</div>
+                            <div class="return-table__row__col return-table__row__col--row return-table__row__col--hidden-resp">option</div>
                         </div>
                         <input type="checkbox" name="returnForm" id="returnForm" class="checkbox--hiden" checked>
                         {# create by public/chest.js (exemple) #}

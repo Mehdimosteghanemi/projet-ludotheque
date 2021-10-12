@@ -9,6 +9,16 @@
     border: 2px solid white;
     box-shadow: gray 0px 0px 0px 2px;
 
+    @media (max-width: 500px) {
+        transition: all 200ms ease-in-out, box-shadow 200ms;
+        top: 0;
+        left: 15%;
+        right: 0%;
+        background-color: grey;
+        border: 2px solid white;
+        box-shadow: grey 0px 0px 0px 2px;
+    }
+
     &:hover {
         border: 2px solid white;
         box-shadow: $clr-principal-hover 0px 0px 0px 3px;
@@ -20,6 +30,15 @@
         box-shadow: gray 0px 0px 0px 2px;
         left: 0%;
         right: 50%;
+
+        @media (max-width: 500px) {
+            top: 0;
+            left: 0%;
+            right: 15%;
+            background-color: $clr-principal;
+            border: 2px solid white;
+            box-shadow: $clr-principal 0px 0px 0px 2px;
+        }
 
         &:hover {
             border: 2px solid white;
