@@ -37,10 +37,10 @@
 					</form>
 				</li>
 				<li class="button__arround">
-					<a class="button button--nav {{(app.request.get('_route') is same as 'chest_index') ? 'button--active' : '' }}" href="{{ path('chest_index') }}">Coffres</a>
+					<a class="button button--nav {{(app.request.get('_route') is same as 'chest_index') ? 'button--active' : '' }}" href="{{ path('chest_index') }}">Coffre</a>
 				</li>
 				<li class="button__arround">
-					<a class="button button--nav" href="{{ path('user') }}">Profil</a>
+					<a class="button button--nav {{(app.request.get('_route') is same as 'user_index') ? 'button--active' : '' }}" href="{{ path('user_index') }}">Profile</a>
 				</li>
 				{% if is_granted('ROLE_ADMIN') %}
 
