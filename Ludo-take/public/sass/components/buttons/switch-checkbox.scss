@@ -24,6 +24,14 @@
         box-shadow: $clr-principal-hover 0px 0px 0px 3px;
     }
 
+    .button__flip__text{
+        font-size: 1rem;
+
+        @media(max-height: 700px){
+            font-size: 0.8rem;
+        }
+    }
+
     .button__checkbox:checked + & {
         background-color: $clr-principal;
         border: 2px solid rgb(255, 255, 255);

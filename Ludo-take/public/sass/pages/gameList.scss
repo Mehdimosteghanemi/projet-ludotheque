@@ -25,7 +25,7 @@
 .gallery__game {
     @media(max-width: 500px) {
     right: 50%;
-    transform: translateX(14%);
+    margin-left: 35px;
     
     }
     @media(min-width: 501px) {
