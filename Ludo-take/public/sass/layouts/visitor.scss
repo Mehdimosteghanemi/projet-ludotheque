@@ -1,5 +1,6 @@
 .visitor__section {
     @include flex-djaw(column, center, center);
+    margin-top: 20px;
     &__title {
         text-align: center;
         margin-top: 150px;
@@ -41,6 +42,7 @@
         
         &__text {
             text-align: center;
+            margin-top: 10px;
 
             &--color {
                 color: $clr-principal-deep;
@@ -49,6 +51,7 @@
 
             &--big {
                 text-align: start;
+                margin-top: 25px;
             }
         }
 
@@ -59,6 +62,13 @@
             @media(max-width: 900px){
                 display: flex;
                 flex-direction: column;
+                margin-top: 30px;
+
+                & img{
+                    margin-top: 60px;
+                    margin-bottom: 20px;
+                    width: 100%
+                }
             }
         }
     }

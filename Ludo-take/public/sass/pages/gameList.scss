@@ -26,6 +26,7 @@
     @media(max-width: 500px) {
     right: 50%;
     transform: translateX(14%);
+    
     }
     @media(min-width: 501px) {
     right: 50%;
@@ -38,6 +39,7 @@
 
     &__title {
         margin-bottom: 30px;
+        margin-left: 50px;
     }
 }
 // ---------------------
