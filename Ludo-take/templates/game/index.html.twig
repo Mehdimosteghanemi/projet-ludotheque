@@ -63,13 +63,13 @@
         {# Partie gauche de l'affichage du jeu, contenant l'image et un lien vers la page détaillé du jeu en question. #}
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
-                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
+                        <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="gallery__link__game--list">
                         <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game gallery__transitionX--img-game">
                         </a>
                     </div>
         {# Partie centrale de l'affichage du jeu, contenant le nom linké vers le détail du jeu, sa déscription réduite, son temps de jeu et le nombre de joueurs.#}
                     <div class="gallery__name__game--list game--content">
-                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
+                        <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="gallery__link__game--list">
                         <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
                         </a>
                         <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
