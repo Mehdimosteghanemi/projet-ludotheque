@@ -1,5 +1,24 @@
 .container__slider {
     padding-top: 50px;
+    position: relative;
+
+    &__title {
+        @include flex-djaw(0, center, center);
+        width: 150px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: $clr-principal-tone;
+        position: absolute;
+        z-index: 100;
+        transform: rotate(-20deg);
+        left: 120px;
+
+        &__text {
+            color: $clr-contrast;
+            font-size: 0.8em;
+        }
+        
+    }
 }
 .slider {
     height: 50vh;

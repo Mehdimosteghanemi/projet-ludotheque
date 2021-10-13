@@ -96,7 +96,7 @@
                                             <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__checkbox hidden" checked>
                                             <label class="button button__principal button__switch-checkbox" for="{{order.games.slug}}">
                                                 <img class="button__flip__image" src="{{order.games.images}}" alt="">
-                                                <p>{{order.games.name}}</p>
+                                                <p class="button__flip__text">{{order.games.name}}</p>
                                                 <a class="button__switch-checkbox--delete" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>
                                             </label>
                                         </div>    
