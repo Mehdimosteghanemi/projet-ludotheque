@@ -10,10 +10,13 @@
     }
 
     &__row {
-        @include flex-djaw(0, space-around, center);
+        @include flex-djaw(0, space-between, center);
         width: 100%;
         padding: 5px 0px;
         // border-top: 2px solid black;
+        @media (max-width: 1100px) {
+            @include flex-djaw(column, space-around, center);                  
+        }
 
         &--odd {
             background-color: $clr-table-bg;
@@ -21,7 +24,25 @@
 
         &__col {
             width: 25%;
+
             @include flex-djaw(column, center, center);
+
+            @media (max-width: 1100px) {
+                padding: 15px 0px;                   
+            }
+
+            @media (max-width: 550px) {
+                width: 30%;                 
+            }
+
+            @media (max-width: 400px) {
+                width: 40%;
+                &--mail {
+                    overflow-wrap: anywhere;   
+                }             
+            }
+            
+            
 
            &__image {
                 object-fit: contain;
@@ -32,15 +53,27 @@
                 text-align: center;
             }
 
-            // &__button {
-            //     width: 100px;
-            //     text-align: center;
-            //     background-color: rgb(85, 130, 255);
+            &--info {
+                width: 100%;
+                @include flex-djaw(0, space-around, center);
+                @media (max-width: 1100px) {
+                    @include flex-djaw(0, space-around, center, wrap); 
+                    width: 100%;  
+                }                                 
+            }
 
-            //     &:hover {
-            //         background-color: rgb(41, 0, 155);  
-            //     }
-            // }
+            &--option {
+                @media (max-width: 1100px) {
+                    display: none;                    
+                }
+            }
+
+            &--button {
+                width: 150px;
+                @media (max-width: 1100px) {
+                    @include flex-djaw(0, space-around, center); 
+                }
+            }
         }
        
     }

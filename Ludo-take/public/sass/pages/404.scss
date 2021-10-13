@@ -6,6 +6,7 @@
 .card-404 {
     width: 180px;
     height: 300px;
+    border-radius: 7px;
 }
 
 .card-troll {
@@ -30,7 +31,7 @@
             position: relative;
             transition: all 1000ms; 
             transform-style: preserve-3d;
-            animation: flip 800ms linear 3000ms forwards;
+            animation: flip 800ms linear 5000ms forwards;
         }
         
         &--front {
@@ -49,6 +50,30 @@
             top: 120px;
             left: 80px;
             animation: shake 200ms alternate infinite forwards;
+
+            &--mehdi {
+                height: 180px;
+                top: 45px;
+                left: 15px;
+            }
+
+            &--romain {
+                height: 180px;
+                top: 75px;
+                left: 55px;
+            }
+
+            &--sinan {
+                height: 130px;
+                top: 70px;
+                left: 35px;
+            }
+
+            &--damien {
+                height: 170px;
+                top: 130px;
+                left: 25px;
+            }
         }
 
         &--troll {

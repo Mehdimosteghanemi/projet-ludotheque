@@ -53,6 +53,7 @@
 {# Partie de droite, contenant la liste des jeux. #}
     <div class="right--content">
     {# Liste des jeux. #}
+    <h2 class="gallery__game__title">{{title}}</h2>
         <ul class="gallery__game">
 
             {% for currentGamesList in gamesList %}
@@ -62,13 +63,13 @@
         {# Partie gauche de l'affichage du jeu, contenant l'image et un lien vers la page détaillé du jeu en question. #}
                 <div class="gallery__game--list">
                     <div class="gallery__image__game--list game--content">
-                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
+                        <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="gallery__link__game--list">
                         <img src="{{ currentGamesList.images }}" alt="Portrait by Jessica Felicio" class="gallery__image__game gallery__transitionX--img-game">
                         </a>
                     </div>
         {# Partie centrale de l'affichage du jeu, contenant le nom linké vers le détail du jeu, sa déscription réduite, son temps de jeu et le nombre de joueurs.#}
                     <div class="gallery__name__game--list game--content">
-                        <a href="{{ currentGamesList.slug }}" class="gallery__link__game--list">
+                        <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="gallery__link__game--list">
                         <p class="gallery__name--game"><span class="span__title--game">{{ currentGamesList.name }}</span></p>
                         </a>
                         <p class="descr__game">{{ currentGamesList.description[0:200] }}...</p>
@@ -86,7 +87,18 @@
                         <div class="button__game">
 
                             <a href="{{ path('game_slug', {'slug' : currentGamesList.slug}) }}" class="button button__secondary">En savoir plus</a>
-                            <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a>
+                            {% set gameOnChest = false %}
+                            {% for order in app.user.orders %}
+                                {% if order.games == currentGamesList and order.status <= 1 %}
+                                    {% set gameOnChest = true %}            
+                                {% endif %}
+                            {% endfor %}
+                            {% if gameOnChest %}
+                                <a class="button button__delete" href="{{ path('order_delete', {'id' : currentGamesList.id}) }}">retirer du coffre</a>
+                            {% else %}
+                                <a class="button button__principal" href="{{ path('order_new', {'id' : currentGamesList.id}) }}">ajouter au coffre</a> 
+                            {% endif %}
+                            {# <a href="{{ path('order_new', {'id' : currentGamesList.id}) }}" class="button button__principal">Ajouter au panier</a> #}
 
                         </div>
                     </div>
