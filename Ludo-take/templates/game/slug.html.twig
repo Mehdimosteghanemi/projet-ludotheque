@@ -14,9 +14,9 @@
             <p class="game__slug__info__description">{{ game.description[0:1500]}}...</p>
             <div class="game__slug__tag">
                 <ul class="game__slug__tag__list">
-                    <li class="button--tag game__slug__tag__list__button">{{ game.players}}</li>
-                    <li class="button--tag game__slug__tag__list__button">{% if game.timeOf == 20 %}moins de {% endif %}{{ game.timeOf}} minutes {% if game.timeOf > 20 %}environ{% endif %}</li>
-                </ul>
+                    {% if game.players != '' %}<li class="button--tag game__slug__tag__list__button"> {{ game.players}} </li>{% endif %}
+                    {% if game.timeOf != '' %}<li class="button--tag game__slug__tag__list__button"> {{ game.timeOf}} minutes</li>{% endif %}
+                </ul>environ
 
                 {% set gameOnChest = false %}
 
