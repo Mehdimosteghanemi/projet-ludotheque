@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}Profil de
+	{{ app.user.firstname }}
+	{{ app.user.lastname }}
+{% endblock %}
+
+{% block body %}
+	<div class="grid">
+		<div class="grid__title">
+			<h1>Profil de
+				{{ app.user.firstname }}
+				{{ app.user.lastname }}</h1>
+		</div>
+
+		<div class="grid__content">
+			<div class="grid__content__head">Nom :
+			</div>
+			<div class="grid__content__data">{{ app.user.lastname }}
+			</div>
+		</div>
+       
+		<div class="grid__content">
+			<div class="grid__content__head">Prénom :
+			</div>
+			<div class="grid__content__data">{{ app.user.firstname }}
+			</div>
+		</div>
+
+		<div class="grid__content">
+			<div class="grid__content__head">Email :
+			</div>
+			<div class="grid__content__data">{{ app.user.email }}
+			</div>
+		
+		</div>	
+		<img class="grid__feuille" src="/img/svg/feuillage.svg" alt="">
+	</div>
+</div>{% endblock %}

@@ -20,7 +20,12 @@
     </head>
     <body class="{% if one_page is defined %}one__page{% endif %}">
     
-        {% include "partials/_nav.html.twig" %}
+        {% if app.request.get('_route') matches '{^backoffice_}'%}
+            {% include "partials/_nav-backoffice.html.twig" %}
+        {% else %}
+            {% include "partials/_nav.html.twig" %}
+        {% endif %}
+        {% include "partials/_flash.html.twig" %}
 
         {% block body %}{% endblock %}
         

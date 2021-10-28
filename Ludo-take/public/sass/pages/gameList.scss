@@ -1,5 +1,6 @@
+// -----------------------------------General list of game-------------------------
 .container--game {
-    padding-top: 8rem;
+    padding-top: 3rem;
     @media(max-width: 900px) {
         padding-top: 4rem;
     }
@@ -9,7 +10,9 @@
     display: block;
     width: 23%;
     float: left;
-    margin-right: 2%;
+    margin-left: 4px;
+    text-align: center;
+    z-index: 2;
 }
 
 .right--content {
@@ -18,43 +21,57 @@
     float: right;
     margin-right: 0%
 }
-
+// ul containing list of game.
 .gallery__game {
     @media(max-width: 500px) {
     right: 50%;
-    transform: translateX(-19%);
+    margin-left: 35px;
+    
     }
     @media(min-width: 501px) {
     right: 50%;
-    transform: translateX(6%);
+    transform: translateX(15%);
     }
     @media(min-width: 901px) {
         right: 50%;
         transform: translateX(0%);
     }
-}
 
+    &__title {
+        margin-bottom: 30px;
+        margin-left: 50px;
+    }
+}
+// ---------------------
+// Common modification for the 3 parts of game presentation.
 .game--content {
     height: 100%;
     display: table-cell;
     vertical-align: middle;
-    @media (max-width: 500px) {
-        padding-left: 5rem;
-    }
-    @media (max-width:900) {
-        padding-left: 7rem;
-    }
 }
-
+// ---------------------
+// li containing DIV who containing the game.
 .gallery__game--table {
     text-align: left;
-    width: 100%;
+    width: 95%;
     height: 100%;
     border-bottom: lightgray 1px solid;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+    transform: translateX(2%);
+
+    @media (max-width: 900px){
+        text-align: left;
+        width: 100%;
+        height: 100%;
+        border-bottom: none;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
 }
 
+// ---------------------
+// div containing 3 parts of a games presentation(LEFT, MIDDLE AND RIGHT).
 .gallery__game--list {
     display: table;
     table-layout: fixed;
@@ -66,7 +83,8 @@
         flex-direction: column;
     }
 }
-
+// ---------------------
+// LEFT PART container: Containing elements for first part of game presentation.
 .gallery__image__game {
     height: 8rem;
     @media (max-width: 425px) {
@@ -77,17 +95,30 @@
     }
 }
 
+.gallery__image__game:hover {
+    transform: scale(1.3);
+	transition: .3s;
+}
+
+.gallery__transitionX--img-game {
+    @media (max-width: 900px) {
+    transform: translateX(68%)
+};
+}
+// ---------------------
+// LEFT PART: picture of the game.
 .gallery__image__game--list {
-    width: 20%;
+    width: 25%;
     @media (max-width: 900) {
         margin-left: 3rem;
         padding-bottom: 0.4rem;
     }
 }
-
+// ---------------------
+// MIDDLE PART container: Containing elements for second part of game presentation.
 .gallery__name__game--list {
     @media(min-width: 500px) {
-        width: 68%;
+        width: 70%;
     }
     @media(min-width: 1023px) {
         width: 68%;
@@ -97,18 +128,18 @@
     padding-right: 1rem;
     }
 }
-
-.gallery__button--game{
-    width: 32%;
-}
-
-
+// ---------------------
+// MIDDLE PART: Containing game name.
 .span__title--game {
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-
+.span__title--game:hover {
+    color: $clr-principal-hover;
+}
+// ---------------------
+// MIDDLE PART: Containing description of game.
 .descr__game {
     overflow-wrap: break-word;
     margin-top: 2rem;
@@ -116,6 +147,14 @@
     line-height: 1.4;
     font-size: 0.9rem;
     color: lightslategray;
+}
+// ---------------------
+// MIDDLE PART: Containing time for one game and number of player.
+.player__time__game {
+    @media(max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+    }
 }
 
 .nbr--player__game,
@@ -131,14 +170,19 @@
         margin-right: 3rem;
     }
     @media(min-width: 426px) {
-    border-right: black 1px solid;
-    float: left;
-    margin-right: 1rem;
-    padding-right: .5rem;
+        border-right: black 1px solid;
+        float: left;
+        margin-right: 1rem;
+        padding-right: .5rem;
     }
 }
-
-
+// ---------------------
+// RIGHT PART: Containing elements of last parts of game presentation.
+.gallery__button--game{
+    width: 20%;
+}
+// ---------------------
+// RIGHT PART: Containing button for "infomartion & add to card".
 .button__game {
     width: 100%;
     display: flex;
@@ -147,43 +191,21 @@
     }
 }
 
-.clk--button {
-    text-align: center;
-    @media(max-width: 499px) {
-    background-color: indianred;
-    border-radius: 1rem;
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    margin-right: 1rem;
-    margin-bottom: 0.5rem;
-    }
-    @media(min-width: 500px) {
-    padding: 0.1rem 1rem 0.1rem 1rem;
-    margin: 0.2rem 1rem 0.2rem 1rem;
-    background-color: indianred;
-    border-radius: 1rem;
-    margin-bottom: 0.5rem;
-    }
-    @media(min-width: 1568px) {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    background-color: indianred;
-    border-radius: 1rem;
-    margin-right: 1rem;
-    }
+.gallery__transitionX--button-game {
+    @media (max-width: 900px) {
+    transform: translateX(15%)
+};
 }
+// ---------------------
 
-.player__time__game {
-    @media(max-width: 425px) {
-    display: flex;
-    flex-direction: column;
-    }
-}
+// -----------------------------------Filter Button-------------------------
 
-// --------------------Button------------------
-
+// Containing fillter's button.
 .block_content {
-    border-bottom: lightgray 1px solid;;
+    // border-bottom: lightgray 1px solid;
 }
-
+// ---------------------
+// Categories button style
 .buttonCategory {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -201,7 +223,11 @@
 	text-shadow:0px 1px 0px #ffffff;
     text-align: center;
 	margin-bottom: 1rem;
-    width: 100%;
+    width: 40%;
+
+    @media(max-width: 1000px){
+        width: 100%;
+    }
 }
 .buttonCategory:hover {
 	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
@@ -211,15 +237,62 @@
 	position:relative;
 	top:1px;
 }
+// ---------------------
 
-// ------------------sous-titre-------
+// -----------------------------------Sub Title-------------------------
 
+// Containing player's number filter.
 .number__players {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
 }
+// ---------------------
 
-.button__game {
-    @include flex-djaw(column);
+// -----------------------------------Pagination-------------------------
+
+// Style of slide paginator
+.next>a {
+    display: none;
 }
+.previous>a {
+    display: none;
+}
+// ---------------------
+
+// Div of footer's pagination.
+.pagination {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: $clr-principal-deep;
+    border-radius: 10px;
+    padding: 0.1rem;
+    width: 50%;
+    right: 50%;
+    transform: translateX(50%);
+
+    @media(min-width: 850px){
+        width: 15%;
+        transform: translateX(270%);
+    }
+}
+// ---------------------
+
+// Style of arrow "first page & last page".
+.pagination>.last,
+.pagination>.first {
+    display: none;
+}
+// ---------------------
+// Style for number of current page and hover.
+.pagination>.current,
+.pagination>.page>a:hover {
+    color: $clr-principal-tone;
+}
+// ---------------------
+// Style for no-current number in pagination.
+.pagination>.page>a {
+    color: black;
+}
+// ---------------------

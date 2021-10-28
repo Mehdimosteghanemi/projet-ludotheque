@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,25 +23,34 @@ class SearchController extends AbstractController
      * 
      * @Route("/", name="index")
      */
-    public function index(Request $request, GameRepository $gameRepository, PaginatorInterface $paginatorInterface): Response
+    public function index(Request $request, GameRepository $gameRepository, PaginatorInterface $paginatorInterface, CategoryRepository $categoryRepository): Response
     {
 
         $query = $request->query->get('search');
         
-        // $pregQuery = preg_replace("/^(.){3,128}$/" ,$query);
-        // dd($pregQuery);
-        //    "/^[.]{3,128}$/"
         $results = $gameRepository->searchGameByName($query);
 
-        $searchResult = $paginatorInterface->paginate(
-            $results,
-            $request->query->getInt('page', 1),
-            5
-        );
+        if (!$results) {
 
-        return $this->render('search/index.html.twig', [
-            'results' => $searchResult,
-            'query' => $query
+            // throw $this->createNotFoundException("Le jeu $query n'existe pas.");
+            $this->addFlash('error', 'Le jeu ' . $query . ' n\'existe pas.');
+
+            return $this->redirectToRoute('game_index');
+
+        } else {
+
+            $searchResult = $paginatorInterface->paginate(
+                $results,
+                $request->query->getInt('page', 1),
+                5
+            );
+
+        }
+        
+        return $this->render('game/index.html.twig', [
+            'gamesList' => $searchResult,
+            'query' => $query,
+            'categoriesList' => $categoryRepository->findBy([], ['name' => 'ASC']),
         ]);
     }  
 }

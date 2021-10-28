@@ -13,15 +13,23 @@
         @include flex-djaw(0, space-around, center);
         width: 100%;
         padding: 5px 0px;
+        @media (max-width: 700px) {
+            @include flex-djaw(row, space-around, center, wrap);
+        }
         // border-top: 2px solid black;
 
-        &--pair {
-            background-color: rgb(226, 226, 104);
+        &--odd {
+            background-color: $clr-table-bg;
         }
 
         &__col {
             width: 25%;
             @include flex-djaw(column, center, center);
+            text-align: center;
+            @media (max-width: 700px) {
+                margin: 15px 0px;
+                width: 50%;
+            }
 
            &__image {
                 object-fit: contain;
@@ -30,6 +38,17 @@
 
             &__p {
                 text-align: center;
+            }
+
+            &__info {
+                @include flex-djaw(row, space-around, center);
+                width: 100%;
+            }
+
+            &--option {
+                @media (max-width: 700px) {
+                    display: none;
+                }
             }
 
             // &__button {

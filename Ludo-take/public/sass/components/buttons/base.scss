@@ -12,6 +12,7 @@ button {
      border: black solid 2px;
      margin: 5px;
      padding: 7px;
+     font-weight: bold;
      border-radius: 10px;
      transition:all 200ms ease-in-out;
  
@@ -19,14 +20,6 @@ button {
          color: white;
      }
  
-     &--add-chest {
-         background-color: $clr-add;
-         padding: 2px 5px;
-         font-size: 0.5em;
-         &:hover{
-            background-color: $clr-add-hover;
-        }
-     }
 
      &--delete-chest {
         background-color: $clr-delete;
@@ -47,59 +40,18 @@ button {
           }
      }
  
-     &--faq {
-         background-color: $clr-faq;
-         &:hover {
-             background-color: darken($clr-faq, 15%);
-          }
-     }
+    
  
      &--log-in-out {
-         background-color: $clr-login;
-         @media(min-width: 900px) {
-            position: absolute;
-            top: 20px;
-            right: 20px;  
-         }
+        background-color: $clr-login;
          
          &:hover {
              background-color: darken($clr-login, 15%);
           }
      }
- 
-     &--1 {
-         background-color: $clr-1;
-         &:hover {
-             background-color: darken($clr-1, 15%);
-          }
-     }
- 
-     &--2 {
-         background-color: $clr-2;
-         &:hover {
-             background-color: darken($clr-2, 15%);
-          }
-     }
- 
-     &--3 {
-         background-color: $clr-3;
-         &:hover {
-             background-color: darken($clr-3, 15%);
-          }
-     }
- 
-     &--4 {
-         background-color: $clr-4;
-         &:hover {
-             background-color: darken($clr-4, 15%);
-          }
-     }
- 
-     &--5 {
-         background-color: $clr-5;
-         &:hover {
-             background-color: darken($clr-5, 15%);
-          }
+
+     &--log-in {
+        background-color: #CE648E;
      }
  
  }
@@ -118,6 +70,12 @@ button {
     &__principal {
         background-color: $clr-btn-principal;
 
+        &--nav {
+            margin: 0px;
+            border: none;
+            box-shadow: none;
+        }
+
         &:hover {
             box-shadow: 0px 0px 0px 3px  $clr-btn-principal-hover; 
         }
@@ -126,17 +84,14 @@ button {
     &__secondary {
         background-color: $clr-btn-secondary;
 
+        &--nav {
+            margin: 0px;
+            padding: 2px;
+        }
+
         &:hover {
             color: black;
             box-shadow: 0px 0px 0px 3px $clr-btn-secondary-hover; 
-        }
-    }
-
-    &__ter {
-        background-color: $clr-btn-ter;
-
-        &:hover {
-            box-shadow: 0px 0px 0px 3px $clr-btn-ter-hover; 
         }
     }
 
@@ -147,6 +102,25 @@ button {
             color: black;
             box-shadow: 0px 0px 0px 3px $clr-btn-return-hover; 
         }
+    }
+
+    &__delete {
+        background-color: $clr-btn-delete;
+        &:hover {
+            box-shadow: 0px 0px 0px 3px $clr-btn-delete-hover; 
+        }
+    }
+
+    &--nav {
+        font-size: 1.2em;
+        &:hover {
+            color: black;
+            box-shadow: 0px 0px 0px 3px $clr-principal; 
+        }
+    }
+
+    &--active {
+        text-decoration: underline $clr-principal 4px;
     }
 }
  

@@ -1,0 +1,36 @@
+.backoffice {
+    @include flex-djaw(column, 0, center);
+    padding: 2%;
+}
+
+.backoffice__section {
+    @include flex-djaw(column, space-between,center);
+    width: 100%;
+
+    @media (min-width: 1200px) {
+       @include flex-djaw(0, space-between);   
+    }
+    
+    &__form {
+
+        &--return {
+            width: 40%;
+        }
+
+        &--command {
+            width: 60%;
+        }
+    }
+}
+
+.backoffice__section__title {
+    @include flex-djaw(column, 0, center);  
+    width: 80%;
+    text-align: justify;          
+}
+
+.backoffice__section___table_info {
+    @include flex-djaw(column, space-between,center);
+}
+
+   

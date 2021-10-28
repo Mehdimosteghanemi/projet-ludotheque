@@ -15,10 +15,16 @@
 
         &--return {
             width: 40%;
+            @media (max-width:1200px) {
+                width: 100%;
+            }
         }
 
         &--command {
             width: 60%;
+            @media (max-width:1200px) {
+                width: 100%;
+            }
         }
     }
 }

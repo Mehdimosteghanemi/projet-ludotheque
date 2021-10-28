@@ -1,25 +1,32 @@
 <main>
-    <section class="first__section home__user">
-        <h1 class="home__user__title">Bienvenue sur Lud O'thèque</h1>
+    <section class="home__user">
+        <h1 class="home__user__title">Bienvenue {{ app.user.firstname }}</h1>
 
-        <p class="home__user__p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium totam praesentium aspernatur mollitia quaerat est tempora possimus quidem laudantium, laboriosam incidunt dolor culpa expedita cumque atque fuga sunt eligendi. Magni vitae ipsam unde harum dolore perferendis, facilis ratione ad voluptatibus aliquam fugiat. Hic quisquam commodi maxime officiis laboriosam illo cumque exercitationem consequuntur tenetur! Pariatur, optio tempore? Eaque illum officiis ullam ea, quasi accusantium neque ipsam, laudantium suscipit temporibus amet, error unde excepturi exercitationem qui sunt aperiam incidunt libero sed minus. Facilis quibusdam suscipit quis molestiae velit voluptates amet expedita quam dolorem dicta, beatae nulla harum, nisi mollitia maxime.</p>
+        <p class="home__user__p">Votre aventure commence ici, elle sera jonchée de bonheur, de partage et de franches rigolades!</p>
+        <hr class="home__user__hr">
+        
     </section>
+   
     <section class="container__slider">
+        <div class="container__slider__title">
+            <h3 class="container__slider__title__text">🔥 Ca vient d'arriver 🔥</h3>
+        </div>
+        
         <div class="slider">
             {% for game in games|slice(0,10) %}
-                <a href="#"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
+                <a href="{{ path('game_slug', {'slug' : game.slug}) }}"><img src="{{game.images}}" alt="boite du jeu {{game.name}}" class="img__slider active"></a>
             {% endfor %}
-            <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
+            {# <a href="#"><img src="img/clank.jpg" alt="boite du jeu clank" class="img__slider active"></a>
             <a href="#"><img src="img/concept.jpg" alt="boite du jeu concept" class="img__slider"></a>
             <a href="#"><img src="img/galerapagos.jpg" alt="boite du jeu galerapagos" class="img__slider"></a>
             <a href="#"><img src="img/sheriff-of-nottingham.jpg" alt="boite du jeu sheriff de nottingham" class="img__slider"></a>
-            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a>
+            <a href="#"><img src="img/tsunami-island.jpg" alt="boite du jeu tsunami island" class="img__slider"></a> #}
 
-            <div class="next">
+            <div class="next-btn">
                 <i class="fas fa-chevron-right"></i>
             </div>
 
-            <div class="previous">
+            <div class="previous-btn">
                 <i class="fas fa-chevron-left"></i>
             </div>
         </div>
@@ -27,11 +34,13 @@
 
      {# end container of carousel #}
      {# start category #}
-    <section class="container category-games__container">
+    <section class="category-games__container">
         <div class="category-games">
-            <a class="button button__principal" href="#">Jeux à 2</a>
-            <a class="button button__principal" href="#">Coopératif</a>
-            <a class="button button__principal" href="#">Mensonge & trahison</a>
+
+            {% for currentCategory in category|slice(0,3) %}
+                    <a class="button button__principal" href="{{ path('game_indexByCategory', {id:currentCategory.id} ) }}">{{ currentCategory.name }}</a>
+            {% endfor %}
+
         </div>
     </section>
 
@@ -46,32 +55,43 @@
             <a href="#" class="crush__card">
                 <img src="img/clank.jpg" alt="boite du jeux clank"  class="image crush__card__image">
                 <h3 class="crush__card__title">Clanck</h3>
-                <p  class="crush__card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dicta placeat odio tempore id sunt nihil dolores excepturi aperiam corporis repudiandae asperiores, itaque nostrum explicabo officiis quis dolor perspiciatis? Nihil...</p>
-                <p class="crush__card__admin-name"><em>Romain vous conseil</em></p>
+                <p  class="crush__card__description">est un jeu suprenant.
+                    Les auteurs ont su reprendre avec humour le mécanisme de deckbuilding. La partie avec les pions clank est d'un très grand intérêt dans les sensations de jeux, même si l'aléatoire du tirage est parfois injuste. Mais on pardonne cet alea car le jeu ne dure pas très longtemps et le fun est toujours là.</p>
+                <p class="crush__card__admin-name"><em>Mehdi vous le conseille vivement!</em></p>
             </a>
             <a href="#" class="crush__card">
                 <img src="img/sheriff-of-nottingham.jpg" alt="boite du jeux clank"  class="image crush__card__image">
-                <h3 class="crush__card__title">Clanck</h3>
-                <p  class="crush__card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dicta placeat odio tempore id sunt nihil dolores excepturi aperiam corporis repudiandae asperiores, itaque nostrum explicabo officiis quis dolor perspiciatis? Nihil...</p>
-                <p class="crush__card__admin-name"><em>Romain vous conseil</em></p>
+                <h3 class="crush__card__title">Sheriff de Nottingham</h3>
+                <p  class="crush__card__description">est un jeu de bluff et de négociation (surtout lorsque votre bluff est un échec) où les joueurs vont tenter de faire passer en sus de leurs marchandises légales des produits de contrebande à destination du marché de la ville. Attention, votre soirée entre amis peut vite dégénérer!</p>
+                <p class="crush__card__admin-name"><em>Une pépite pour Romain!</em></p>
             </a>
             <a href="#" class="crush__card">
                 <img src="img/tsunami-island.jpg" alt="boite du jeux clank"  class="image crush__card__image">
-                <h3 class="crush__card__title">Clanck</h3>
-                <p  class="crush__card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dicta placeat odio tempore id sunt nihil dolores excepturi aperiam corporis repudiandae asperiores, itaque nostrum explicabo officiis quis dolor perspiciatis? Nihil...</p>
-                <p class="crush__card__admin-name"><em>Romain vous conseil</em></p>
+                <h3 class="crush__card__title">Tsunami Island</h3>
+                <p  class="crush__card__description">Quand on dit « Battle Royale » certains cinéphiles pensent au film japonais du même nom, précurseur du genre… mais la plupart des gens associe ce terme au jeu vidéo bien sûr. On pense à Fortnite, PUBG, Warzone et j’en passe… Au final Tsunami Island Battle Royale est un jeu d’action simple et addictif, accessible à tous et qui propose une jolie finition. Le jeu est agréable à l’oeil et le concept efficace. Les fans de jeux video du même genre s’y retrouveront tandis que les autres adhéreront sans problème au principe. Une belle surprise!</p>
+                <p class="crush__card__admin-name"><em>Sinan ne peut plus s'en passer!</em></p>
             </a>
         </section>
-
-        <section class="carousel">
-            <div class="carousel__arrow carousel__arrow--previous"><</div>
-            <div class="carousel__window">
-                <div class="carousel__window__slider">
-                    {% for game in games|slice(0,10) %}
-                        <div class="carousel__window__slider__card">
-                            <div class="carousel__window__card">
-                                <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
-                                <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+        {# {{ dump(categoryList[0].games[0].name) }}
+{% for game in categoryList[0] %}    
+    {{ dump('game') }}
+{% endfor %} #}
+        
+        {% for numberLoop in 0..3 %}
+            <section class="carousel">
+            
+                <div class="carousel__arrow carousel__arrow--previous carousel{{numberLoop}}__arrow--previous"><</div>
+                <div class="carousel__window">
+                <h3 class="carousel__title">{{categoryList[numberLoop].name}}</h3>
+                    <div class="carousel__window__slider carousel{{numberLoop}}__window__slider">
+                        {% for game in categoryList[numberLoop].games|slice(0,10) %}
+                            
+                            <div class="carousel__window__slider__card">
+                                <div class="carousel__window__card carousel{{numberLoop}}__window__card">
+                                    <a class="carousel__window__card__link" href="{{ path('game_slug', {'slug' : game.slug}) }}">
+                                        <img class="image carousel__window__card__image" src="{{ game.images }}" alt="boite du jeux {{game.name}}">
+                                        <h3 class="carousel__window__card__title" class="crush__card__title">{{game.name}}</h3>
+                                    </a>
                                     {% set gameOnChest = false %}
                                     {% for order in app.user.orders %}
                                         {% if order.games == game and order.status <= 1 %}
@@ -83,14 +103,15 @@
                                     {% else %}
                                         <a class="button button__principal" href="{{ path('order_new', {'id' : game.id}) }}">ajouter</a> 
                                     {% endif %}
-                                
+                                    
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="carousel__arrow carousel__arrow--next">></div>
-        </section>
+                <div class="carousel__arrow carousel__arrow--next carousel{{numberLoop}}__arrow--next">></div>
+            </section>
+        {% endfor %}    
 {# end carousel secondary #}
 
 </main>
