@@ -1,6 +1,12 @@
 .carousel {
     @include flex-djaw(row, space-around, center);
     width: 95%;
+    margin-top: 15px;
+
+    &__title {
+        padding: 5px;
+        border-bottom: 2px solid $clr-principal-deep;
+    }
 
     &__arrow {
         border: 2px black solid;
@@ -9,7 +15,8 @@
     }
 
     &__window {
-        border: 2px black solid;
+        border: 3px $clr-principal-deep solid;
+        background-color: $clr-principal-tone;
         border-radius: 10px;
         width: 80%;
         overflow: hidden;
@@ -27,6 +34,7 @@
             
             &__card {
                 width: 33.3%;
+                height: 100%;
                 @media (max-width: 1000px) {
                     width: 50%;  
                 }
@@ -37,10 +45,28 @@
         }
 
         &__card {
-            border: 2px black solid;
+            border: 2px $clr-principal-deep solid;
+            @include flex-djaw(column, space-around, center);
+            background-color: white;
+            height: 300px;
             border-radius: 10px;
-            margin: 8px;
+            margin: 12px;
             padding: 5px;
+
+            &__title{
+                text-align: center;
+                font-size: 1.5em;
+            }
+
+            &__image {
+                object-fit: contain;
+                max-height: 50%;
+            }
+
+            &__link {
+                @include flex-djaw(column, center, center);
+                height: 80%;
+            }
         }
     }
 }

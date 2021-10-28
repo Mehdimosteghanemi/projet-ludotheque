@@ -1,9 +1,10 @@
 .header {
     @include flex-djaw(column, center, flex-end);
     padding: 5px;
-    background-color: #f2f5ff;
+    background-color: $clr-principal-tone;
     border-bottom: 2px solid black;
-    position: fixed;
+    border-top: none;
+    position: sticky;
     top: 0;
     left: 12.5%;
     right: 12.5%;
@@ -17,11 +18,15 @@
     &__head {
         width: 100%;
         @include flex-djaw(0, center, center);
+        @media (max-width: 700px){
+            @include flex-djaw(0, start, center);
+        }
     }
 
     &__separate {
         width: 100%;
         @include flex-djaw(0, center);
+
         &__line {
             width: 50%;
             // border: 1px solid black;
@@ -38,12 +43,27 @@
             width: 90%;
             @include flex-djaw(0, space-between);
             padding: 10px;
+            margin: 5px;
             @media(max-width: 900px) {
                 display: none;
 
             }
         }
 
+        &--backoffice {
+            @include flex-djaw(0, space-around, center);
+            border-top: 2px solid black;
+        }
+
     }
 
+}
+
+.button__arround--log-in-out {
+    @media(min-width: 900px) { 
+        font-weight: bold;
+        position: absolute;
+        top: 17px;
+        right: 10px;  
+    }
 }

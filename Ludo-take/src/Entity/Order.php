@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,7 +32,7 @@ class Order
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dete_return;
+    private $date_return;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -54,6 +55,11 @@ class Order
      * @ORM\JoinColumn(nullable=false)
      */
     private $users;
+
+    public function __construct()
+    {
+        $this->created_at = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -84,14 +90,14 @@ class Order
         return $this;
     }
 
-    public function getDeteReturn(): ?\DateTimeInterface
+    public function getDateReturn(): ?\DateTimeInterface
     {
-        return $this->dete_return;
+        return $this->date_return;
     }
 
-    public function setDeteReturn(?\DateTimeInterface $dete_return): self
+    public function setDateReturn(?\DateTimeInterface $date_return): self
     {
-        $this->dete_return = $dete_return;
+        $this->date_return = $date_return;
 
         return $this;
     }
