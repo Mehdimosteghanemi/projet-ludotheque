@@ -6,16 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/404/", name="not_found_")
- */
 
 class NotFoundController extends AbstractController
 {
-    public function index(): Response
+    /**
+     * @Route("/{string<.*>}", name="not_found", priority="-10")
+     */
+    public function index(string $string): Response
     {
+       
+
         return $this->render('not_found/index.html.twig', [
-            'controller_name' => 'NotFoundController',          
+            'search' => $string,
+            'one_page' => true,
+
+
         ]);
+
     }
 }

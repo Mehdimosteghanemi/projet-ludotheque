@@ -1,20 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NotFoundController!{% endblock %}
+{% block title %}{{parent()}} 404{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/Apothéose/projet-lud-o-theque/Ludo-take/src/Controller/NotFoundController.php'|file_link(0) }}">src/Controller/NotFoundController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/Apothéose/projet-lud-o-theque/Ludo-take/templates/not_found/index.html.twig'|file_link(0) }}">templates/not_found/index.html.twig</a></code></li>
-    </ul>
+<div class="section__404">
+    <h2>A-t-on trouvé  la page : {{ search }}! </h2>
+    <h1>???</h1>
+    <div class="card__container">
+        {# card 1 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCTOkB6u-E6EsjPE_2mK39Z-DcJV0RPYqNpLzjVDXQzp8rlkVKXni52PT-N3tknK8dMc&usqp=CAU" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="/img/mehdi1.gif" alt="">
+                <img class="card__flip__finger card__flip__finger--mehdi" src="/img/finger.png" alt="">
+            </div>
+        </div>
+        {# card 2 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://i.pinimg.com/originals/c5/b1/f3/c5b1f35d29702f1d9cb49f5760029603.png" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="/img/romain1.jpg" alt="">
+                <img class="card__flip__finger card__flip__finger--romain" src="/img/finger.png" alt="">
+            </div>
+        </div>
+        {# card 3 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://ludiworld.com/newshop/30426/100-proteges-cartes-dos-magic-the-gathering-ultra-pro.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back card__flip--troll">
+                <img class="card-troll" src="https://www.madmoizelle.com/wp-content/uploads/2012/01/trollface.jpg" alt="">
+                <h3 class="card-troll--text">NOPE !!!</h3>
+            </div>
+        </div>
+        {# card 4 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://i.pinimg.com/236x/a3/30/6e/a3306e3499202e07c3e384f01df1d7ab.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="/img/sinan.jpg" alt="">
+                <img class="card__flip__finger card__flip__finger--sinan" src="/img/finger.png" alt="">
+            </div>
+        </div>
+        {# card 5 #}
+        <div class="card__flip__inner">
+            <div class="card__flip card__flip--front">
+                <img class="card-404" src="https://www.ccmagique.fr/wp-content/uploads/195-2.jpg" alt="">
+            </div>
+            <div class="card__flip card__flip--back">
+                <img class="card-404" src="/img/Damien.jpg" alt="">
+                <img class="card__flip__finger card__flip__finger--damien" src="/img/finger.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="dice__img">
+        <p class="dice__number">404</p>
+    </div>
+    
 </div>
+{% endblock %}
+{% block javascripts %} 
+    <script src="{{ asset('js/roll.js') }}"></script> 
 {% endblock %}

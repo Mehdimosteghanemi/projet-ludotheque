@@ -1,0 +1,59 @@
+.table {
+    border: 2px solid black;
+    width: 100%;
+    margin: 15px 0px;
+    &__title {
+       font-size: 3em; 
+    }
+    
+    &__head__col{
+        text-align: center;
+        // border: 2px solid black;
+        padding: 10px;
+
+        &--flip {
+            @include flex-djaw(0, space-around, center);
+            height: 100%;
+        }
+
+        &__info {
+            @include flex-djaw(column, space-between, center);
+
+            &p {
+                margin: 10px;
+            }
+        }
+
+        &--border-off {
+            border: none;
+            background-color: white;
+        }
+    }
+
+    &__row {
+        &--odd {
+            background-color: $clr-principal-tone;
+        }
+        
+        &__col {
+            text-align: center;
+            // border: 2px solid black;
+            padding: 10px;
+
+            &__image {
+                object-fit: contain;
+                max-height: 50px;
+            }
+
+            &__p {
+
+
+            }
+
+            &__flip {
+                padding: 0px;
+                @include flex-djaw();
+            }
+        }
+    }
+}
