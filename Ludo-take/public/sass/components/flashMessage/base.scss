@@ -1,0 +1,28 @@
+.flash {
+    @include flex-djaw(0, center, center);
+    margin-top: 10px;
+    background-color: $clr-flash;
+    height: 2.5rem;
+    width: 50%;
+    transform: translateX(50%);
+    border-radius: 10px;
+
+    &__error {
+        background-color: $clr-flash-error;
+    }
+
+    &__success {
+        background-color: $clr-flash-success;
+    }
+
+    &__modify {
+        background-color: $clr-flash-modify;
+    }
+
+    &__message {
+        color: white;
+    }
+}
+
+
+

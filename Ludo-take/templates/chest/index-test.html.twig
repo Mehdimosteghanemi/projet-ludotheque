@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% set inChest = 0 %}
+
+{% block title %}{{parent()}} - Coffre{% endblock %}
+
+{% block body %}
+
+<main class="chest">
+    <section class="chest__section__title">
+        <h1>Bienvenue dans ton coffre</h1>
+        <p>C'est ici que tu peux voir les jeux en ta possession tu peux choisir de nous les retourné</p>
+    </section>
+
+    <section class="chest__section">
+       
+        <form class="chest__section__form--command" action="" method="POST">
+            <div class="chest__section__table_info">
+                <div class="command-table">
+                    <div class="command-table__title">
+                        <tr>
+                            <th colspan="2">Liste de commande</th>
+                        </tr>
+                    </div>
+                    <div class="command-table__content">
+                        <div class="command-table__content__ship">
+                            <div class="command-table__content__ship__head">
+                                <p>prochain envoi</p>
+                                <p>plus tard</p>
+                            </div>
+                            {% for order in app.user.orders %}
+                                {% if order.status == 1 %}
+                                    {% set inChest = inChest + 1 %}
+                                    <div class="command-table__content__ship__flip">
+                                        <div class="button__switch-checkbox__parent">
+                                            <input type="checkbox" name="{{order.games.id}}" id="{{order.games.slug}}" class="button__checkbox hidden" checked>
+                                            <label class="button button__principal button__switch-checkbox" for="{{order.games.slug}}" data-next-ship="">
+                                                <img class="button__flip__image" src="{{order.games.images}}" alt="">
+                                                <p>{{order.games.name}}</p>
+                                                <a class="button__switch-checkbox--delete" href="{{ path('order_delete', {'id' : order.games.id}) }}">🗑️</a>
+                                            </label>
+                                        </div>    
+                                    </div>
+                                {% endif %}    
+                            {% endfor %}
+                            <div class="command-table__content__ship__flip button__switch-checkbox__parent">
+                                <input type="checkbox" name="jeu-1" id="slug-1" class="button__checkbox hidden" checked>
+                                <label class="button button__principal button__switch-checkbox" for="slug-1">
+                                    <img class="" src="" alt="image">
+                                    <p>nom du jeux</p>
+                                    <a class="button__switch-checkbox--delete" href="#">x</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="command-table__content__info">
+                            <p class="command-table__content__info__row">prochaine commande</p>
+                            <p class="command-table__content__info__row">01/01/2022</p>
+                            <p class="command-table__content__info__row">nombre de jeux</p>
+                            <p class="command-table__content__info__row"> <em class="command-table__info__chest command-table__info__chest--{% if inChest <= 7 %}valid{% else %}unvalid{% endif %}">{{inChest}}</em>/7</p>
+                        </div>
+                        
+                    </div>   
+                </div>
+                <input type="submit" value="commander" class="button button__principal">
+            </div>
+        </form>
+    </section>
+   
+
+</main>
+{% endblock %}
+{% block javascripts %} 
+<script src="{{ asset('js/chest.js') }}"></script> 
+    <script src="{{ asset('js/flip.js') }}"></script> 
+{% endblock %}

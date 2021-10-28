@@ -3,3 +3,40 @@
 
 }
 
+.form__categories {
+    @include flex-djaw(0, space-around, 0, wrap);
+
+    &__label {
+        @include flex-djaw(column, space-around, center);
+        width: 150px;
+        height: 200px;
+        background-color: rgb(172, 172, 172);
+        border: 2px solid white;
+        box-shadow: white 0 0 0 4px; 
+        border-radius: 10px;
+        margin: 10px;
+        transition: all 300ms;
+
+        &:hover {
+            box-shadow: $clr-principal 0 0 0 4px; 
+        }
+
+        .form__categories__input:checked + & {
+            box-shadow: $clr-principal-hover 0 0 0 2px; 
+            background-color: $clr-principal-hover;
+            
+            &:hover {
+                box-shadow: $clr-principal 0 0 0 4px; 
+            }
+        }
+    }
+
+    &__image {
+        width: 120px;
+    }
+
+    &__text {
+        text-align: center;
+    }
+}
+

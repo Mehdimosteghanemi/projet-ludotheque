@@ -1,0 +1,48 @@
+
+.grid{
+   
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid__title{
+
+    text-align: center;
+    border-width: 12rem;
+    padding: 50px;
+}
+
+.grid__content{
+    
+    display: flex;
+    justify-content: space-between;
+    justify-content:end;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+    font-size: 30px;
+}
+
+.grid__content__head{
+    
+    text-decoration: underline;
+    text-align: center;
+    width: 50%;
+}
+
+.grid__content__data{
+
+    flex-grow:2;
+    width: 50%;
+}
+
+.grid__feuille{
+    
+    position:absolute;
+    height: 60%;
+    width: 95%;
+    top: 50%;
+    transform: translateY(-30%);
+}

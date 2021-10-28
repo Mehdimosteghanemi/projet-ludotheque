@@ -1,5 +1,24 @@
 .container__slider {
     padding-top: 50px;
+    position: relative;
+
+    &__title {
+        @include flex-djaw(0, center, center);
+        width: 150px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: $clr-principal-tone;
+        position: absolute;
+        z-index: 100;
+        transform: rotate(-20deg);
+        left: 120px;
+
+        &__text {
+            color: $clr-contrast;
+            font-size: 0.8em;
+        }
+        
+    }
 }
 .slider {
     height: 50vh;
@@ -7,7 +26,7 @@
 }
 
 .slider img {
-    // object-fit: cover;
+    object-fit: contain;
     height: 100%;
     width: 40%;
     position: absolute;
@@ -22,7 +41,7 @@
     opacity: 1;
 }
 
-.next, .previous {
+.next-btn, .previous-btn {
     color: #fff;
     font-size: 3rem;
     position: absolute;
@@ -31,20 +50,36 @@
     cursor: pointer;
 }
 
-.next {
+.next-btn {
     right: 20rem;
 }
 
-.previous {
+.previous-btn {
     left: 20rem;
 }
 
-@media (max-width: 2000px) {
-    .next {
+@media (max-width: 2500px) {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
+        left: 1rem;
+    }
+
+    .slider a img {
+        height: 80%;
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 2000px) {
+    .next-btn {
+        right: 1rem;
+    }
+
+    .previous-btn {
         left: 1rem;
     }
 
@@ -55,11 +90,11 @@
 }
 
 @media (max-width: 1024px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 
@@ -70,11 +105,11 @@
 }
 
 @media (max-width: 900px) {
-    .next {
+    .next-btn {
         right: 1rem;
     }
 
-    .previous {
+    .previous-btn {
         left: 1rem;
     }
 

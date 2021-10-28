@@ -4,11 +4,7 @@
 
 {% block body %}
 <section class="connection__form">
-        <form method="post">
-
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+        <form class="connection__form" method="post">
 
             {% if app.user %}
                 <div class="mb-3">
@@ -16,31 +12,50 @@
                 </div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Connectez-vous à Ludo'Take !</h1>
-            <label class="mail", for="inputEmail">Adresse mail</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-            <label class="password",for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <h1 class="h3 mb-3 font-weight-normal connection__form__title">Connexion</h1>
+
+            {% if error %}
+                <div class="alert alert-danger connection__form__error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="connection__form__row input-text__row">
+                <input class="connection__form__row__input  input-text__row__input" type="email" value="{{ last_username }}" name="email" id="inputEmail"  class="form-control" autocomplete="email" required autofocus>
+                <label class="connection__form__row__label  input-text__row__label" for="inputEmail">E-mail</label>
+            </div>
+            <div class="connection__form__row input-text__row">
+                <input class="connection__form__row__input input-text__row__input" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                <label class="connection__form__row__label input-text__row__label" for="inputPassword">Mot de passe</label>
+            </div>
+
 
             <input type="hidden" name="_csrf_token"
                 value="{{ csrf_token('authenticate') }}"
             >
 
-            {#
-                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                See https://symfony.com/doc/current/security/remember_me.html
+                {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html #}
 
-                <div class="checkbox mb-3">
+                <div class="connection__form__remember-me checkbox mb-3">
                     <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
+                        <input type="checkbox" name="_remember_me">Se souvenir de moi
                     </label>
                 </div>
-            #}
+           
+
 
             <button class="boutton" type="submit">
                 Se connecter
+
             </button>
+
+            <div class="connection__form__nav">
+                <a class="button button__return connection__form__nav__link" href="{{ path('home_index') }}">retour à l'accueil</a>
+                <a class="button button__secondary connection__form__nav__link" href="{{ path('register') }}">m'inscrire</a>
+            </div>
         </form>
+        
+        
     </div>
 </section>
 {% endblock %}
