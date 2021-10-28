@@ -2,6 +2,24 @@
     @include flex-djaw(column, center, center,);
     height: 100%;
 
+}
+
+.mail{
+    font-weight: bold;
+}
+
+.password{
+font-weight: bold;
+}
+
+.boutton{
+
+    border:solid;
+    border-color: rgb(19, 170, 32);
+    background-color: aquamarine;
+    border-radius: 0rem;
+
+
     &__title {
         margin: 10px 0px;
     }
@@ -19,4 +37,5 @@
         width: 100%;
         @include flex-djaw(0, space-between, center,); 
     }
+
 }

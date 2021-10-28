@@ -12,6 +12,7 @@
                 </div>
             {% endif %}
 
+
             <h1 class="h3 mb-3 font-weight-normal connection__form__title">Connexion</h1>
 
             {% if error %}
@@ -27,6 +28,7 @@
                 <label class="connection__form__row__label input-text__row__label" for="inputPassword">Mot de passe</label>
             </div>
 
+
             <input type="hidden" name="_csrf_token"
                 value="{{ csrf_token('authenticate') }}"
             >
@@ -41,8 +43,10 @@
                 </div>
            
 
-            <button class="btn btn-lg btn-primary button button__principal connection__form__button" type="submit">
-                me connecter
+
+            <button class="boutton" type="submit">
+                Se connecter
+
             </button>
 
             <div class="connection__form__nav">
